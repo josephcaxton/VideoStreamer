@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C232CDB150F8A36003349AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C232CDA150F8A36003349AE /* UIKit.framework */; };
+		7C232CDD150F8A36003349AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C232CDC150F8A36003349AE /* Foundation.framework */; };
+		7C232CDF150F8A36003349AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C232CDE150F8A36003349AE /* CoreGraphics.framework */; };
+		7C232CE5150F8A36003349AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CE3150F8A36003349AE /* InfoPlist.strings */; };
+		7C232CE7150F8A36003349AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232CE6150F8A36003349AE /* main.m */; };
+		7C232CEB150F8A36003349AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232CEA150F8A36003349AE /* AppDelegate.m */; };
+		7C232CEE150F8A36003349AE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232CED150F8A36003349AE /* FirstViewController.m */; };
+		7C232CF0150F8A36003349AE /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CEF150F8A36003349AE /* first.png */; };
+		7C232CF2150F8A36003349AE /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CF1150F8A36003349AE /* first@2x.png */; };
+		7C232CF5150F8A36003349AE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232CF4150F8A36003349AE /* SecondViewController.m */; };
+		7C232CF7150F8A36003349AE /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CF6150F8A36003349AE /* second.png */; };
+		7C232CF9150F8A36003349AE /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CF8150F8A36003349AE /* second@2x.png */; };
+		7C232CFC150F8A36003349AE /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CFA150F8A36003349AE /* FirstViewController.xib */; };
+		7C232CFF150F8A36003349AE /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C232CFD150F8A36003349AE /* SecondViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C232CD6150F8A36003349AE /* VideoStreamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoStreamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C232CDA150F8A36003349AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7C232CDC150F8A36003349AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7C232CDE150F8A36003349AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7C232CE2150F8A36003349AE /* VideoStreamer-Info.plist */ = {isa = PBXFileReference; path = "VideoStreamer-Info.plist"; sourceTree = "<group>"; };
+		7C232CE4150F8A36003349AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7C232CE6150F8A36003349AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7C232CE8150F8A36003349AE /* VideoStreamer-Prefix.pch */ = {isa = PBXFileReference; path = "VideoStreamer-Prefix.pch"; sourceTree = "<group>"; };
+		7C232CE9150F8A36003349AE /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		7C232CEA150F8A36003349AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7C232CEC150F8A36003349AE /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		7C232CED150F8A36003349AE /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		7C232CEF150F8A36003349AE /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		7C232CF1150F8A36003349AE /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		7C232CF3150F8A36003349AE /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		7C232CF4150F8A36003349AE /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		7C232CF6150F8A36003349AE /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		7C232CF8150F8A36003349AE /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		7C232CFB150F8A36003349AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		7C232CFE150F8A36003349AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C232CD3150F8A36003349AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C232CDB150F8A36003349AE /* UIKit.framework in Frameworks */,
+				7C232CDD150F8A36003349AE /* Foundation.framework in Frameworks */,
+				7C232CDF150F8A36003349AE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C232CCB150F8A36003349AE = {
+			isa = PBXGroup;
+			children = (
+				7C232CE0150F8A36003349AE /* VideoStreamer */,
+				7C232CD9150F8A36003349AE /* Frameworks */,
+				7C232CD7150F8A36003349AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C232CD7150F8A36003349AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C232CD6150F8A36003349AE /* VideoStreamer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C232CD9150F8A36003349AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C232CDA150F8A36003349AE /* UIKit.framework */,
+				7C232CDC150F8A36003349AE /* Foundation.framework */,
+				7C232CDE150F8A36003349AE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C232CE0150F8A36003349AE /* VideoStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				7C232CE9150F8A36003349AE /* AppDelegate.h */,
+				7C232CEA150F8A36003349AE /* AppDelegate.m */,
+				7C232CEC150F8A36003349AE /* FirstViewController.h */,
+				7C232CED150F8A36003349AE /* FirstViewController.m */,
+				7C232CEF150F8A36003349AE /* first.png */,
+				7C232CF1150F8A36003349AE /* first@2x.png */,
+				7C232CF3150F8A36003349AE /* SecondViewController.h */,
+				7C232CF4150F8A36003349AE /* SecondViewController.m */,
+				7C232CF6150F8A36003349AE /* second.png */,
+				7C232CF8150F8A36003349AE /* second@2x.png */,
+				7C232CFA150F8A36003349AE /* FirstViewController.xib */,
+				7C232CFD150F8A36003349AE /* SecondViewController.xib */,
+				7C232CE1150F8A36003349AE /* Supporting Files */,
+			);
+			path = VideoStreamer;
+			sourceTree = "<group>";
+		};
+		7C232CE1150F8A36003349AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C232CE2150F8A36003349AE /* VideoStreamer-Info.plist */,
+				7C232CE3150F8A36003349AE /* InfoPlist.strings */,
+				7C232CE6150F8A36003349AE /* main.m */,
+				7C232CE8150F8A36003349AE /* VideoStreamer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7C232CD5150F8A36003349AE /* VideoStreamer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C232D02150F8A36003349AE /* Build configuration list for PBXNativeTarget "VideoStreamer" */;
+			buildPhases = (
+				7C232CD2150F8A36003349AE /* Sources */,
+				7C232CD3150F8A36003349AE /* Frameworks */,
+				7C232CD4150F8A36003349AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoStreamer;
+			productName = VideoStreamer;
+			productReference = 7C232CD6150F8A36003349AE /* VideoStreamer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C232CCD150F8A36003349AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = caxtonidowu;
+			};
+			buildConfigurationList = 7C232CD0150F8A36003349AE /* Build configuration list for PBXProject "VideoStreamer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7C232CCB150F8A36003349AE;
+			productRefGroup = 7C232CD7150F8A36003349AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C232CD5150F8A36003349AE /* VideoStreamer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7C232CD4150F8A36003349AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C232CE5150F8A36003349AE /* InfoPlist.strings in Resources */,
+				7C232CF0150F8A36003349AE /* first.png in Resources */,
+				7C232CF2150F8A36003349AE /* first@2x.png in Resources */,
+				7C232CF7150F8A36003349AE /* second.png in Resources */,
+				7C232CF9150F8A36003349AE /* second@2x.png in Resources */,
+				7C232CFC150F8A36003349AE /* FirstViewController.xib in Resources */,
+				7C232CFF150F8A36003349AE /* SecondViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C232CD2150F8A36003349AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C232CE7150F8A36003349AE /* main.m in Sources */,
+				7C232CEB150F8A36003349AE /* AppDelegate.m in Sources */,
+				7C232CEE150F8A36003349AE /* FirstViewController.m in Sources */,
+				7C232CF5150F8A36003349AE /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7C232CE3150F8A36003349AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C232CE4150F8A36003349AE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7C232CFA150F8A36003349AE /* FirstViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C232CFB150F8A36003349AE /* en */,
+			);
+			name = FirstViewController.xib;
+			sourceTree = "<group>";
+		};
+		7C232CFD150F8A36003349AE /* SecondViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C232CFE150F8A36003349AE /* en */,
+			);
+			name = SecondViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7C232D00150F8A36003349AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		7C232D01150F8A36003349AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7C232D03150F8A36003349AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
+				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7C232D04150F8A36003349AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
+				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C232CD0150F8A36003349AE /* Build configuration list for PBXProject "VideoStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C232D00150F8A36003349AE /* Debug */,
+				7C232D01150F8A36003349AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C232D02150F8A36003349AE /* Build configuration list for PBXNativeTarget "VideoStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C232D03150F8A36003349AE /* Debug */,
+				7C232D04150F8A36003349AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C232CCD150F8A36003349AE /* Project object */;
+}
