@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <netinet/in.h>
 
 //#import "FirstViewController.h"
 
@@ -38,6 +40,25 @@
 - (NSString *)applicationDocumentsDirectory {
     
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+-(BOOL)isDeviceConnectedToInternet{
+    
+    static BOOL checkNetwork = YES;
+	BOOL _isDataSourceAvailable;
+    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
+         checkNetwork = NO; //don't cache
+		
+        Boolean success;    
+        const char *host_name = "http://www.google.com"; // my data source host name
+		
+        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
+        SCNetworkReachabilityFlags flags;
+        success = SCNetworkReachabilityGetFlags(reachability, &flags);
+        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
+        CFRelease(reachability);
+    }
+    return _isDataSourceAvailable;
 }
 
 

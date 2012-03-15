@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FreeVideosClass : UIViewController  <UITableViewDataSource, UITableViewDelegate>{
+@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate>{
     
-    
+    NSMutableArray *ArrayofConfigObjects; 
     
 }
 
+@property (nonatomic, retain) NSMutableArray *ArrayofConfigObjects;
+
 -(void)CheckifConfigFileExistAndDelete:(NSString*)Path;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
+-(void)Alertfailedconnection;
+-(void)MyParser:(NSString *)FileLocation;
 @end

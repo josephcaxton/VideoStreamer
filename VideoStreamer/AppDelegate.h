@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSThread *SecondThread;
 
 - (NSString *)applicationDocumentsDirectory;
+-(BOOL)isDeviceConnectedToInternet;
 
 
 @end

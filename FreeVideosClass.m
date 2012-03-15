@@ -8,10 +8,11 @@
 
 #import "FreeVideosClass.h"
 #import "AppDelegate.h"
+#import "ConfigObject.h"
 
 @implementation FreeVideosClass
 
-
+@synthesize ArrayofConfigObjects;
 
 
 - (void)viewDidLoad {
@@ -25,9 +26,25 @@
 		
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"VideoConfig.xml"];
+   
+   // if(appDelegate.isDeviceConnectedToInternet){
+    
     [self CheckifConfigFileExistAndDelete: Dir];
     [self GetConfigFileFromServeWriteToPath:Dir];
+    
+    ArrayofConfigObjects = [[NSMutableArray alloc] init];
+    
+    [self MyParser:Dir];
+        
+   // }
+    //else
+   // {
+    
+   //     [self Alertfailedconnection];
+    
+   // }
 	
+    
         
 }
 
@@ -75,6 +92,68 @@
     
 }
 
+-(void)Alertfailedconnection{
+    
+    NSString *message = [[NSString alloc] initWithFormat:@"Your device is not connected to the internet. You need access to the internet to stream our videos "];
+    
+    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"Important Notice"
+                                                   message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alert show];
+   
+
+    
+}
+
+-(void)MyParser:(NSString *)FileLocation{
+	
+	NSError* error;
+	
+	NSString* fileContents = [NSString stringWithContentsOfFile:FileLocation encoding:NSWindowsCP1252StringEncoding error:&error];
+	
+	
+	NSArray* pointStrings = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"±"]];
+	
+	for(int idx = 0; idx < pointStrings.count - 1; idx++)
+	{
+		// break the string down even further to the columns
+		NSString* currentPointString = [pointStrings objectAtIndex:idx];
+		NSArray* arr = [currentPointString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"|"]];
+		
+		NSString *Title = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:1]];
+		NSString *Description = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:3]];
+		NSString *Show = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:5]];
+		NSString *Subject = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:7]];
+		NSString *M3u8 = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:9]];
+		NSString *ThumbNail = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:11]];
+		
+        ConfigObject *obj = [[ConfigObject alloc] init];
+        obj.VideoTitle = Title;
+        obj.VideoDescription = Description;
+        
+        if ([Show isEqualToString: @"1"]){
+            obj.Show = YES;
+            
+        }
+        else
+        {
+            obj.Show = NO;
+        }
+        
+        obj.Subject = Subject;
+        obj.M3u8 = M3u8;
+        obj.Thumbnail = ThumbNail;
+        
+        [ArrayofConfigObjects addObject:obj];
+        
+       // NSLog(@"Title in my array is: %@",obj.VideoTitle);
+				
+		
+
+	}
+}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -86,7 +165,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
    
-    NSInteger numberOfRows = 0;
+    NSInteger numberOfRows =[ArrayofConfigObjects count];
 	
     return numberOfRows;
 	
