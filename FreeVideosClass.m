@@ -9,10 +9,14 @@
 #import "FreeVideosClass.h"
 #import "AppDelegate.h"
 #import "ConfigObject.h"
+#import "VideoPlayer.h"
+
 
 @implementation FreeVideosClass
 
+
 @synthesize ArrayofConfigObjects;
+
 
 
 - (void)viewDidLoad {
@@ -21,16 +25,37 @@
 	
 	self.navigationItem.title = @"Free and Subscription Videos";
 	
-		UIBarButtonItem *Back = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(Back:)];
-		self.navigationItem.leftBarButtonItem = Back;
-		
+
+	
+	// Copy or Update the VideoConfig File;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSString *queryFeed = [NSString stringWithFormat:@"http://Stage.learnerscloud.com/iosStream/VideoConfig.xml"];
     NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"VideoConfig.xml"];
+    
+         
    
    // if(appDelegate.isDeviceConnectedToInternet){
     
-    [self CheckifConfigFileExistAndDelete: Dir];
-    [self GetConfigFileFromServeWriteToPath:Dir];
+   BOOL DownloadIt =  [self ShouldIDownloadOrNot:queryFeed :Dir];
+   
+    if(DownloadIt == YES){
+        
+           NSFileManager *fileManager = [NSFileManager defaultManager];
+           NSError *error=[[NSError alloc]init];
+            
+            BOOL success=[fileManager fileExistsAtPath:Dir];
+           
+            if(success)
+        	{
+        		[fileManager removeItemAtPath:Dir error:&error];
+            }
+
+    
+        [self GetConfigFileFromServeWriteToPath:Dir];
+        
+    }
+    
+    
     
     ArrayofConfigObjects = [[NSMutableArray alloc] init];
     
@@ -50,23 +75,17 @@
 
 
 
--(IBAction)Back:(id)sender{
-	
-	[self.navigationController popViewControllerAnimated:YES];
-	
-}
 
--(void)CheckifConfigFileExistAndDelete:(NSString*)Path{
-    
 
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSError *error=[[NSError alloc]init];
-    BOOL success=[fileManager fileExistsAtPath:Path];
+-(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation{
     
-    if(success)
-	{
-		[fileManager removeItemAtPath:Path error:&error];
-    }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+   BOOL ReturnVal =  [appDelegate downloadFileIfUpdated:urllPath:LocalFileLocation];
+    
+    return ReturnVal;
+   
+    
+    
     
 }
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path{
@@ -127,24 +146,18 @@
 		NSString *M3u8 = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:9]];
 		NSString *ThumbNail = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:11]];
 		
+         if ([Show isEqualToString: @"1"]){
+        
         ConfigObject *obj = [[ConfigObject alloc] init];
         obj.VideoTitle = Title;
         obj.VideoDescription = Description;
-        
-        if ([Show isEqualToString: @"1"]){
-            obj.Show = YES;
-            
-        }
-        else
-        {
-            obj.Show = NO;
-        }
-        
+        obj.Show = YES;
         obj.Subject = Subject;
         obj.M3u8 = M3u8;
         obj.Thumbnail = ThumbNail;
         
         [ArrayofConfigObjects addObject:obj];
+         }
         
        // NSLog(@"Title in my array is: %@",obj.VideoTitle);
 				
@@ -181,7 +194,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-
+    
+    ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
+    NSString *PicLocation = [[NSString alloc] initWithFormat:@"%@",[obj Thumbnail]];
+    UIImage* theImage = [UIImage imageNamed:PicLocation];
+    cell.imageView.image = theImage;
+    
+    cell.textLabel.text = [obj VideoTitle];
+    cell.detailTextLabel.text = [obj VideoDescription];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    
 	
 	
     return cell;
@@ -198,7 +221,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-
+    ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
+    
+    
+    VideoPlayer *VP1 = [[VideoPlayer	alloc] initWithNibName:nil bundle:nil];
+    VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
+    [self.navigationController pushViewController:VP1 animated:YES];
 
 
 }

@@ -16,7 +16,7 @@
 
 @property (nonatomic, retain) NSMutableArray *ArrayofConfigObjects;
 
--(void)CheckifConfigFileExistAndDelete:(NSString*)Path;
+-(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
 -(void)Alertfailedconnection;
 -(void)MyParser:(NSString *)FileLocation;

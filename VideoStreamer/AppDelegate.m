@@ -31,7 +31,8 @@
     [tabBarController setViewControllers:viewControllers];
     
     SecondThread = nil;
-    
+
+
     [window addSubview: tabBarController.view];
 	[window makeKeyAndVisible];
     return YES;
@@ -60,6 +61,69 @@
     }
     return _isDataSourceAvailable;
 }
+
+//Return True is file does not exist in device -- so download from server;
+// Return True if the file exist but version is defferent--- So we need to download the file;
+// Return false if the file is same version --- so don't download;
+- (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation {  
+    
+    //DLog(@"Downloading HTTP header from: %@", urlString);
+    
+    NSURL *url = [NSURL URLWithString:urlString];  
+    
+    NSString *cachedPath = LocalFileLocation;
+    NSFileManager *fileManager = [NSFileManager defaultManager];  
+    
+    //BOOL downloadFromServer = NO; 
+    NSString *lastModifiedString = nil;  
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];  
+    [request setHTTPMethod:@"HEAD"];  
+    NSHTTPURLResponse *response;  
+   // Get Date from server first 
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error: NULL];  
+    if ([response respondsToSelector:@selector(allHeaderFields)]) {  
+        lastModifiedString = [[response allHeaderFields] objectForKey:@"Last-Modified"];  
+    }
+    
+    NSDate *lastModifiedServer = nil;  
+    @try {  
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];  
+        df.dateFormat = @"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'";  
+        df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];  
+        df.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];  
+        lastModifiedServer = [df dateFromString:lastModifiedString];
+    
+        
+    }  
+    @catch (NSException * e) {  
+        NSLog(@"Error parsing last modified date: %@ - %@", lastModifiedString, [e description]);  
+    }  
+   // NSLog(@"lastModifiedServer: %@", lastModifiedServer);
+    
+    // Get Date on Local device
+    NSDate *lastModifiedLocal = nil;  
+    if ([fileManager fileExistsAtPath:cachedPath]) {  
+        NSError *error = nil;  
+        NSDictionary *fileAttributes = [fileManager attributesOfItemAtPath:cachedPath error:&error];  
+        if (error) {  
+            NSLog(@"Error reading file attributes for: %@ - %@", cachedPath, [error localizedDescription]);  
+        }  
+        lastModifiedLocal = [fileAttributes fileModificationDate];  
+       // NSLog(@"lastModifiedLocal : %@", lastModifiedLocal);  
+    }
+    
+    // Download file from server if we don't have a local file  
+    if (!lastModifiedLocal) {  
+        return YES;  
+    }
+    
+    if ([lastModifiedLocal laterDate:lastModifiedServer] == lastModifiedServer) {  
+        return YES;  
+    }
+    
+    return NO;
+    
+}  
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

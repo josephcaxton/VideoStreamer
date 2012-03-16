@@ -37,6 +37,12 @@
 		7C232D57150FBA10003349AE /* Buy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D56150FBA10003349AE /* Buy.m */; };
 		7C232D5A150FBA68003349AE /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D59150FBA68003349AE /* Help.m */; };
 		7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */; };
+		7C4D8DFB15136A400065D044 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8DFA15136A400065D044 /* 1.png */; };
+		7C4D8DFE151375F20065D044 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8DFC151375F20065D044 /* 2.png */; };
+		7C4D8DFF151375F20065D044 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8DFD151375F20065D044 /* 3.png */; };
+		7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0015137A890065D044 /* BlackBackGround.png */; };
+		7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0315137AEB0065D044 /* VideoPlayer.m */; };
+		7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4D8E05151381A50065D044 /* MediaPlayer.framework */; };
 		7CA25C341510ACFA00137875 /* Cinema_port.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C331510ACFA00137875 /* Cinema_port.png */; };
 		7CA25C361510AD0300137875 /* Cinema_land.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C351510AD0300137875 /* Cinema_land.png */; };
 		7CA25C381510C70700137875 /* YellowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C371510C70700137875 /* YellowBackground.png */; };
@@ -89,6 +95,13 @@
 		7C232D58150FBA67003349AE /* Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Help.h; sourceTree = "<group>"; };
 		7C232D59150FBA68003349AE /* Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Help.m; sourceTree = "<group>"; };
 		7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7C4D8DFA15136A400065D044 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		7C4D8DFC151375F20065D044 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		7C4D8DFD151375F20065D044 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		7C4D8E0015137A890065D044 /* BlackBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackGround.png; sourceTree = "<group>"; };
+		7C4D8E0215137AEB0065D044 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
+		7C4D8E0315137AEB0065D044 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
+		7C4D8E05151381A50065D044 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7CA25C331510ACFA00137875 /* Cinema_port.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cinema_port.png; sourceTree = "<group>"; };
 		7CA25C351510AD0300137875 /* Cinema_land.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cinema_land.png; sourceTree = "<group>"; };
 		7CA25C371510C70700137875 /* YellowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowBackground.png; sourceTree = "<group>"; };
@@ -105,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */,
 				7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */,
 				7C232CDB150F8A36003349AE /* UIKit.framework in Frameworks */,
 				7C232CDD150F8A36003349AE /* Foundation.framework in Frameworks */,
@@ -118,6 +132,7 @@
 		7C232CCB150F8A36003349AE = {
 			isa = PBXGroup;
 			children = (
+				7C4D8DF8151369E60065D044 /* VideoImages */,
 				7CA25C441511020300137875 /* Data Models */,
 				7C232D38150FB43B003349AE /* Classes */,
 				7C232D30150FA446003349AE /* ClientSideClasses */,
@@ -141,6 +156,7 @@
 		7C232CD9150F8A36003349AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C4D8E05151381A50065D044 /* MediaPlayer.framework */,
 				7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */,
 				7C232CDA150F8A36003349AE /* UIKit.framework */,
 				7C232CDC150F8A36003349AE /* Foundation.framework */,
@@ -211,6 +227,7 @@
 				7CA25C371510C70700137875 /* YellowBackground.png */,
 				7CA25C391510C95100137875 /* RentVideo.png */,
 				7CA25C3F1510CEFA00137875 /* blueBackground.png */,
+				7C4D8E0015137A890065D044 /* BlackBackGround.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -222,6 +239,8 @@
 				7C232D34150FA4B1003349AE /* Start.m */,
 				7CA25C411510DB8300137875 /* FreeVideosClass.h */,
 				7CA25C421510DB8300137875 /* FreeVideosClass.m */,
+				7C4D8E0215137AEB0065D044 /* VideoPlayer.h */,
+				7C4D8E0315137AEB0065D044 /* VideoPlayer.m */,
 			);
 			name = ClientSideClasses;
 			sourceTree = "<group>";
@@ -241,6 +260,16 @@
 				7C232D59150FBA68003349AE /* Help.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		7C4D8DF8151369E60065D044 /* VideoImages */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D8DFA15136A400065D044 /* 1.png */,
+				7C4D8DFC151375F20065D044 /* 2.png */,
+				7C4D8DFD151375F20065D044 /* 3.png */,
+			);
+			name = VideoImages;
 			sourceTree = "<group>";
 		};
 		7CA25C441511020300137875 /* Data Models */ = {
@@ -324,6 +353,10 @@
 				7CA25C381510C70700137875 /* YellowBackground.png in Resources */,
 				7CA25C3B1510C95100137875 /* RentVideo.png in Resources */,
 				7CA25C401510CEFA00137875 /* blueBackground.png in Resources */,
+				7C4D8DFB15136A400065D044 /* 1.png in Resources */,
+				7C4D8DFE151375F20065D044 /* 2.png in Resources */,
+				7C4D8DFF151375F20065D044 /* 3.png in Resources */,
+				7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +379,7 @@
 				7C232D5A150FBA68003349AE /* Help.m in Sources */,
 				7CA25C431510DB8300137875 /* FreeVideosClass.m in Sources */,
 				7CA25C471511033500137875 /* ConfigObject.m in Sources */,
+				7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +417,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -395,15 +429,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Theta Computer Services Limited";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2D658892-655F-4E04-A63A-8D2969BB3C48";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -416,7 +451,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -428,7 +463,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
