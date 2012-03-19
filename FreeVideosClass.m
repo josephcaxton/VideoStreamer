@@ -10,12 +10,13 @@
 #import "AppDelegate.h"
 #import "ConfigObject.h"
 #import "VideoPlayer.h"
+#import "Buy.h"
 
 
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects;
+@synthesize ArrayofConfigObjects,ProductIDs;
 
 
 
@@ -69,7 +70,7 @@
     
    // }
 	
-    
+    [appDelegate.SecondThread cancel];
         
 }
 
@@ -141,23 +142,30 @@
 		
 		NSString *Title = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:1]];
 		NSString *Description = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:3]];
-		NSString *Show = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:5]];
+		NSString *Free = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:5]];
 		NSString *Subject = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:7]];
 		NSString *M3u8 = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:9]];
 		NSString *ThumbNail = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:11]];
+        NSString *ProductID = [[NSString alloc] initWithFormat:@"%@",[arr objectAtIndex:13]];
 		
-         if ([Show isEqualToString: @"1"]){
+         //if ([Show isEqualToString: @"1"]){
         
         ConfigObject *obj = [[ConfigObject alloc] init];
         obj.VideoTitle = Title;
         obj.VideoDescription = Description;
-        obj.Show = YES;
+        if ([Free isEqualToString: @"1"]){
+            obj.Free = YES;
+        }
+        else
+        {
+            obj.Free = NO; 
+        }
         obj.Subject = Subject;
         obj.M3u8 = M3u8;
         obj.Thumbnail = ThumbNail;
-        
+        obj.ProductID = ProductID;
         [ArrayofConfigObjects addObject:obj];
-         }
+        
         
        // NSLog(@"Title in my array is: %@",obj.VideoTitle);
 				
@@ -201,8 +209,24 @@
     cell.imageView.image = theImage;
     
     cell.textLabel.text = [obj VideoTitle];
-    cell.detailTextLabel.text = [obj VideoDescription];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if ([obj Free] == YES){
+       
+         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+         NSString* descriptiontxt = [obj VideoDescription];
+         NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
+        cell.detailTextLabel.text =FullDesciption;
+        
+        
+    }
+    else
+    {
+         cell.accessoryType =  UITableViewCellAccessoryNone;
+          NSString* descriptiontxt = [obj VideoDescription];
+          NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Buy"];
+        cell.detailTextLabel.text = FullDesciption;
+    }
+   
     
     
 	
@@ -223,12 +247,59 @@
 
     ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
     
-    
+    if ([obj Free] == YES) {
+        
     VideoPlayer *VP1 = [[VideoPlayer	alloc] initWithNibName:nil bundle:nil];
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
     [self.navigationController pushViewController:VP1 animated:YES];
+    }
+    else{
+        // To store for buying
+        NSLog(@"my product id is %@",[obj ProductID]);
+               
+        [self ConfigureProductList:[obj ProductID]];
+        
+        Buy *buyer = [[Buy alloc ]initWithNibName:nil bundle:nil];
+        buyer.ProductsToIstore = ProductIDs;
+        [self.navigationController pushViewController:buyer animated:YES];
+        
+        
+        
+    }
+         
 
 
+}
+
+-(void)ConfigureProductList:(NSString *)ProductID{
+    
+    ProductIDs = [[NSMutableArray alloc] init];
+    
+    NSString* Sevendays = [ProductID stringByAppendingString:@"7days"];
+    [ProductIDs addObject:Sevendays];
+    
+    NSLog(@"my product id for 7 days is %@",Sevendays);
+    
+    NSString* OneMonth = [ProductID stringByAppendingString:@"1month"];
+    [ProductIDs addObject:OneMonth];
+    
+    NSString* TwoMonths = [ProductID stringByAppendingString:@"2months"];
+    [ProductIDs addObject:TwoMonths];
+    
+    NSString* ThreeMonths = [ProductID stringByAppendingString:@"3months"];
+    [ProductIDs addObject:ThreeMonths];
+    
+    NSString* SixMonths = [ProductID stringByAppendingString:@"6months"];
+    [ProductIDs addObject:SixMonths];
+    
+    NSString* OneYear = [ProductID stringByAppendingString:@"1year"];
+    [ProductIDs addObject:OneYear];
+
+    
+    
+    
+    
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

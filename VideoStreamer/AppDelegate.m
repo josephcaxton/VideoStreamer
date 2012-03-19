@@ -121,6 +121,7 @@
         return YES;  
     }
     
+    //NSLog(@"This is to compare the date %@ localDate , %@ serverdate",lastModifiedLocal,lastModifiedServer);
     return NO;
     
 }  

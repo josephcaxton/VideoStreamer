@@ -34,8 +34,10 @@
 		7C232D4E150FB99B003349AE /* LearnersCloudSamplesVideos.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D4D150FB99B003349AE /* LearnersCloudSamplesVideos.m */; };
 		7C232D51150FB9C4003349AE /* AdminDashBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D50150FB9C4003349AE /* AdminDashBoard.m */; };
 		7C232D54150FB9F1003349AE /* Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D53150FB9F1003349AE /* Report.m */; };
-		7C232D57150FBA10003349AE /* Buy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D56150FBA10003349AE /* Buy.m */; };
 		7C232D5A150FBA68003349AE /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D59150FBA68003349AE /* Help.m */; };
+		7C3A41E31514C977000A6ED4 /* Buy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E21514C977000A6ED4 /* Buy.m */; };
+		7C3A41E51514C9A8000A6ED4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */; };
+		7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */; };
 		7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */; };
 		7C4D8DFB15136A400065D044 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8DFA15136A400065D044 /* 1.png */; };
 		7C4D8DFE151375F20065D044 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8DFC151375F20065D044 /* 2.png */; };
@@ -90,10 +92,13 @@
 		7C232D50150FB9C4003349AE /* AdminDashBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminDashBoard.m; sourceTree = "<group>"; };
 		7C232D52150FB9F1003349AE /* Report.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Report.h; sourceTree = "<group>"; };
 		7C232D53150FB9F1003349AE /* Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Report.m; sourceTree = "<group>"; };
-		7C232D55150FBA10003349AE /* Buy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buy.h; sourceTree = "<group>"; };
-		7C232D56150FBA10003349AE /* Buy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Buy.m; sourceTree = "<group>"; };
 		7C232D58150FBA67003349AE /* Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Help.h; sourceTree = "<group>"; };
 		7C232D59150FBA68003349AE /* Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Help.m; sourceTree = "<group>"; };
+		7C3A41E11514C977000A6ED4 /* Buy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buy.h; sourceTree = "<group>"; };
+		7C3A41E21514C977000A6ED4 /* Buy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Buy.m; sourceTree = "<group>"; };
+		7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7C3A41E61514C9F1000A6ED4 /* CustomStoreObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomStoreObserver.h; sourceTree = "<group>"; };
+		7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomStoreObserver.m; sourceTree = "<group>"; };
 		7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7C4D8DFA15136A400065D044 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		7C4D8DFC151375F20065D044 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3A41E51514C9A8000A6ED4 /* StoreKit.framework in Frameworks */,
 				7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */,
 				7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */,
 				7C232CDB150F8A36003349AE /* UIKit.framework in Frameworks */,
@@ -156,6 +162,7 @@
 		7C232CD9150F8A36003349AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */,
 				7C4D8E05151381A50065D044 /* MediaPlayer.framework */,
 				7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */,
 				7C232CDA150F8A36003349AE /* UIKit.framework */,
@@ -241,6 +248,10 @@
 				7CA25C421510DB8300137875 /* FreeVideosClass.m */,
 				7C4D8E0215137AEB0065D044 /* VideoPlayer.h */,
 				7C4D8E0315137AEB0065D044 /* VideoPlayer.m */,
+				7C3A41E11514C977000A6ED4 /* Buy.h */,
+				7C3A41E21514C977000A6ED4 /* Buy.m */,
+				7C3A41E61514C9F1000A6ED4 /* CustomStoreObserver.h */,
+				7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */,
 			);
 			name = ClientSideClasses;
 			sourceTree = "<group>";
@@ -254,8 +265,6 @@
 				7C232D50150FB9C4003349AE /* AdminDashBoard.m */,
 				7C232D52150FB9F1003349AE /* Report.h */,
 				7C232D53150FB9F1003349AE /* Report.m */,
-				7C232D55150FBA10003349AE /* Buy.h */,
-				7C232D56150FBA10003349AE /* Buy.m */,
 				7C232D58150FBA67003349AE /* Help.h */,
 				7C232D59150FBA68003349AE /* Help.m */,
 			);
@@ -375,11 +384,12 @@
 				7C232D4E150FB99B003349AE /* LearnersCloudSamplesVideos.m in Sources */,
 				7C232D51150FB9C4003349AE /* AdminDashBoard.m in Sources */,
 				7C232D54150FB9F1003349AE /* Report.m in Sources */,
-				7C232D57150FBA10003349AE /* Buy.m in Sources */,
 				7C232D5A150FBA68003349AE /* Help.m in Sources */,
 				7CA25C431510DB8300137875 /* FreeVideosClass.m in Sources */,
 				7CA25C471511033500137875 /* ConfigObject.m in Sources */,
 				7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */,
+				7C3A41E31514C977000A6ED4 /* Buy.m in Sources */,
+				7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

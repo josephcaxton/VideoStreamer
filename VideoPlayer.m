@@ -54,7 +54,7 @@
     
     // We can implement diffeerent Bandwidth size here..... TODO
     
-    NSString *Finalpath = [ServerpathAndVideoFileName stringByAppendingString:@"/mid.m3u8"];
+    NSString *Finalpath = [ServerpathAndVideoFileName stringByAppendingString:@"/all.m3u8"];
     
     NSLog(@"this is my final path ... %@", Finalpath);
 	

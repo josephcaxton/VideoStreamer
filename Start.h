@@ -32,5 +32,5 @@
 
 
 -(IBAction)ViewFreeVideos:(id)sender;
-
+- (void)AddProgress;
 @end

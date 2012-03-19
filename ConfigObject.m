@@ -10,6 +10,6 @@
 
 @implementation ConfigObject
 
-@synthesize VideoTitle,VideoDescription,Show,Subject,M3u8,Thumbnail;
+@synthesize VideoTitle,VideoDescription,Free,Subject,M3u8,Thumbnail,ProductID;
 
 @end

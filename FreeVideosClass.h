@@ -10,14 +10,17 @@
 
 @interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate>{
     
-    NSMutableArray *ArrayofConfigObjects; 
+    NSMutableArray *ArrayofConfigObjects;
+    NSMutableArray *ProductIDs;
     
 }
 
 @property (nonatomic, retain) NSMutableArray *ArrayofConfigObjects;
+@property (nonatomic, retain) NSMutableArray *ProductIDs;
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
 -(void)Alertfailedconnection;
 -(void)MyParser:(NSString *)FileLocation;
+-(void)ConfigureProductList:(NSString *)ProductID;
 @end

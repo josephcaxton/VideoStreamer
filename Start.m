@@ -8,6 +8,7 @@
 
 #import "Start.h"
 #import "FreeVideosClass.h"
+#import "AppDelegate.h"
 
 @implementation Start
 
@@ -33,8 +34,8 @@
     FreeVideosView = [[UIView alloc] initWithFrame:FreeVideosViewframe];
     FreeVideos = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [FreeVideos setTitle:@"View free videos!" forState:UIControlStateNormal];
-    UIImage *FreeVideosbuttonImage = [UIImage imageNamed:@"YellowBackground.png"];
-    [FreeVideos setBackgroundImage:FreeVideosbuttonImage forState:UIControlStateNormal];
+   // UIImage *FreeVideosbuttonImage = [UIImage imageNamed:@"YellowBackground.png"];
+   // [FreeVideos setBackgroundImage:FreeVideosbuttonImage forState:UIControlStateNormal];
     FreeVideos.frame = FreeVideosViewframe;
 
     [FreeVideos addTarget:self action:@selector(ViewFreeVideos:) forControlEvents:UIControlEventTouchUpInside];
@@ -47,8 +48,8 @@
     MyVideos = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [MyVideos setTitle:@"My videos!" forState:UIControlStateNormal];
     [MyVideos setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
-    UIImage *MyVideosbuttonImage = [UIImage imageNamed:@"blueBackground.png"];
-    [MyVideos setBackgroundImage:MyVideosbuttonImage forState:UIControlStateNormal];
+   // UIImage *MyVideosbuttonImage = [UIImage imageNamed:@"blueBackground.png"];
+    //[MyVideos setBackgroundImage:MyVideosbuttonImage forState:UIControlStateNormal];
     MyVideos.frame = MyVideosViewframe;
     
     [MyVideos addTarget:self action:@selector(Practice:) forControlEvents:UIControlEventTouchUpInside];
@@ -56,18 +57,43 @@
     [FirstView addSubview:MyVideos];
 
    
+     
     
+    
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     
 }
 
 -(IBAction)ViewFreeVideos:(id)sender{
     
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.SecondThread = [[NSThread alloc]initWithTarget:self selector:@selector(AddProgress) object:nil];
+    [appDelegate.SecondThread start];
+
+   
     FreeVideosClass *Free_View = [[FreeVideosClass alloc] initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:Free_View animated:YES];
     
     
 }
+
+- (void)AddProgress{
+	
+	
+	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[activityIndicator stopAnimating];
+    [activityIndicator hidesWhenStopped];
+	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+	[self navigationItem].rightBarButtonItem = barButton;
+	
+	[(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
+	
+	
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     
@@ -98,7 +124,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-
+    [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView stopAnimating];
 
 }
 

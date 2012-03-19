@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdminDashBoard : UIViewController
+@interface AdminDashBoard : UIViewController{
+    
+   // NSMutableArray *Files;
+    
+    
+}
+//@property (nonatomic, retain) NSMutableArray *Files;
 
 @end

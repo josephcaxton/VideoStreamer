@@ -15,9 +15,10 @@
 
 @property (nonatomic, retain) NSString *VideoTitle;
 @property (nonatomic, retain) NSString *VideoDescription;
-@property (nonatomic, assign) BOOL Show;
+@property (nonatomic, assign) BOOL Free;
 @property (nonatomic, retain) NSString *Subject;
 @property (nonatomic, retain) NSString *M3u8;
 @property (nonatomic, retain) NSString *Thumbnail;
+@property (nonatomic, retain) NSString *ProductID;
 
 @end
