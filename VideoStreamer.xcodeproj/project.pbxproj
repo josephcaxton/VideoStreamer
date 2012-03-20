@@ -45,6 +45,11 @@
 		7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0015137A890065D044 /* BlackBackGround.png */; };
 		7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0315137AEB0065D044 /* VideoPlayer.m */; };
 		7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4D8E05151381A50065D044 /* MediaPlayer.framework */; };
+		7C7E3C151518BDFD002F0313 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E3C101518BDFD002F0313 /* Icon-72.png */; };
+		7C7E3C161518BDFD002F0313 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E3C111518BDFD002F0313 /* Icon-Small-50.png */; };
+		7C7E3C171518BDFD002F0313 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E3C121518BDFD002F0313 /* Icon.png */; };
+		7C7E3C181518BDFD002F0313 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E3C131518BDFD002F0313 /* Icon@2x.png */; };
+		7C7E3C191518BDFD002F0313 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E3C141518BDFD002F0313 /* iTunesArtwork.png */; };
 		7CA25C341510ACFA00137875 /* Cinema_port.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C331510ACFA00137875 /* Cinema_port.png */; };
 		7CA25C361510AD0300137875 /* Cinema_land.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C351510AD0300137875 /* Cinema_land.png */; };
 		7CA25C381510C70700137875 /* YellowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C371510C70700137875 /* YellowBackground.png */; };
@@ -55,7 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7C232CD6150F8A36003349AE /* VideoStreamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoStreamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C232CD6150F8A36003349AE /* Maths Videos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maths Videos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C232CDA150F8A36003349AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C232CDC150F8A36003349AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C232CDE150F8A36003349AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +112,11 @@
 		7C4D8E0215137AEB0065D044 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
 		7C4D8E0315137AEB0065D044 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
 		7C4D8E05151381A50065D044 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7C7E3C101518BDFD002F0313 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		7C7E3C111518BDFD002F0313 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		7C7E3C121518BDFD002F0313 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7C7E3C131518BDFD002F0313 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		7C7E3C141518BDFD002F0313 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		7CA25C331510ACFA00137875 /* Cinema_port.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cinema_port.png; sourceTree = "<group>"; };
 		7CA25C351510AD0300137875 /* Cinema_land.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cinema_land.png; sourceTree = "<group>"; };
 		7CA25C371510C70700137875 /* YellowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowBackground.png; sourceTree = "<group>"; };
@@ -154,7 +164,7 @@
 		7C232CD7150F8A36003349AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C232CD6150F8A36003349AE /* VideoStreamer.app */,
+				7C232CD6150F8A36003349AE /* Maths Videos.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,6 +245,11 @@
 				7CA25C391510C95100137875 /* RentVideo.png */,
 				7CA25C3F1510CEFA00137875 /* blueBackground.png */,
 				7C4D8E0015137A890065D044 /* BlackBackGround.png */,
+				7C7E3C101518BDFD002F0313 /* Icon-72.png */,
+				7C7E3C111518BDFD002F0313 /* Icon-Small-50.png */,
+				7C7E3C121518BDFD002F0313 /* Icon.png */,
+				7C7E3C131518BDFD002F0313 /* Icon@2x.png */,
+				7C7E3C141518BDFD002F0313 /* iTunesArtwork.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -307,7 +322,7 @@
 			);
 			name = VideoStreamer;
 			productName = VideoStreamer;
-			productReference = 7C232CD6150F8A36003349AE /* VideoStreamer.app */;
+			productReference = 7C232CD6150F8A36003349AE /* Maths Videos.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -366,6 +381,11 @@
 				7C4D8DFE151375F20065D044 /* 2.png in Resources */,
 				7C4D8DFF151375F20065D044 /* 3.png in Resources */,
 				7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */,
+				7C7E3C151518BDFD002F0313 /* Icon-72.png in Resources */,
+				7C7E3C161518BDFD002F0313 /* Icon-Small-50.png in Resources */,
+				7C7E3C171518BDFD002F0313 /* Icon.png in Resources */,
+				7C7E3C181518BDFD002F0313 /* Icon@2x.png in Resources */,
+				7C7E3C191518BDFD002F0313 /* iTunesArtwork.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +482,7 @@
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Maths Videos";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -474,7 +494,7 @@
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Maths Videos";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

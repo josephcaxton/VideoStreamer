@@ -56,7 +56,7 @@
     
     NSString *Finalpath = [ServerpathAndVideoFileName stringByAppendingString:@"/all.m3u8"];
     
-    NSLog(@"this is my final path ... %@", Finalpath);
+    //NSLog(@"this is my final path ... %@", Finalpath);
 	
 	NSURL    *fileURL    =   [NSURL URLWithString:Finalpath]; 
    // NSURL *fileURL = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"];
