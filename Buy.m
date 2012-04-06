@@ -43,6 +43,10 @@ int dontShowPriceList = 0;
 		
         
 		ProductsToIStoreInArray = ProductsToIstore;
+        
+//        for (int i = 0; i < 2; i++) {
+//            NSLog(@"product is = %@", [ProductsToIStoreInArray objectAtIndex:i]);
+//        }
 		
 		[self requestProductData];
 		
@@ -193,8 +197,8 @@ int dontShowPriceList = 0;
 	UIButton *BuyNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];  
 	
 	//[BuyNow setTitle:@""  forState:UIControlStateNormal];
-	BuyNow.frame = CGRectMake(288, 0, 75, 44);
-	BuyNow.tag = indexPath.row + 1;
+	BuyNow.frame = CGRectMake(388, 0, 75, 44);
+	BuyNow.tag = indexPath.row;
 	[BuyNow addTarget:self action:@selector(BuyVideo:) forControlEvents:UIControlEventTouchUpInside];
 	
 	UIImage *buttonImageNormal = [UIImage imageNamed:@"buynow.jpeg"];
@@ -217,33 +221,22 @@ int dontShowPriceList = 0;
 	
 	[(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
 	
-	
-	NSString *AccessLevel = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"AccessLevel"];
-
-	
-	switch([AccessLevel intValue])
-	{
-		case 1:
-        {
-            ;
-			SKPayment *payment1 = [SKPayment paymentWithProductIdentifier:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250"];
-            [[SKPaymentQueue defaultQueue] addPayment:payment1];
-            break;
-        }
-        	
-        case 2:
-        {
+    int myTag = [sender tag];
+    
+    SKProduct* SelectedProductid = [SortedDisplayProducts objectAtIndex:myTag];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    // Store Selected ProductID in Delegate
+    appDelegate.SelectProductID = nil;
+    appDelegate.SelectProductID = (NSString*)SelectedProductid.productIdentifier;
+    
+   
             
-           // SKPayment *payment2 = [SKPayment paymentWithProductIdentifier:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500"];
-           // [[SKPaymentQueue defaultQueue] addPayment:payment2];
-            break;
-        }
-        default:{
-            ;
-            break;
-        }
-			
-	}
+    SKPayment *payment = [SKPayment paymentWithProductIdentifier:SelectedProductid.productIdentifier];
+            [[SKPaymentQueue defaultQueue] addPayment:payment];
+           			
+	
 	
 }
 

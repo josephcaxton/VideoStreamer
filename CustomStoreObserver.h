@@ -10,16 +10,45 @@
 #import <StoreKit/StoreKit.h>
 #import "AppDelegate.h"
 
-@interface CustomStoreObserver : NSObject<SKPaymentTransactionObserver>{
+
+@interface CustomStoreObserver  : NSObject<SKPaymentTransactionObserver,UITextFieldDelegate,UIAlertViewDelegate>{
+    
+    NSString *AlertTitle;
+    NSString *EmailAddress;
+    NSString *Password;
+    
+    NSString *MyDeviceId;
+    NSString *ProductID;
+    NSString *SubscriptionInDays;
+    NSString *TransactionID;
+    NSString *EncodedReceipt;
+    
 
 }
+
+
+@property (nonatomic, retain)  NSString *AlertTitle;
+@property (nonatomic, retain) NSString *EmailAddress;
+@property (nonatomic, retain) NSString *Password;
+
+@property (nonatomic, retain) NSString *MyDeviceId;
+@property (nonatomic, retain) NSString *ProductID;
+@property (nonatomic, retain) NSString *SubscriptionInDays;
+@property (nonatomic, retain)  NSString *TransactionID;
+@property (nonatomic, retain)  NSString *EncodedReceipt;
+
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 - (void) failedTransaction: (SKPaymentTransaction *)transaction;
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction;
 - (void) completeTransaction: (SKPaymentTransaction *)transaction;
+-(void)recordTransaction:(SKPaymentTransaction *)transaction;
 
 -(void) provideContent:(NSString *)productIdentifier;
-
+-(NSString *)Base64Encode:(NSData *)data;
+-(NSString *)WorkOutSubsriptionInDays:(NSString*)theProductID;
+-(void)AskForUserEmailAndPassword;
+-(void)GetUsernameAndPassword;
+-(void)SendToLearnersCloud;
 
 @end

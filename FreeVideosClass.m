@@ -249,13 +249,13 @@
     
     if ([obj Free] == YES) {
         
-    VideoPlayer *VP1 = [[VideoPlayer	alloc] initWithNibName:nil bundle:nil];
+    VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
     [self.navigationController pushViewController:VP1 animated:YES];
     }
     else{
         // To store for buying
-        NSLog(@"my product id is %@",[obj ProductID]);
+        //NSLog(@"my product id is %@",[obj ProductID]);
                
         [self ConfigureProductList:[obj ProductID]];
         
@@ -278,12 +278,12 @@
     NSString* Sevendays = [ProductID stringByAppendingString:@"7days"];
     [ProductIDs addObject:Sevendays];
     
-    NSLog(@"my product id for 7 days is %@",Sevendays);
+   // NSLog(@"my product id for 7 days is %@",Sevendays);
     
     NSString* OneMonth = [ProductID stringByAppendingString:@"1month"];
     [ProductIDs addObject:OneMonth];
     
-    NSString* TwoMonths = [ProductID stringByAppendingString:@"2months"];
+   /* NSString* TwoMonths = [ProductID stringByAppendingString:@"2months"];
     [ProductIDs addObject:TwoMonths];
     
     NSString* ThreeMonths = [ProductID stringByAppendingString:@"3months"];
@@ -293,7 +293,7 @@
     [ProductIDs addObject:SixMonths];
     
     NSString* OneYear = [ProductID stringByAppendingString:@"1year"];
-    [ProductIDs addObject:OneYear];
+    [ProductIDs addObject:OneYear]; */
 
     
     

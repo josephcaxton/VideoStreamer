@@ -9,8 +9,10 @@
 #import "CustomStoreObserver.h"
 
 
+
 @implementation CustomStoreObserver
 
+@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,SubscriptionInDays,TransactionID,EncodedReceipt;
 
 - (id) init
 
@@ -97,229 +99,379 @@
 	// [self recordTransaction: transaction];
 	
 	//Provide the new content
-	[self provideContent: transaction.payment.productIdentifier];
+    [self recordTransaction:transaction];
+	//[self provideContent: transaction.payment.productIdentifier];
 	
 	[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 	
 }
 
+-(void)recordTransaction:(SKPaymentTransaction *)transaction{
+    
+    NSData *Receipt = transaction.transactionReceipt;
+    
+   // NSString *receiptDataString = [[NSString alloc] initWithData:Receipt 
+                                                       // encoding:NSASCIIStringEncoding];
+    //Unique Device ID
+    MyDeviceId = [[NSString alloc] initWithString:(NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCUIID"]];
+    //Prodcut ID
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    ProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
+    // Subscipion in Days
+    SubscriptionInDays = [[NSString alloc] initWithString:[self WorkOutSubsriptionInDays:ProductID]];
+    //Transaction ID
+    TransactionID =[[NSString alloc] initWithString:transaction.transactionIdentifier];
+    //Encoded Receipt
+    // Now apple has added an equal sign to the end of the receipt lets remove it
+    NSString *TempReceipt = [[NSString alloc]initWithString:[self Base64Encode:Receipt]];
+    EncodedReceipt = [TempReceipt substringWithRange:NSMakeRange(0, [TempReceipt length]-1)];
+
+
+    
+    
+    
+     NSLog(@"%@",MyDeviceId);
+     NSLog(@"%@",ProductID);
+    NSLog(@"%@",SubscriptionInDays);
+     NSLog(@"%@",TransactionID);
+    
+    [self AskForUserEmailAndPassword];
+     
+        
+    //NSString* json = [NSString stringWithFormat:@"{\"receipt-data\" : \"%@\" }", EncodedReceipt];
+    
+   // NSURL *url = [NSURL URLWithString:@"https://sandbox.itunes.apple.com/verifyReceipt"];
+    //NSMutableURLRequest *request= [[NSMutableURLRequest alloc] init];
+    //[request setURL:url];
+    //[request setHTTPMethod:@"POST"];
+    //[request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+     
+    // NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+     //NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+     //NSLog(@"%@",returnString);
+     //NSLog(@"%@",json);
+
+
+        
+    
+    
+}
+
+-(NSString *)WorkOutSubsriptionInDays:(NSString*)theProductID{
+    // Only 7 days and 30days subscription supported
+    int lenghtofString = [theProductID length];
+    NSString *Result = [theProductID substringWithRange:NSMakeRange(lenghtofString - 5, 5)];
+    
+    NSLog(@"%@",Result);
+    
+    if ([[Result lowercaseString] isEqualToString:@"month"] ){
+        return @"30";
+        
+    }
+    else
+    {
+        return @"7";
+    }
+        
+        
+    
+}
+-(void)AskForUserEmailAndPassword{
+    
+    if(EmailAddress != nil){
+        
+         AlertTitle = [[NSString alloc] initWithString:@"The email address you entered is not in the right format or password is empty. Try again?"];
+        
+    } 
+    else
+    {
+    
+   AlertTitle = [[NSString alloc] initWithString:@"If you need to restore your subscriptions on another device, you will need to provide an email address and a password. Do you want to enter email address and a password?"];
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AlertTitle message:@"\n" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    alertView.tag = 1212;
+    [alertView show];
+    
+
+}
+
+-(void)GetUsernameAndPassword{
+    //@"If you need to restore your subscriptions on another device, please provide your email address and a password"
+    NSString *myTitle = [[NSString alloc] initWithString:@"Enter your details"];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:myTitle message:@"\n \n \n \n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+
+    	
+    UITextField *utextfield = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 60.0, 260.0, 30.0)];
+    utextfield.placeholder = @"EmailAddress";
+    utextfield.tag = 1717;
+    [utextfield setBackgroundColor:[UIColor whiteColor]];
+    utextfield.enablesReturnKeyAutomatically = YES;
+    [utextfield setReturnKeyType:UIReturnKeyDone];
+    [utextfield setDelegate:self];
+    [alertView addSubview:utextfield];
+        
+    	// Adds a password Field
+    UITextField	*ptextfield = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 95.0, 260.0, 30.0)];
+    ptextfield.placeholder = @"Password";
+    ptextfield.tag = 1818;
+    [ptextfield setSecureTextEntry:YES];
+    ptextfield.enablesReturnKeyAutomatically = YES;
+    [ptextfield setBackgroundColor:[UIColor whiteColor]];
+    [ptextfield setReturnKeyType:UIReturnKeyDone];
+    [ptextfield setDelegate:self];   
+    [alertView addSubview:ptextfield];
+    
+    alertView.tag = 1313;
+
+    	 
+    	// Move a little to show up the keyboard
+    	//CGAffineTransform transform = CGAffineTransformMakeTranslation(00.0, 00.0);
+    	//[alertView setTransform:transform];
+    	 
+    	// Show alert on screen.
+    	[alertView show];
+       
+       // CGRect frame = alertView.frame;
+
+    	//alertView.frame = CGRectMake( 0, 60, 400, 300 );
+//        frame.origin.y -= 100.0f;
+//        frame.size.height += 50.0f;
+//       alertView.frame = frame;
+//
+
+    
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // the user clicked one of the OK/Cancel buttons
+    
+    if (actionSheet.tag == 1212){
+        if (buttonIndex == 1)
+        {
+            [self GetUsernameAndPassword];
+            
+        }
+        else
+        {
+            [self SendToLearnersCloud];
+        }
+    }
+    else if (actionSheet.tag == 1313){
+        
+        if (buttonIndex == 1)
+        {
+            // Update Username and password in Database
+            for (UIView* view in actionSheet.subviews)
+            {
+                if ([view isKindOfClass:[UITextField class]])
+                {
+                    UITextField* textField = (UITextField*)view;
+                    int TaggedAs = textField.tag;
+                    if (TaggedAs == 1717) {
+                        EmailAddress = [[NSString alloc] initWithString: textField.text == nil ? @"" : textField.text];
+                        [textField resignFirstResponder];
+                    }
+                    else
+                    {
+                        Password = [[NSString alloc]initWithString:textField.text == nil ? @"" : textField.text];
+                        [textField resignFirstResponder];
+                    }
+                    
+                   // break;
+                }
+            }
+
+            
+            
+            NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"; 
+            NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
+            BOOL notAValidEmail = ![emailTest evaluateWithObject:EmailAddress];
+            
+            if (notAValidEmail || [Password length] == 0) {
+               [self AskForUserEmailAndPassword];
+            }
+            else
+            {
+                // Updated database with email address and password;
+               [self SendToLearnersCloud];   
+            }
+            
+        }
+        else
+        {
+            //NSLog(@"cancel"); Do nothing
+           [self SendToLearnersCloud];
+        }
+
+        
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextView *)textView{
+   
+    if(textView.tag == 1717){
+        if(textView.text.length > 0 ){
+        //EmailAddress = [[NSString alloc] initWithString: textView.text];
+        [textView resignFirstResponder];
+        return true;
+        }
+        else
+        {
+         return false;
+        [textView resignFirstResponder];
+        }
+        
+    }
+    
+    else if(textView.tag == 1818){
+          if(textView.text.length > 0 ){
+        //Password = [[NSString alloc]initWithString: textView.text];
+        [textView resignFirstResponder];
+        return true;
+          }
+          else
+          {
+              return false;
+          }
+        }
+    else
+    {
+        return false;
+    }
+}
+
+
+-(void)SendToLearnersCloud{
+    
+    //NSString *DeviceUDID = [NSString 
+      //                      stringWithFormat:@"%@",[UIDevice currentDevice].uniqueIdentifier];
+    
+    //NSString *DeviceTokenRemoveCh1 = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    
+    //NSString *DeviceToken = [DeviceTokenRemoveCh1 stringByReplacingOccurrencesOfString: @" " withString: @""];
+   
+    if (EmailAddress != nil || Password != nil){
+         NSLog(@"%@",MyDeviceId);
+         NSLog(@"%@",ProductID);
+         NSLog(@"%@",SubscriptionInDays);
+         NSLog(@"%@",TransactionID);
+         NSLog(@"%@",EncodedReceipt);
+    NSLog(@"%@",EmailAddress);
+    NSLog(@"%@",Password);
+        
+    NSString *queryString = [NSString stringWithFormat:@"http://stage.learnersCloud.com/Services/iOS/VideoSubscription.asmx/VerifySubscription"];
+                        
+   
+    
+    NSURL *url = [NSURL URLWithString:queryString];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+        NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@",ProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password];
+        
+        /*NSString * encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                                       NULL,
+                                                                                       (__bridge_retained  CFStringRef)FullString,
+                                                                                       NULL,
+                                                                                       (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                       kCFStringEncodingUTF8 ); */
+         
+       // NSLog(@"%@",encodedString);
+        
+        
+        NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
+
+    
+         
+        
+        
+        NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
+        [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
+        unsigned long long postLength = data.length;
+        NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
+        [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
+         
+        [req setHTTPMethod:@"POST"];
+        [req setHTTPBody:data];
+        
+    NSURLConnection *conn;
+    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if (!conn) {
+        NSLog(@"error while starting the connection");
+    } 
+        
+    }
+
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
+    
+    NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",returnedString);
+}
+
 -(void) provideContent:(NSString *)productIdentifier{
 	
-	// From Free
-	if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250"]) {
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"2" forKey:@"AccessLevel"];
-	
-	}
-		 
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500"])
-		 
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:@"3" forKey:@"AccessLevel"];	 
-			 
-			 
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.750"])
-		
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:@"4" forKey:@"AccessLevel"];	 
-		
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1000"])   
-		
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:@"5" forKey:@"AccessLevel"];	 
-		
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1250"])
-		
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:@"6" forKey:@"AccessLevel"];	 
-		
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1500"])
-		
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"AccessLevel"];	 
-		
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1600"])
-		
-	{
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];	 
-		
-		
-	}
-	// From 250
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250To500"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"3" forKey:@"AccessLevel"];
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250To750"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"4" forKey:@"AccessLevel"];
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250To1000"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"5" forKey:@"AccessLevel"];
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250To1250"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"6" forKey:@"AccessLevel"];
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250To1500"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"AccessLevel"];
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.250To1600"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];
-		
-	}
+				
+}
 
-	// From 500
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500To750"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"4" forKey:@"AccessLevel"];
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500To1000"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"5" forKey:@"AccessLevel"];
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500To1250"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"6" forKey:@"AccessLevel"];
-		
-	}
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500To1500"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"AccessLevel"];
-		
-	}
 
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.500To1600"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];
-		
-	}
-	
-	
-	
-	// From 750
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.750To1000"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"5" forKey:@"AccessLevel"];
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.750To1250"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"6" forKey:@"AccessLevel"];
-		
-	}
-
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.750To1500"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"AccessLevel"];
-		
-	}
-
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.750To1600"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];
-		
-	}
-
+-(NSString *)Base64Encode:(NSData *)data{
+    //Point to start of the data and set buffer sizes
+    int inLength = [data length];
+    int outLength = ((((inLength * 4)/3)/4)*4) + (((inLength * 4)/3)%4 ? 4 : 0);
+    const char *inputBuffer = [data bytes];
+    char *outputBuffer = malloc(outLength);
+    outputBuffer[outLength] = 0;
     
-    // From 1000
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1000To1250"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"6" forKey:@"AccessLevel"];
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1000To1500"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"AccessLevel"];
-		
-	}
-
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1000To1600"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];
-		
-	}
-
+    //64 digit code
+    static char Encode[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     
-    // From 1250
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1250To1500"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"7" forKey:@"AccessLevel"];
-		
-	}
-    else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1250To1600"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];
-		
-	}
+    //start the count
+    int cycle = 0;
+    int inpos = 0;
+    int outpos = 0;
+    char temp;
     
-    // From 1500
-	
-	else if ([productIdentifier isEqualToString:@"com.LearnersCloud.iEvaluatorForiPad.Maths.1500To1600"])
-	{
-		
-		[[NSUserDefaults standardUserDefaults] setObject:@"8" forKey:@"AccessLevel"];
-		
-	}
-	
-	
-	
-			
-						
-			
-			
+    //Pad the last to bytes, the outbuffer must always be a multiple of 4
+    outputBuffer[outLength-1] = '=';
+    outputBuffer[outLength-2] = '=';
+    
+    
+    
+    while (inpos < inLength){
+        switch (cycle) {
+            case 0:
+                outputBuffer[outpos++] = Encode[(inputBuffer[inpos]&0xFC)>>2];
+                cycle = 1;
+                break;
+            case 1:
+                temp = (inputBuffer[inpos++]&0x03)<<4;
+                outputBuffer[outpos] = Encode[temp];
+                cycle = 2;
+                break;
+            case 2:
+                outputBuffer[outpos++] = Encode[temp|(inputBuffer[inpos]&0xF0)>> 4];
+                temp = (inputBuffer[inpos++]&0x0F)<<2;
+                outputBuffer[outpos] = Encode[temp];
+                cycle = 3;                  
+                break;
+            case 3:
+                outputBuffer[outpos++] = Encode[temp|(inputBuffer[inpos]&0xC0)>>6];
+                cycle = 4;
+                break;
+            case 4:
+                outputBuffer[outpos++] = Encode[inputBuffer[inpos++]&0x3f];
+                cycle = 0;
+                break;                          
+            default:
+                cycle = 0;
+                break;
+        }
+    }
+    NSString *pictemp = [NSString stringWithUTF8String:outputBuffer];
+    free(outputBuffer); 
+    return pictemp;
+
 }
 	
 - (void) dealloc

@@ -11,24 +11,20 @@
 @interface Start : UIViewController{
     
     UIView *FirstView;
-    UIView *FreeVideosView;
     UIButton *FreeVideos;
-    UIView *MyVideosView;
 	UIButton *MyVideos;
     UIButton *RentaVideo;
-	CGRect FreeVideosViewframe;
-    CGRect MyVideosViewframe;
+    UIImage *Image;
+    UIImageView *ImageView;
    
 }
 
 @property (nonatomic, retain) UIView *FirstView;
-@property (nonatomic, retain) UIView *FreeVideosView;
 @property (nonatomic, retain) UIButton *FreeVideos;
-@property (nonatomic, retain) UIView *MyVideosView;
 @property (nonatomic, retain) UIButton *MyVideos;
 @property (nonatomic, retain)  UIButton *RentaVideo;
-@property (nonatomic, assign)  CGRect FreeVideosViewframe;
-@property (nonatomic, assign)  CGRect MyVideosViewframe;
+@property (nonatomic, retain)  UIImage *Image;
+@property (nonatomic, retain)   UIImageView *ImageView;
 
 
 -(IBAction)ViewFreeVideos:(id)sender;

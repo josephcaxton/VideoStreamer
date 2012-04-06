@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread;
+@synthesize SecondThread,SelectProductID;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -35,6 +35,22 @@
 
     [window addSubview: tabBarController.view];
 	[window makeKeyAndVisible];
+    
+    
+	NSString *DeviceID = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCUIID"];
+    
+    if (DeviceID == nil) {
+		
+		NSString *mydeviceid = [self GetUUID];
+        
+        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:mydeviceid, @"LCUIID", nil];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+        
+		
+	}
+
+
     return YES;
 }
 
@@ -42,6 +58,16 @@
     
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
+
+- (NSString *)GetUUID{
+    
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef idstring = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    NSString *Deviceid = [NSString stringWithFormat:@"%@",idstring];
+    return Deviceid;
+}
+
 
 -(BOOL)isDeviceConnectedToInternet{
     
@@ -137,10 +163,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     */
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

@@ -12,52 +12,61 @@
 
 @implementation Start
 
-@synthesize FirstView,FreeVideos,MyVideos,RentaVideo,FreeVideosView,MyVideosView,FreeVideosViewframe,MyVideosViewframe;
+@synthesize FirstView,FreeVideos,MyVideos,RentaVideo,Image,ImageView;
 
-#define SCREEN_WIDTH 768
+#define SCREEN_WIDTH  768    
 #define SCREEN_HEIGHT 950
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     
     self.navigationItem.title = @"www.LearnersCloud.com";
     CGRect FirstViewframe = CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	self.FirstView = [[UIView alloc] initWithFrame:FirstViewframe];
     
-    UIColor *patternColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Cinema_port.png"]];
+    
+    Image = [UIImage imageNamed:@"MathsBackground.png"];
+    ImageView = [[UIImageView alloc] initWithImage:Image];
+   // ImageView.frame = CGRectMake(0 ,0, 540, 950);
+    ImageView.frame = CGRectMake(60 ,200, 640, 480);
 
-    [FirstView setBackgroundColor:patternColor];
+    
+   // UIColor *patternColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Cinema_port.png"]];
+
+    [FirstView addSubview:ImageView];
 
     [self.view addSubview:FirstView];
     
-    FreeVideosViewframe = CGRectMake(555 ,200, 200, 44);
-    FreeVideosView = [[UIView alloc] initWithFrame:FreeVideosViewframe];
+   
     FreeVideos = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [FreeVideos setTitle:@"View free videos!" forState:UIControlStateNormal];
+    FreeVideos.frame = CGRectMake(115 ,100, 200, 44);
    // UIImage *FreeVideosbuttonImage = [UIImage imageNamed:@"YellowBackground.png"];
    // [FreeVideos setBackgroundImage:FreeVideosbuttonImage forState:UIControlStateNormal];
-    FreeVideos.frame = FreeVideosViewframe;
+    
 
     [FreeVideos addTarget:self action:@selector(ViewFreeVideos:) forControlEvents:UIControlEventTouchUpInside];
     
     [FirstView addSubview:FreeVideos];
     
     
-    MyVideosViewframe = CGRectMake(555 ,300, 200, 44);
-    MyVideosView = [[UIView alloc] initWithFrame: MyVideosViewframe];
+    
     MyVideos = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [MyVideos setTitle:@"My videos!" forState:UIControlStateNormal];
     [MyVideos setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
+    MyVideos.frame = CGRectMake(455 ,100, 200, 44);
    // UIImage *MyVideosbuttonImage = [UIImage imageNamed:@"blueBackground.png"];
     //[MyVideos setBackgroundImage:MyVideosbuttonImage forState:UIControlStateNormal];
-    MyVideos.frame = MyVideosViewframe;
     
-    [MyVideos addTarget:self action:@selector(Practice:) forControlEvents:UIControlEventTouchUpInside];
+    [MyVideos addTarget:self action:@selector(ViewFreeVideos:) forControlEvents:UIControlEventTouchUpInside];
     
     [FirstView addSubview:MyVideos];
 
    
-     
     
     
 }
@@ -74,7 +83,7 @@
     [appDelegate.SecondThread start];
 
    
-    FreeVideosClass *Free_View = [[FreeVideosClass alloc] initWithNibName:nil bundle:nil];
+    FreeVideosClass *Free_View = [[FreeVideosClass alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:Free_View animated:YES];
     
     
@@ -109,13 +118,19 @@
     
     if (interfaceOrientation == UIInterfaceOrientationPortrait  || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         
-       FirstView.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
+        FreeVideos.frame = CGRectMake(115 ,100, 200, 44);
+        MyVideos.frame = CGRectMake(455 ,100, 200, 44);
+        ImageView.frame = CGRectMake(60 ,200, 640, 480);
+        FirstView.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
        
         
     }
     else
     {
-        FirstView.frame = CGRectMake(0, 0, SCREEN_HEIGHT + 80, SCREEN_WIDTH);
+        FreeVideos.frame = CGRectMake(200 ,15, 200, 44);
+        MyVideos.frame = CGRectMake(640 ,15, 200, 44);
+        ImageView.frame = CGRectMake(200 ,90, 640, 480);
+        FirstView.frame = CGRectMake(0, 0, SCREEN_HEIGHT + 80 , SCREEN_WIDTH);
         
         
     }
@@ -125,6 +140,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     
     [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView stopAnimating];
+    [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:1];
 
 }
 

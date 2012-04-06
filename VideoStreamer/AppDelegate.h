@@ -13,6 +13,7 @@
     NSThread *SecondThread;
     UIWindow *window;
     UITabBarController *tabBarController;
+    NSString *SelectProductID;
     
 }
 
@@ -20,9 +21,11 @@
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) NSThread *SecondThread;
+@property (nonatomic, retain) NSString *SelectProductID;
 
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
 - (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;
+- (NSString *)GetUUID;
 
 @end

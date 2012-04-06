@@ -11,7 +11,7 @@
 
 @implementation VideoPlayer
 
-@synthesize VideoFileName,ServerLocation;
+@synthesize VideoFileName,ServerLocation,credential,protectionSpace;
 
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 950
@@ -49,6 +49,27 @@
     [self.view sendSubviewToBack:backgroundImage];
     
 	
+    //Authentication Details here
+    
+   NSURLCredential *credential1 = [[NSURLCredential alloc] 
+                                   initWithUser:@"theta"
+                                   password:@"letmein2"
+                                   persistence: NSURLCredentialPersistenceForSession];
+    self.credential = credential1;
+    
+   NSURLProtectionSpace *protectionSpace1 = [[NSURLProtectionSpace alloc]
+                                             initWithHost:@"stage.learnersCloud.com"
+                                             port:80
+                                             protocol:@"http"
+                                             realm: @"stage.learnersCloud.com"
+                                             authenticationMethod:NSURLAuthenticationMethodDefault];
+    self.protectionSpace = protectionSpace1;
+    
+    
+    [[NSURLCredentialStorage sharedCredentialStorage] setDefaultCredential:credential
+                                                        forProtectionSpace:protectionSpace]; 
+
+    
 	
     NSString *ServerpathAndVideoFileName = [ServerLocation stringByAppendingString:VideoFileName];
     
@@ -68,7 +89,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self  
 											 selector:@selector(moviePlaybackComplete:)  
 												 name:MPMoviePlayerPlaybackDidFinishNotification  
-											   object:moviePlayerController];
+											   object:moviePlayerController]; 
 	
 	//moviePlayerController.controlStyle = MPMovieControlModeDefault;
 	[self.view addSubview:moviePlayerController.view];
@@ -82,10 +103,45 @@
 	
 }
 
+//- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+//    
+//    if ([challenge previousFailureCount] == 0) {
+//        
+//        NSURLCredential *credential = [[NSURLCredential alloc] 
+//                                       initWithUser:@"theta"
+//                                       password:@"letmein2"
+//                                       persistence: NSURLCredentialPersistenceForSession];
+//        
+//        [[challenge sender] useCredential:credential
+//         
+//               forAuthenticationChallenge:challenge];
+//        
+//    } else {
+//        
+//        [[challenge sender] cancelAuthenticationChallenge:challenge];
+//        
+//        // inform the user that the user name and password
+//        
+//        // in the preferences are incorrect
+//        
+//        
+//        
+//    }
+//    
+//}
+
+//- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace{
+//    
+//    NSString *method = protectionSpace.authenticationMethod;
+//    NSLog(@"%@",method );
+//    
+//    return true;
+//}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
 	
-	[moviePlayerController stop];
+	//[moviePlayerController stop];
 	
 	
 }

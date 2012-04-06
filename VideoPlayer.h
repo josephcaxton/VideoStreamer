@@ -14,12 +14,15 @@
 	MPMoviePlayerController *moviePlayerController;
 	NSString *VideoFileName;
     NSString *ServerLocation;
+    NSURLCredential *credential;
+    NSURLProtectionSpace *protectionSpace;
     
     
 	
 }
 @property (nonatomic, retain) NSString *VideoFileName;
 @property (nonatomic, retain) NSString *ServerLocation;
-
+@property (nonatomic, retain) NSURLCredential *credential;
+@property (nonatomic, retain) NSURLProtectionSpace *protectionSpace;
 
 @end
