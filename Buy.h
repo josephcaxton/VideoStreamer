@@ -11,6 +11,7 @@
 #import <StoreKit/StoreKit.h>
 #import "AppDelegate.h"
 #import "CustomStoreObserver.h"
+#import "AppDelegate.h"
 
 
 @interface Buy : UITableViewController <SKProductsRequestDelegate>{

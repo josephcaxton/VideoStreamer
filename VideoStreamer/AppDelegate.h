@@ -14,6 +14,7 @@
     UIWindow *window;
     UITabBarController *tabBarController;
     NSString *SelectProductID;
+    UITableViewController *buyScreen;
     
 }
 
@@ -22,6 +23,8 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) NSThread *SecondThread;
 @property (nonatomic, retain) NSString *SelectProductID;
+@property (nonatomic, retain) UITableViewController *buyScreen;
+
 
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;

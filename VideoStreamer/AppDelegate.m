@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID;
+@synthesize SecondThread,SelectProductID,buyScreen;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -37,16 +37,22 @@
 	[window makeKeyAndVisible];
     
     
-	NSString *DeviceID = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCUIID"];
+	//NSString *DeviceID = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCUIID"];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
     
     if (DeviceID == nil) {
 		
 		NSString *mydeviceid = [self GetUUID];
         
-        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:mydeviceid, @"LCUIID", nil];
+       /* NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:mydeviceid, @"LCUIID", nil];
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-		[[NSUserDefaults standardUserDefaults] synchronize];
+		[[NSUserDefaults standardUserDefaults] synchronize]; */
         
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:mydeviceid forKey:@"LCUIID"];
+        [prefs synchronize];
 		
 	}
 

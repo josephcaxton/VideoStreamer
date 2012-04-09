@@ -220,12 +220,12 @@ int dontShowPriceList = 0;
 -(void) BuyVideo: (id)sender{
 	
 	[(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
-	
+	AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+	appDelegate.buyScreen = self;
     int myTag = [sender tag];
     
     SKProduct* SelectedProductid = [SortedDisplayProducts objectAtIndex:myTag];
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     // Store Selected ProductID in Delegate
     appDelegate.SelectProductID = nil;

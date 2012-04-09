@@ -32,7 +32,7 @@
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
-	//AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+	AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 	
 	for (SKPaymentTransaction *transaction in transactions)
 	{
@@ -40,21 +40,21 @@
 		{
 			case SKPaymentTransactionStatePurchased:{
 				[self completeTransaction:transaction];
-				//[appDelegate.buyScreen viewWillAppear:YES];
-				//[(UIActivityIndicatorView *)[appDelegate.buyScreen navigationItem].rightBarButtonItem.customView stopAnimating];
+				[appDelegate.buyScreen viewWillAppear:YES];
+				[(UIActivityIndicatorView *)[appDelegate.buyScreen navigationItem].rightBarButtonItem.customView stopAnimating];
 				
 				break;
             }
 			case SKPaymentTransactionStateFailed:{
 				[self failedTransaction:transaction];
-				//[appDelegate.buyScreen viewWillAppear:YES];
-				//[(UIActivityIndicatorView *)[appDelegate.buyScreen navigationItem].rightBarButtonItem.customView stopAnimating];
+				[appDelegate.buyScreen viewWillAppear:YES];
+				[(UIActivityIndicatorView *)[appDelegate.buyScreen navigationItem].rightBarButtonItem.customView stopAnimating];
 				break;
             }
 			case SKPaymentTransactionStateRestored:{
 				[self restoreTransaction:transaction];
-				//[appDelegate.buyScreen viewWillAppear:YES];
-				//[(UIActivityIndicatorView *)[appDelegate.buyScreen navigationItem].rightBarButtonItem.customView stopAnimating];
+				[appDelegate.buyScreen viewWillAppear:YES];
+				[(UIActivityIndicatorView *)[appDelegate.buyScreen navigationItem].rightBarButtonItem.customView stopAnimating];
 				break;
             }
 			default:
@@ -82,11 +82,12 @@
 
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
-	//If you want to save the transaction
+	//Non-renewing subscriptions and consumable products are not automatically restored by Store Kit
+    // So is i need to implement my own restore.
 	// [self recordTransaction: transaction];
 	
 	//Provide the new content
-	 [self provideContent: transaction.originalTransaction.payment.productIdentifier];
+	 //[self provideContent: transaction.originalTransaction.payment.productIdentifier];
 	
 	//Finish the transaction
 	[[SKPaymentQueue defaultQueue] finishTransaction: transaction];
@@ -113,7 +114,8 @@
    // NSString *receiptDataString = [[NSString alloc] initWithData:Receipt 
                                                        // encoding:NSASCIIStringEncoding];
     //Unique Device ID
-    MyDeviceId = [[NSString alloc] initWithString:(NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"LCUIID"]];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    MyDeviceId = [prefs stringForKey:@"LCUIID"];
     //Prodcut ID
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     ProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
