@@ -344,24 +344,19 @@
 
 
 -(void)SendToLearnersCloud{
-    
-    //NSString *DeviceUDID = [NSString 
-      //                      stringWithFormat:@"%@",[UIDevice currentDevice].uniqueIdentifier];
-    
-    //NSString *DeviceTokenRemoveCh1 = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    
-    //NSString *DeviceToken = [DeviceTokenRemoveCh1 stringByReplacingOccurrencesOfString: @" " withString: @""];
    
     if (EmailAddress != nil || Password != nil){
-       /*  NSLog(@"%@",MyDeviceId);
-         NSLog(@"%@",ProductID);
-         NSLog(@"%@",SubscriptionInDays);
-         NSLog(@"%@",TransactionID);
-         NSLog(@"%@",EncodedReceipt);
-    NSLog(@"%@",EmailAddress);
-    NSLog(@"%@",Password); */
+       
+        EmailAddress = [NSString stringWithString:@""];
+        Password = [NSString stringWithString:@""];
+    }
         
-    NSString *queryString = [NSString stringWithFormat:@"http://stage.learnersCloud.com/Services/iOS/VideoSubscription.asmx/VerifySubscription"];
+             
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSString *domain = appDelegate.DomainName;
+        
+        
+        NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/VerifySubscription",domain];
                         
    
     
@@ -401,7 +396,7 @@
         NSLog(@"error while starting the connection");
     } 
         
-    }
+   
 
 }
 
