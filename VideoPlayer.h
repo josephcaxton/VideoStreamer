@@ -16,7 +16,7 @@
     NSString *ServerLocation;
     NSURLCredential *credential;
     NSURLProtectionSpace *protectionSpace;
-    
+    NSString *domain;
     
 	
 }
@@ -24,5 +24,6 @@
 @property (nonatomic, retain) NSString *ServerLocation;
 @property (nonatomic, retain) NSURLCredential *credential;
 @property (nonatomic, retain) NSURLProtectionSpace *protectionSpace;
+@property (nonatomic, retain) NSString *domain;
 
 @end

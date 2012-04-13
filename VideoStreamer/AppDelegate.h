@@ -15,6 +15,7 @@
     UITabBarController *tabBarController;
     NSString *SelectProductID;
     UITableViewController *buyScreen;
+    NSString *DomainName;
     
 }
 
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) NSThread *SecondThread;
 @property (nonatomic, retain) NSString *SelectProductID;
 @property (nonatomic, retain) UITableViewController *buyScreen;
+@property (nonatomic, retain) NSString *DomainName;
 
 
 - (NSString *)applicationDocumentsDirectory;

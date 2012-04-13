@@ -7,11 +7,11 @@
 //
 
 #import "VideoPlayer.h"
-
+#import "AppDelegate.h"
 
 @implementation VideoPlayer
 
-@synthesize VideoFileName,ServerLocation,credential,protectionSpace;
+@synthesize VideoFileName,ServerLocation,credential,protectionSpace,domain;
 
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 950
@@ -37,8 +37,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    domain = appDelegate.DomainName;
+    ServerLocation = [NSString stringWithFormat:@"%@/iosStream/",domain];
 	
-	ServerLocation = [NSString stringWithFormat:@"http://Stage.learnerscloud.com/iosStream/"];
+
 	
 }
 
@@ -57,11 +60,13 @@
                                    persistence: NSURLCredentialPersistenceForSession];
     self.credential = credential1;
     
+    NSString *DomainLocation = [domain stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+    
    NSURLProtectionSpace *protectionSpace1 = [[NSURLProtectionSpace alloc]
-                                             initWithHost:@"stage.learnersCloud.com"
+                                             initWithHost: DomainLocation 
                                              port:80
                                              protocol:@"http"
-                                             realm: @"stage.learnersCloud.com"
+                                             realm: DomainLocation   
                                              authenticationMethod:NSURLAuthenticationMethodDefault];
     self.protectionSpace = protectionSpace1;
     

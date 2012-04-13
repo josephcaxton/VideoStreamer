@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -31,7 +31,7 @@
     [tabBarController setViewControllers:viewControllers];
     
     SecondThread = nil;
-
+    DomainName = @"http://Stage.learnerscloud.com";
 
     [window addSubview: tabBarController.view];
 	[window makeKeyAndVisible];

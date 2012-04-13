@@ -353,13 +353,13 @@
     //NSString *DeviceToken = [DeviceTokenRemoveCh1 stringByReplacingOccurrencesOfString: @" " withString: @""];
    
     if (EmailAddress != nil || Password != nil){
-         NSLog(@"%@",MyDeviceId);
+       /*  NSLog(@"%@",MyDeviceId);
          NSLog(@"%@",ProductID);
          NSLog(@"%@",SubscriptionInDays);
          NSLog(@"%@",TransactionID);
          NSLog(@"%@",EncodedReceipt);
     NSLog(@"%@",EmailAddress);
-    NSLog(@"%@",Password);
+    NSLog(@"%@",Password); */
         
     NSString *queryString = [NSString stringWithFormat:@"http://stage.learnersCloud.com/Services/iOS/VideoSubscription.asmx/VerifySubscription"];
                         
@@ -409,6 +409,10 @@
     
     NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",returnedString);
+    
+    
+    
+    
 }
 
 -(void) provideContent:(NSString *)productIdentifier{
