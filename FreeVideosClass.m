@@ -16,7 +16,7 @@
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects,ProductIDs;
+@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects;
 
 
 
@@ -26,7 +26,17 @@
 	
 	self.navigationItem.title = @"Free and Subscription Videos";
 	
-
+    // Put all the images into an array
+    
+    ImageObjects = [[NSMutableArray alloc] init];
+    int i;
+    NSString *loadString;
+    
+    for(i = 0; i < 55; i++) {
+        loadString = [NSString stringWithFormat:@"img%d", i]; 
+        [ImageObjects addObject:[UIImage imageNamed:loadString]];
+        
+    }
 	
 	// Copy or Update the VideoConfig File;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -207,8 +217,10 @@
     
     
     ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
-    NSString *PicLocation = [[NSString alloc] initWithFormat:@"%@",[obj Thumbnail]];
-    UIImage* theImage = [UIImage imageNamed:PicLocation];
+    //Change how image is loaded
+    //NSString *PicLocation = [[NSString alloc] initWithFormat:@"%@",[obj Thumbnail]];
+    //UIImage* theImage = [UIImage imageNamed:PicLocation];
+    UIImage* theImage =[ImageObjects objectAtIndex:indexPath.row];
     cell.imageView.image = theImage;
     
     cell.textLabel.text = [obj VideoTitle];
