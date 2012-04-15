@@ -129,14 +129,6 @@
     EncodedReceipt = [TempReceipt substringWithRange:NSMakeRange(0, [TempReceipt length]-1)];
 
 
-    
-    
-    
-     NSLog(@"%@",MyDeviceId);
-     NSLog(@"%@",ProductID);
-    NSLog(@"%@",SubscriptionInDays);
-     NSLog(@"%@",TransactionID);
-    
     [self AskForUserEmailAndPassword];
      
         
@@ -307,6 +299,13 @@
 
         
     }
+    else if(actionSheet.tag == 4444){
+        
+        // End of trasaction by poping the buy screeen nav
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.buyScreen.navigationController popViewControllerAnimated:YES]; 
+        
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextView *)textView{
@@ -345,7 +344,7 @@
 
 -(void)SendToLearnersCloud{
    
-    if (EmailAddress != nil || Password != nil){
+    if (EmailAddress == nil || Password == nil){
        
         EmailAddress = [NSString stringWithString:@""];
         Password = [NSString stringWithString:@""];
@@ -402,13 +401,64 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
     
-    NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnedString);
+    /*VerifySubscription return codes from server:
+   
+     0  all OK
+    >0 Apple code
+    <0 Our code
+    -2 Failed to pre-record
+    -3 Failed to parse apple's response
+    -4 Failed to post-record
+    -5 Exception communicating with apple's server
+    -1 anything else - see see server log file */
     
+    NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",returnedString);
+    
+    [self ParseReturnVal:returnedString];
     
     
     
 }
+
+-(void)ParseReturnVal:(NSString *)value {
+    
+    NSData *xmlData = [value dataUsingEncoding:NSUTF8StringEncoding];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
+    [parser setDelegate:self];
+    [parser parse];
+
+
+}
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+    
+    if ([elementName isEqualToString:@"int"]) {
+        
+        int Returnid = [[attributeDict valueForKey:@"int"] intValue];
+        
+            if (Returnid == 0) {
+    
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Transaction was successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+            }
+            else if (Returnid > 0){
+                        
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"There has been an error from apple, please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+            }
+            else if (Returnid < 0){
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"There has been an error from LearnersCloud, please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+                
+            }
+        
+        }
+    }
+
 
 -(void) provideContent:(NSString *)productIdentifier{
 	

@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 
 
-@interface CustomStoreObserver  : NSObject<SKPaymentTransactionObserver,UITextFieldDelegate,UIAlertViewDelegate>{
+@interface CustomStoreObserver  : NSObject<SKPaymentTransactionObserver,UITextFieldDelegate,UIAlertViewDelegate,NSXMLParserDelegate>{
     
     NSString *AlertTitle;
     NSString *EmailAddress;
@@ -50,5 +50,6 @@
 -(void)AskForUserEmailAndPassword;
 -(void)GetUsernameAndPassword;
 -(void)SendToLearnersCloud;
+-(void)ParseReturnVal:(NSString *)value;
 
 @end
