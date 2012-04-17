@@ -31,7 +31,7 @@
     [tabBarController setViewControllers:viewControllers];
     
     SecondThread = nil;
-    DomainName = @"http://Stage.learnerscloud.com";
+    DomainName = @"http://stage.learnerscloud.com";
 
     [window addSubview: tabBarController.view];
 	[window makeKeyAndVisible];
