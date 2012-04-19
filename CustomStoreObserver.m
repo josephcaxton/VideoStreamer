@@ -432,7 +432,7 @@
 }
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
     
-    if ([elementName isEqualToString:@"int"]) {
+   /* if ([elementName isEqualToString:@"int"]) {
         
         int Returnid = [[attributeDict valueForKey:@"int"] intValue];
         
@@ -456,8 +456,44 @@
                 
             }
         
-        }
+        } */
     }
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    
+    NSString *CleanString = [string stringByTrimmingCharactersInSet:
+                             [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if([CleanString isEqualToString:@""]){
+        
+        //Do nothing
+        return;
+        
+    }
+    
+    int Returnid = [string intValue];
+    
+    if (Returnid == 0) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Transaction was successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alertView.tag = 4444;
+        [alertView show];
+    }
+    else if (Returnid > 0){
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"There has been an error from apple, please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alertView.tag = 4444;
+        [alertView show];
+    }
+    else if (Returnid < 0){
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"There has been an error from LearnersCloud, please try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alertView.tag = 4444;
+        [alertView show];
+        
+    }
+
+    
+}
 
 
 -(void) provideContent:(NSString *)productIdentifier{

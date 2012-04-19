@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,SubscibedProducts,PassageFlag;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -32,7 +32,8 @@
     
     SecondThread = nil;
     DomainName = @"http://stage.learnerscloud.com";
-
+    
+    
     [window addSubview: tabBarController.view];
 	[window makeKeyAndVisible];
     
@@ -55,12 +56,170 @@
         [prefs synchronize];
 		
 	}
+    else {
+        //Check SubscriptionStatus
+        
+        
+        [self SubscriptionStatus: DeviceID];
+
+    }
 
 
     return YES;
 }
 
- 
+-(void)SubscriptionStatus:(NSString *)DeviceID{
+    
+    NSString *Filter =[NSString stringWithString:@"1"];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSString *domain = appDelegate.DomainName;
+    
+    
+    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/ViewSubscriptionStatus",domain];
+    NSURL *url = [NSURL URLWithString:queryString];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&filter=%@&",DeviceID,Filter];
+    NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
+    [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
+    unsigned long long postLength = data.length;
+    NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
+    [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
+    
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody:data];
+    
+    NSURLConnection *conn;
+    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if (!conn) {
+        NSLog(@"error while starting the connection");
+    } 
+    
+    
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
+    
+    /*ViewSubscriptionStatus returns from server:
+     
+     A Jason object with 
+     1, DateTo
+     2, EmailAddress
+     3,ProductIdentifier */
+    
+        if(!SubscriptionStatusData){
+        SubscriptionStatusData = [[NSMutableData alloc]init ];
+    }
+    
+    [SubscriptionStatusData appendData:someData];
+    //NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",returnedString);
+    
+    
+    
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    
+    NSString *returnedString = [[NSString alloc] initWithData:SubscriptionStatusData encoding:NSASCIIStringEncoding];
+    //NSLog(@"%@",returnedString);
+    NSString *Clean1 = [returnedString stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
+    NSString *Clean2 =[Clean1 stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
+    NSString *Clean3 =[Clean2 stringByReplacingOccurrencesOfString:@"&lt;/" withString:@"/>"];
+    NSLog(@"%@",Clean3);
+    NSData *xmlData = [Clean3 dataUsingEncoding:NSUTF8StringEncoding];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
+    [parser setDelegate:self];
+    [parser parse];
+    
+    [self WorkOutSubsriptionName:TempSubscibedProducts];
+    
+    
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+    
+    if ([elementName isEqualToString:@"ProductIdentifier"]) {
+        
+        PassageFlag = TRUE;
+        
+    }
+}
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    
+    NSString *CleanString = [string stringByTrimmingCharactersInSet:
+                             [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if([CleanString isEqualToString:@""]){
+        
+        //Do nothing
+        return;
+        
+    }
+    
+    if(PassageFlag == TRUE)
+        
+    {
+        NSString *SubscribedProductID = CleanString;
+        //NSString *ProductID = [self WorkOutSubsriptionName:SubscribedProductID];
+        
+        if(!TempSubscibedProducts){
+            TempSubscibedProducts = [[NSMutableArray alloc] init ];
+        }
+        NSLog(@"%@",string);
+        [TempSubscibedProducts addObject:SubscribedProductID];
+        PassageFlag = FALSE;
+    }
+}
+
+
+
+
+-(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray{
+    // Only 7 days and 30days subscription supported
+    
+    for (int i = 0; i < SubscibedProductsInArray.count; i++) {
+        
+        NSString *Product =[[NSString alloc] initWithString:[SubscibedProductsInArray objectAtIndex:i]];
+        //NSLog(@"%@",Product);
+        NSString *FinalVal;
+        if(!SubscibedProducts){
+           SubscibedProducts = [[NSMutableArray alloc] init ]; 
+        }
+        int lenghtofString = [Product length];
+       // NSLog(@"%i",lenghtofString);
+    
+       NSString *Result = [Product substringWithRange:NSMakeRange(lenghtofString - 5, 5)];
+        
+       //NSLog(@"%@",Result);
+        
+        if ([[Result lowercaseString] isEqualToString:@"month"] ){
+            // string minus 1Month
+            FinalVal = [Product substringWithRange:NSMakeRange(0, lenghtofString - 6)];
+           
+        }
+        else
+        {
+            // string minus 7days
+            FinalVal = [Product substringWithRange:NSMakeRange(0, lenghtofString - 5)];
+             
+        }
+        //NSLog(@"%@",Product);
+        //NSLog(@"%@",FinalVal);
+        [SubscibedProducts addObject:FinalVal];
+    }
+    
+    
+   
+    
+        
+    
+}
+
+
 
 - (NSString *)applicationDocumentsDirectory {
     

@@ -16,7 +16,7 @@
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,SubscriptionStatusData;
+@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects;
 
 
 
@@ -32,18 +32,14 @@
     int i;
     NSString *loadString;
     
-    for(i = 0; i < 113; i++) {
+    for(i = 0; i < 118; i++) {
         loadString = [NSString stringWithFormat:@"img%d", i + 1]; 
         [ImageObjects addObject:[UIImage imageNamed:loadString]];
         
     }
 	
     
-    //Check SubscriptionStatus
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *MyDeviceId = [prefs stringForKey:@"LCUIID"];
     
-    [self SubscriptionStatus: MyDeviceId];
 	// Copy or Update the VideoConfig File;
    
     NSString *domain = appDelegate.DomainName;
@@ -193,71 +189,6 @@
 	}
 }
 
--(void)SubscriptionStatus:(NSString *)DeviceID{
-    
-    NSString *Filter =[NSString stringWithString:@"1"];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSString *domain = appDelegate.DomainName;
-    
-    
-    NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/ViewSubscriptionStatus",domain];
-    NSURL *url = [NSURL URLWithString:queryString];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&filter=%@&",DeviceID,Filter];
-     NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
-    [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
-    unsigned long long postLength = data.length;
-    NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
-    [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
-    
-    [req setHTTPMethod:@"POST"];
-    [req setHTTPBody:data];
-    
-    NSURLConnection *conn;
-    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-    if (!conn) {
-        NSLog(@"error while starting the connection");
-    } 
-
-    
-    
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
-    
-    /*ViewSubscriptionStatus returns from server:
-     
-     A Jason object with 
-     1, DateTo
-     2, EmailAddress
-     3,ProductIdentifier */
-    
-    //NSError *myError = nil;
-   // NSDictionary *res = [NSJSONSerialization JSONObjectWithData:someData options:NSJSONReadingMutableLeaves error:&myError];
-
-   // if (![res isKindOfClass:[NSDictionary class]]) {
-    //    NSLog(@"not a dict");
-   // }
-    if(!SubscriptionStatusData){
-        SubscriptionStatusData = [[NSMutableData alloc]init ];
-    }
-    
-    [SubscriptionStatusData appendData:someData];
-     NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
-     NSLog(@"%@",returnedString);
-    
-
-
-}
--(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-
-    NSString *returnedString = [[NSString alloc] initWithData:SubscriptionStatusData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnedString);
-}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -307,10 +238,11 @@
     }
     else
     {
+        
          cell.accessoryType =  UITableViewCellAccessoryNone;
           NSString* descriptiontxt = [obj VideoDescription];
           NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Buy"];
-        cell.detailTextLabel.text = FullDesciption;
+         cell.detailTextLabel.text = FullDesciption;
     }
    
     

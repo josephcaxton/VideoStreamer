@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : NSObject <UIApplicationDelegate>{
+@interface AppDelegate : NSObject <UIApplicationDelegate,NSXMLParserDelegate>{
     
     NSThread *SecondThread;
     UIWindow *window;
@@ -16,7 +16,10 @@
     NSString *SelectProductID;
     UITableViewController *buyScreen;
     NSString *DomainName;
-    
+    NSMutableData *SubscriptionStatusData;
+    NSMutableArray *TempSubscibedProducts;
+    NSMutableArray *SubscibedProducts;
+    BOOL PassageFlag;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -26,11 +29,16 @@
 @property (nonatomic, retain) NSString *SelectProductID;
 @property (nonatomic, retain) UITableViewController *buyScreen;
 @property (nonatomic, retain) NSString *DomainName;
-
+@property (nonatomic, retain)  NSMutableData *SubscriptionStatusData;
+@property (nonatomic, retain) NSMutableArray *TempSubscibedProducts;
+@property (nonatomic, retain) NSMutableArray *SubscibedProducts;
+@property (nonatomic, assign) BOOL PassageFlag;
 
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
 - (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;
 - (NSString *)GetUUID;
+-(void)SubscriptionStatus:(NSString *)DeviceID;
+-(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray;
 
 @end
