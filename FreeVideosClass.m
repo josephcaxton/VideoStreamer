@@ -20,10 +20,14 @@
 
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
 	
+    /*NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(RefreshTable:) name:@"ToFreeVideoClass" object:nil];*/
+    
 	self.navigationItem.title = @"Free and Subscription Videos";
 	 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     // Put all the images into an array
@@ -86,7 +90,19 @@
     [appDelegate.SecondThread cancel];
         
 }
+- (void)viewWillAppear:(BOOL)animated {
 
+   
+    
+
+}
+
+
+/*-(void)RefreshTable{
+    
+    
+   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}*/
 
 
 

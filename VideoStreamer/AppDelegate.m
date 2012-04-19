@@ -210,6 +210,10 @@
         //NSLog(@"%@",Product);
         //NSLog(@"%@",FinalVal);
         [SubscibedProducts addObject:FinalVal];
+        
+       /* NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"ToFreeVideoClass" object:self];*/
+
     }
     
     
