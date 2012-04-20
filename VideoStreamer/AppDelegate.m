@@ -115,6 +115,7 @@
         SubscriptionStatusData = [[NSMutableData alloc]init ];
     }
     
+    
     [SubscriptionStatusData appendData:someData];
     //NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",returnedString);
@@ -130,14 +131,19 @@
     NSString *Clean1 = [returnedString stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
     NSString *Clean2 =[Clean1 stringByReplacingOccurrencesOfString:@"&gt;" withString:@">"];
     NSString *Clean3 =[Clean2 stringByReplacingOccurrencesOfString:@"&lt;/" withString:@"/>"];
-    NSLog(@"%@",Clean3);
+    //NSLog(@"%@",Clean3);
     NSData *xmlData = [Clean3 dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
     [parser setDelegate:self];
     [parser parse];
     
     [self WorkOutSubsriptionName:TempSubscibedProducts];
+   // NSLog(@"Subscibed products= %i", [SubscibedProducts count]);
     
+    // Post notification to refresh table
+   
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+     [nc postNotificationName:@"ToFreeVideoClass" object:self];
     
 }
 
@@ -169,7 +175,7 @@
         if(!TempSubscibedProducts){
             TempSubscibedProducts = [[NSMutableArray alloc] init ];
         }
-        NSLog(@"%@",string);
+        //NSLog(@"%@",string);
         [TempSubscibedProducts addObject:SubscribedProductID];
         PassageFlag = FALSE;
     }
@@ -209,10 +215,11 @@
         }
         //NSLog(@"%@",Product);
         //NSLog(@"%@",FinalVal);
+        
+        
         [SubscibedProducts addObject:FinalVal];
         
-       /* NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"ToFreeVideoClass" object:self];*/
+       
 
     }
     

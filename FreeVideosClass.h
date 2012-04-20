@@ -13,19 +13,20 @@
     NSMutableArray *ArrayofConfigObjects;
     NSMutableArray *ProductIDs;
     NSMutableArray *ImageObjects;
-   
+    NSMutableArray *ProductsSubscibedTo;
     
 }
 
 @property (nonatomic, retain) NSMutableArray *ArrayofConfigObjects;
 @property (nonatomic, retain) NSMutableArray *ProductIDs;
 @property (nonatomic, retain)  NSMutableArray *ImageObjects;
-
+@property (nonatomic, retain)  NSMutableArray *ProductsSubscibedTo;
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
 -(void)Alertfailedconnection;
 -(void)MyParser:(NSString *)FileLocation;
 -(void)ConfigureProductList:(NSString *)ProductID;
-
+-(void)RefreshTable:(NSNotification *)note;
+-(void)RefeshTable;
 @end

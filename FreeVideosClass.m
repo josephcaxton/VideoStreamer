@@ -16,7 +16,7 @@
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects;
+@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo;
 
 
 
@@ -24,12 +24,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	
-    /*NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(RefreshTable:) name:@"ToFreeVideoClass" object:nil];*/
+	// Listen to notification
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(RefreshTable:) name:@"ToFreeVideoClass" object:nil];
     
 	self.navigationItem.title = @"Free and Subscription Videos";
-	 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+	 
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+      NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
+    // Get Subscibed products from delegate
+    if([appDelegate.SubscibedProducts count] > 0){
+        
+        ProductsSubscibedTo = [[NSMutableArray alloc] initWithArray:appDelegate.SubscibedProducts]; 
+        
+    }
+    
+    
     // Put all the images into an array
     
     ImageObjects = [[NSMutableArray alloc] init];
@@ -98,13 +108,29 @@
 }
 
 
-/*-(void)RefreshTable{
+-(void)RefreshTable:(NSNotification *)note{
     
     
-   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-}*/
+   [self performSelectorOnMainThread:@selector(RefeshTable) withObject:nil waitUntilDone:NO];
+}
 
-
+-(void)RefeshTable{
+    
+    UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+	[self navigationItem].rightBarButtonItem = barButton;
+    [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+   
+    NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"VideoConfig.xml"];
+    [self MyParser:Dir];
+    [self.tableView reloadData];
+    
+    [activityIndicator stopAnimating];
+    [activityIndicator hidesWhenStopped];
+    
+}
 
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation{
@@ -195,6 +221,16 @@
         obj.M3u8 = M3u8;
         obj.Thumbnail = ThumbNail;
         obj.ProductID = ProductID;
+        //NSLog(@"Product is: %@",obj.ProductID);
+        for (int i = 0; i < ProductsSubscibedTo.count; i++) {
+            
+            if ([obj.ProductID isEqualToString:[ProductsSubscibedTo objectAtIndex:i]]) {
+                
+                //NSLog(@"Product is: %@",obj.ProductID);
+                obj.Subcribed = YES;
+            }
+        }
+        
         [ArrayofConfigObjects addObject:obj];
         
         
@@ -243,15 +279,27 @@
     
     cell.textLabel.text = [obj VideoTitle];
     
+    // Is it free?
     if ([obj Free] == YES){
        
          cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
          NSString* descriptiontxt = [obj VideoDescription];
          NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
         cell.detailTextLabel.text =FullDesciption;
-        
+         cell.detailTextLabel.textColor = [UIColor grayColor];
         
     }
+    // Is user Subscribed?
+    else if([obj Subcribed] == YES){
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        NSString* descriptiontxt = [obj VideoDescription];
+        NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Subscription Paid"];
+        cell.detailTextLabel.text =FullDesciption;
+        cell.detailTextLabel.textColor = [UIColor blueColor];
+        
+    }
+    // Sorry mate you have to buy
     else
     {
         
@@ -259,6 +307,7 @@
           NSString* descriptiontxt = [obj VideoDescription];
           NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Buy"];
          cell.detailTextLabel.text = FullDesciption;
+         cell.detailTextLabel.textColor = [UIColor redColor];
     }
    
     
@@ -281,7 +330,7 @@
 
     ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
     
-    if ([obj Free] == YES) {
+    if ([obj Free] == YES || [obj Subcribed] == YES) {
         
     VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
