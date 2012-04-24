@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate>{
+#import <MessageUI/MessageUI.h>
+@interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,MFMailComposeViewControllerDelegate>{
     
     NSMutableArray *ArrayofConfigObjects;
     NSMutableArray *ProductIDs;

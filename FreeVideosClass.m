@@ -32,6 +32,11 @@
 	 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
       NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
+    
+    
+    UIBarButtonItem *SendSupportMail = [[UIBarButtonItem alloc] initWithTitle:@"Report Problem" style: UIBarButtonItemStyleBordered target:self action:@selector(ReportProblem:)];
+    self.navigationItem.rightBarButtonItem = SendSupportMail;
+    
     // Get Subscibed products from delegate
     if([appDelegate.SubscibedProducts count] > 0){
         
@@ -391,6 +396,50 @@
 	return YES;
 }
 
+
+-(IBAction)ReportProblem:(id)sender{
+	
+	if ([MFMailComposeViewController canSendMail]) {
+        
+        NSArray *SendTo = [NSArray arrayWithObjects:@"support@LearnersCloud.com",nil];
+        
+        MFMailComposeViewController *SendMailcontroller = [[MFMailComposeViewController alloc]init];
+        SendMailcontroller.mailComposeDelegate = self;
+        [SendMailcontroller setToRecipients:SendTo];
+        [SendMailcontroller setSubject:[NSString stringWithFormat:@"Maths video streaming customer help"]];
+        
+        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Additional Messages can be added to this email "] isHTML:NO];
+        [self presentModalViewController:SendMailcontroller animated:YES];
+        
+		
+	}
+	
+	else {
+		UIAlertView *Alert = [[UIAlertView alloc] initWithTitle: @"Cannot send mail" 
+                                                        message: @"Device is unable to send email in its current state. Configure email" delegate: self 
+                                              cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+		
+		
+		
+		[Alert show];
+		
+		
+	}
+    
+	
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
+	
+	
+	[self becomeFirstResponder];
+	[self dismissModalViewControllerAnimated:YES];
+	
+	
+	
+	
+}
 
 
 

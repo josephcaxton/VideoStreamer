@@ -12,7 +12,7 @@
 
 @implementation CustomStoreObserver
 
-@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,SubscriptionInDays,TransactionID,EncodedReceipt;
+@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,SubscriptionInDays,TransactionID,EncodedReceipt,textField;
 
 - (id) init
 
@@ -174,7 +174,9 @@
     
     if(EmailAddress != nil){
         
-         AlertTitle = [[NSString alloc] initWithString:@"The email address you entered is not in the right format or password is empty. Try again?"];
+        
+         
+        AlertTitle = [[NSString alloc] initWithString:@"The email address you entered is not in the right format or password is empty. Try again?"];
         
     } 
     else
@@ -238,9 +240,10 @@
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     // the user clicked one of the OK/Cancel buttons
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (actionSheet.tag == 1212){
-        if (buttonIndex == 1)
+        if (buttonIndex == 1 && appDelegate.UserEmail == nil)  // Needs testing 
         {
             [self GetUsernameAndPassword];
             
@@ -259,7 +262,7 @@
             {
                 if ([view isKindOfClass:[UITextField class]])
                 {
-                    UITextField* textField = (UITextField*)view;
+                    textField = (UITextField*)view;
                     int TaggedAs = textField.tag;
                     if (TaggedAs == 1717) {
                         EmailAddress = [[NSString alloc] initWithString: textField.text == nil ? @"" : textField.text];

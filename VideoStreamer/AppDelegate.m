@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,SubscibedProducts,PassageFlag;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,SubscibedProducts,PassageFlag,UserEmail,EmailFlag;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -154,6 +154,10 @@
         PassageFlag = TRUE;
         
     }
+    else if([elementName isEqualToString:@"EMail"]){
+        
+        EmailFlag = TRUE;
+    }
 }
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     
@@ -162,6 +166,8 @@
     if([CleanString isEqualToString:@""]){
         
         //Do nothing
+        PassageFlag = FALSE;
+        EmailFlag = FALSE;
         return;
         
     }
@@ -178,6 +184,13 @@
         //NSLog(@"%@",string);
         [TempSubscibedProducts addObject:SubscribedProductID];
         PassageFlag = FALSE;
+    }
+    
+    else if(EmailFlag == TRUE){
+        
+        NSString *EmailAddress = CleanString;
+        UserEmail = [NSString stringWithString:EmailAddress];
+        EmailFlag = FALSE;
     }
 }
 

@@ -20,6 +20,8 @@
     NSMutableArray *TempSubscibedProducts;
     NSMutableArray *SubscibedProducts;
     BOOL PassageFlag;
+    NSString *UserEmail;
+    BOOL EmailFlag;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -33,7 +35,8 @@
 @property (nonatomic, retain) NSMutableArray *TempSubscibedProducts;
 @property (nonatomic, retain) NSMutableArray *SubscibedProducts;
 @property (nonatomic, assign) BOOL PassageFlag;
-
+@property (nonatomic, retain) NSString *UserEmail;
+@property (nonatomic, assign) BOOL EmailFlag;
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
 - (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;

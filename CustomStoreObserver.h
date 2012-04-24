@@ -22,6 +22,7 @@
     NSString *SubscriptionInDays;
     NSString *TransactionID;
     NSString *EncodedReceipt;
+    UITextField* textField;
     
 
 }
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) NSString *SubscriptionInDays;
 @property (nonatomic, retain)  NSString *TransactionID;
 @property (nonatomic, retain)  NSString *EncodedReceipt;
+@property (nonatomic, retain)  UITextField* textField;
 
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
