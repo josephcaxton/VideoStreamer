@@ -14,6 +14,7 @@
     NSMutableArray *ProductIDs;
     NSMutableArray *ImageObjects;
     NSMutableArray *ProductsSubscibedTo;
+    BOOL FullSubscription;
     
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) NSMutableArray *ProductIDs;
 @property (nonatomic, retain)  NSMutableArray *ImageObjects;
 @property (nonatomic, retain)  NSMutableArray *ProductsSubscibedTo;
+@property (nonatomic, assign) BOOL FullSubscription;
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;

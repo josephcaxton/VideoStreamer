@@ -16,7 +16,7 @@
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo;
+@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo,FullSubscription;
 
 
 
@@ -31,7 +31,7 @@
 	self.navigationItem.title = @"Free and Subscription Videos";
 	 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-      NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
+      //NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
     
     
     UIBarButtonItem *SendSupportMail = [[UIBarButtonItem alloc] initWithTitle:@"Report Problem" style: UIBarButtonItemStyleBordered target:self action:@selector(ReportProblem:)];
@@ -44,6 +44,8 @@
         
     }
     
+    // If User is fully subscibed by logging in
+    FullSubscription = appDelegate.AccessAll;
     
     // Put all the images into an array
     
@@ -295,7 +297,7 @@
         
     }
     // Is user Subscribed?
-    else if([obj Subcribed] == YES){
+    else if([obj Subcribed] == YES || FullSubscription == TRUE){
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         NSString* descriptiontxt = [obj VideoDescription];
@@ -335,7 +337,7 @@
 
     ConfigObject *obj = [ArrayofConfigObjects objectAtIndex:indexPath.row];
     
-    if ([obj Free] == YES || [obj Subcribed] == YES) {
+    if ([obj Free] == YES || [obj Subcribed] == YES || FullSubscription == TRUE) {
         
     VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];

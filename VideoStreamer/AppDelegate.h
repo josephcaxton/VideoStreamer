@@ -22,6 +22,7 @@
     BOOL PassageFlag;
     NSString *UserEmail;
     BOOL EmailFlag;
+    BOOL AccessAll;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -37,6 +38,7 @@
 @property (nonatomic, assign) BOOL PassageFlag;
 @property (nonatomic, retain) NSString *UserEmail;
 @property (nonatomic, assign) BOOL EmailFlag;
+@property (nonatomic, assign) BOOL AccessAll;
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
 - (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;

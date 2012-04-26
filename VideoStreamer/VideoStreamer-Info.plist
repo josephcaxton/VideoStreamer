@@ -16,11 +16,11 @@
 		<string>Icon@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.learnersCloud.VideoStreamer</string>
+	<string>com.LearnersCloud.MathsVideoStreameriPad</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>com.learnersCloud.VideoStreamer</string>
+	<string>com.LearnersCloud.MathsVideoStreameriPad</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -33,6 +33,8 @@
 	<true/>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

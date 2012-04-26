@@ -12,7 +12,7 @@
 
 @implementation Start
 
-@synthesize FirstView,FreeVideos,BtnTransfermysubscription,RentaVideo,Image,ImageView,UsernameText,PasswordText,textField,ReponseFromServer,PassageFlag;
+@synthesize FirstView,FreeVideos,BtnTransfermysubscription,RentaVideo,Image,ImageView,UsernameText,PasswordText,textField,ReponseFromServer,PassageFlag,LoginViaLearnersCloud,WhichButton;
 
 #define SCREEN_WIDTH  768    
 #define SCREEN_HEIGHT 950
@@ -58,17 +58,23 @@
     BtnTransfermysubscription = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [BtnTransfermysubscription setTitle:@"Transfer my subscription to this device" forState:UIControlStateNormal];
     [BtnTransfermysubscription setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
-    BtnTransfermysubscription.frame = CGRectMake(400 ,700, 300, 44);
+    BtnTransfermysubscription.frame = CGRectMake(400,700, 300, 44);
    // UIImage *BtnTransfermysubscriptionbuttonImage = [UIImage imageNamed:@"blueBackground.png"];
     //[BtnTransfermysubscription setBackgroundImage:BtnTransfermysubscriptionbuttonImage forState:UIControlStateNormal];
-    
+    BtnTransfermysubscription.tag = 999;
     [BtnTransfermysubscription addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
     
     [FirstView addSubview:BtnTransfermysubscription];
+    
+    LoginViaLearnersCloud = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [LoginViaLearnersCloud setTitle:@"Login" forState:UIControlStateNormal];
+    [LoginViaLearnersCloud setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
+    LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 44);
+    LoginViaLearnersCloud.tag = 101010;
+    [LoginViaLearnersCloud addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [FirstView addSubview:LoginViaLearnersCloud];
 
-   
-    
-    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -90,6 +96,9 @@
 }
 
 -(IBAction)TransferSubscription:(id)sender{
+    
+    WhichButton = (UIButton *)sender;
+   // NSLog(@"%i",WhichButton.tag);
     
     NSString *myTitle = [[NSString alloc] initWithString:@"Enter your details"];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:myTitle message:@"\n \n \n \n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
@@ -208,11 +217,14 @@
 
 -(void)SubscriptionTransferServer:(NSString *)DeviceID{
     
+    int ButtonNumber = WhichButton.tag;
+    
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *domain = appDelegate.DomainName;
-    
-    
+
+    if (ButtonNumber == 999) {
+        
     NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/UpdateDeviceID",domain];
     NSURL *url = [NSURL URLWithString:queryString];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
@@ -228,12 +240,47 @@
     
     [req setHTTPMethod:@"POST"];
     [req setHTTPBody:data];
-    
+        
     NSURLConnection *conn;
     conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-    if (!conn) {
-        NSLog(@"error while starting the connection");
-    } 
+        if (!conn) {
+            NSLog(@"error while starting the connection");
+        } 
+
+        
+    }
+    
+    else {
+        
+        // This is requesting access via Silverlight credentials
+        
+        NSString *AppID = @"2";   // 2 means this is maths, 1 is English , 3 is physics 
+        NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/FindSLSubscription",domain];
+        NSURL *url = [NSURL URLWithString:queryString];
+        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString *FullString = [NSString stringWithFormat:@"AppID=%@&SLemail=%@&SLpassword=%@&",AppID,UsernameText.text,PasswordText.text];
+        NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
+
+        NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
+        [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
+        unsigned long long postLength = data.length;
+        NSString *contentLength = [NSString stringWithFormat:@"%llu",postLength];
+        [req addValue:contentLength forHTTPHeaderField:@"Content-Length"];
+        
+        [req setHTTPMethod:@"POST"];
+        [req setHTTPBody:data];
+        
+        NSURLConnection *conn;
+        conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+        if (!conn) {
+            NSLog(@"error while starting the connection");
+        } 
+
+
+    }
+    
+       
     
     
     
@@ -241,14 +288,19 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
     
-    /* Response from server:
-     
-    
-     0 = Successfully updated
+    /* Response from server for Transfer subscription:
+      0 = Successfully updated
      -1 = Error
      -2 = Error
      -3 = Error
-     -4 = User does not exist*/
+     -4 = User does not exist */
+     
+    /* Response from Silverlight Authentication
+      0 = OK
+     -1 = No current subscription
+     -2 = Authentication failed
+     -3 = AppID not recognised
+     -4 = Any other exception*/
     
     if(!ReponseFromServer){
         ReponseFromServer = [[NSMutableData alloc]init ];
@@ -298,21 +350,50 @@
         
         //NSLog(@"%i",Returnid);
     
-        if (Returnid == 0) {
+        int ButtonNumber = WhichButton.tag;
+    
+    if (ButtonNumber == 999) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        alertView.tag = 4444;
-        [alertView show];
-    }
-        else if (Returnid < 0){
+    
+            if (Returnid == 0) {
+        
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                alertView.tag = 4444;
+                [alertView show];
+             }
+    
+          else if (Returnid < 0){
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"You don't have any running subscription" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             alertView.tag = 4444;
             [alertView show];
             
+             }
+
+     }
+    else {
+        
+          if (Returnid == 0) {
+              // User is allowed access to all videos
+              AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+              appDelegate.AccessAll = TRUE;
+              [self ViewFreeVideos:self];
+          }
+         else if (Returnid == -1)
+             
+         {
+             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"You don't have any running subscription" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             alertView.tag = 4444;
+             [alertView show];
+         
+         }
+         else {
+             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"Login failed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             alertView.tag = 4444;
+             [alertView show];
+         }
+    
     }
-
-
 
        
     
@@ -350,20 +431,20 @@
     
     if (interfaceOrientation == UIInterfaceOrientationPortrait  || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         
-        FreeVideos.frame = CGRectMake(85 ,100, 600, 44);
-        BtnTransfermysubscription.frame = CGRectMake(400 ,700, 300, 44);
-        ImageView.frame = CGRectMake(60 ,200, 640, 480);
+        FreeVideos.frame = CGRectMake(85,100, 600, 44);
+        BtnTransfermysubscription.frame = CGRectMake(400,700, 300, 44);
+        ImageView.frame = CGRectMake(60,200, 640, 480);
         FirstView.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
-       
+        LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 44);
         
     }
     else
     {
-        FreeVideos.frame = CGRectMake(220 ,15, 600, 44);
+        FreeVideos.frame = CGRectMake(220,15, 600, 44);
         BtnTransfermysubscription.frame = CGRectMake(540 ,600, 300, 44);
-        ImageView.frame = CGRectMake(200 ,90, 640, 480);
+        ImageView.frame = CGRectMake(200,90, 640, 480);
         FirstView.frame = CGRectMake(0, 0, SCREEN_HEIGHT + 80 , SCREEN_WIDTH);
-        
+        LoginViaLearnersCloud.frame = CGRectMake(200 ,600, 300, 44);
         
     }
     

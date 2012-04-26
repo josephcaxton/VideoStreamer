@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,SubscibedProducts,PassageFlag,UserEmail,EmailFlag;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,SubscibedProducts,PassageFlag,UserEmail,EmailFlag,AccessAll;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
