@@ -53,7 +53,7 @@
     int i;
     NSString *loadString;
     
-    for(i = 0; i < 118; i++) {
+    for(i = 0; i < 248; i++) {
         loadString = [NSString stringWithFormat:@"img%d", i + 1]; 
         [ImageObjects addObject:[UIImage imageNamed:loadString]];
         
@@ -351,6 +351,7 @@
         
         Buy *buyer = [[Buy alloc ]initWithNibName:nil bundle:nil];
         buyer.ProductsToIstore = ProductIDs;
+        //NSLog(@"%@",ProductIDs);
         [self.navigationController pushViewController:buyer animated:YES];
         
         

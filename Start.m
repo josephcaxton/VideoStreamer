@@ -12,7 +12,7 @@
 
 @implementation Start
 
-@synthesize FirstView,FreeVideos,BtnTransfermysubscription,RentaVideo,Image,ImageView,UsernameText,PasswordText,textField,ReponseFromServer,PassageFlag,LoginViaLearnersCloud,WhichButton;
+@synthesize FirstView,FreeVideos,BtnTransfermysubscription,RentaVideo,Image,ImageView,UsernameText,PasswordText,TextField,ReponseFromServer,PassageFlag,LoginViaLearnersCloud,WhichButton;
 
 #define SCREEN_WIDTH  768    
 #define SCREEN_HEIGHT 950
@@ -170,6 +170,13 @@
         
     }
     
+    else {
+        
+        //[UsernameText resignFirstResponder];
+ 
+
+        }
+    
 }
 
 
@@ -185,9 +192,9 @@
         }
         else
         {
-            return false;
             
             [UsernameText resignFirstResponder];
+            return true;
         }
         
     }
@@ -203,7 +210,7 @@
         else
             {
                 [PasswordText resignFirstResponder];
-                return false;
+                return true;
                 
             }
     }
@@ -454,6 +461,14 @@
     
     [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView stopAnimating];
     [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:1];
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    
+    return YES;
 
 }
 

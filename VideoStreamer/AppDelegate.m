@@ -64,7 +64,13 @@
 
     }
 
-
+    // Notification Service Registration
+    
+    NSLog(@"Registering for push notifications...");    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+	// Reset Badge Count 
+    application.applicationIconBadgeNumber = 0; 
+    
     return YES;
 }
 
@@ -341,7 +347,56 @@
     //NSLog(@"This is to compare the date %@ localDate , %@ serverdate",lastModifiedLocal,lastModifiedServer);
     return NO;
     
-}  
+} 
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    //NSString *str = [NSString stringWithFormat:@"Device Token=%@",deviceToken];
+    //NSLog(@"%@",str);
+    
+    
+    // Add the Device Token to our database.
+    
+    // NSString *Raw_DeviceToken = [NSString stringWithFormat:@"%@",deviceToken];
+    
+    NSString *DeviceUDID = [NSString 
+                            stringWithFormat:@"%@",[UIDevice currentDevice].uniqueIdentifier];
+    
+    NSString *DeviceTokenRemoveCh1 = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    
+    NSString *DeviceToken = [DeviceTokenRemoveCh1 stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    
+    NSURLConnection *conn;
+    NSString *queryString = [NSString stringWithFormat:@"http://www.learnerscloud.com/services/ios/deviceToken.asmx/Update?UDID=%@&deviceToken=%@" , DeviceUDID, DeviceToken ];
+    NSURL *url = [NSURL URLWithString:queryString];
+    
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    [req addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:0 forHTTPHeaderField:@"Content-Length"];
+    [req setHTTPMethod:@"GET"];
+    
+    conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if (conn) {
+        
+    } 
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err { 
+    
+    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+    NSLog(@"%@",str);    
+    
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    for (id key in userInfo) {
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    }    
+    
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

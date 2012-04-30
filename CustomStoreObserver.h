@@ -19,6 +19,7 @@
     
     NSString *MyDeviceId;
     NSString *ProductID;
+    NSString *FinalProductID;
     NSString *SubscriptionInDays;
     NSString *TransactionID;
     NSString *EncodedReceipt;
@@ -34,6 +35,7 @@
 
 @property (nonatomic, retain) NSString *MyDeviceId;
 @property (nonatomic, retain) NSString *ProductID;
+@property (nonatomic, retain) NSString *FinalProductID;
 @property (nonatomic, retain) NSString *SubscriptionInDays;
 @property (nonatomic, retain)  NSString *TransactionID;
 @property (nonatomic, retain)  NSString *EncodedReceipt;

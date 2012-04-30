@@ -21,7 +21,7 @@
     
     UITextField *UsernameText;
     UITextField *PasswordText;
-    UITextField* textField;
+    UITextField* TextField;
     NSMutableData *ReponseFromServer;
     BOOL PassageFlag;
 }
@@ -35,7 +35,7 @@
 @property (nonatomic, retain)  UIImageView *ImageView;
 @property (nonatomic, retain)  UITextField *UsernameText;
 @property (nonatomic, retain)  UITextField *PasswordText;
-@property (nonatomic, retain)  UITextField* textField;
+@property (nonatomic, retain)  UITextField* TextField;
 @property (nonatomic, retain)  NSMutableData *ReponseFromServer;
 @property (nonatomic, assign) BOOL PassageFlag;
 @property (nonatomic, retain)  UIButton *WhichButton;

@@ -12,7 +12,7 @@
 
 @implementation CustomStoreObserver
 
-@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,SubscriptionInDays,TransactionID,EncodedReceipt,textField;
+@synthesize AlertTitle,EmailAddress,Password,MyDeviceId,ProductID,FinalProductID,SubscriptionInDays,TransactionID,EncodedReceipt,textField;
 
 - (id) init
 
@@ -116,18 +116,40 @@
     //Unique Device ID
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     MyDeviceId = [prefs stringForKey:@"LCUIID"];
-    //Prodcut ID
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    ProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
     // Subscipion in Days
-    SubscriptionInDays = [[NSString alloc] initWithString:[self WorkOutSubsriptionInDays:ProductID]];
+   AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+   ProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
+   SubscriptionInDays = [[NSString alloc] initWithString:[self WorkOutSubsriptionInDays:ProductID]];
+    //Prodcut ID -- Note we have to return the Product ID as it is in the database... without 1month or 7days string
+    
+    NSString *TempProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
+    
+    if ([SubscriptionInDays isEqualToString:@"30"]) {
+        
+        int lenghtofString = [TempProductID length];
+        NSString *Result = [TempProductID substringWithRange:NSMakeRange(0, lenghtofString - 6)];
+        FinalProductID = Result;
+    }
+    else {
+        
+        int lenghtofString = [TempProductID length];
+        NSString *Result = [TempProductID substringWithRange:NSMakeRange(0, lenghtofString - 5)];
+        FinalProductID = Result; 
+    } 
+    
+    //NSLog(@"%@",FinalProductID);    
+    //ProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
+    
+    
     //Transaction ID
     TransactionID =[[NSString alloc] initWithString:transaction.transactionIdentifier];
     //Encoded Receipt
-    // Now apple has added an equal sign to the end of the receipt lets remove it
+    // Now apple has added an equal sign to the end of the receipt lets remove it, Update now i can see 2 equal signs so change code
     NSString *TempReceipt = [[NSString alloc]initWithString:[self Base64Encode:Receipt]];
-    EncodedReceipt = [TempReceipt substringWithRange:NSMakeRange(0, [TempReceipt length]-1)];
-
+    //NSLog(@"%@",TempReceipt);
+    EncodedReceipt =[TempReceipt stringByReplacingOccurrencesOfString:@"=" withString:@""];
+    //EncodedReceipt = [TempReceipt substringWithRange:NSMakeRange(0, [TempReceipt length]-1)];
+    //NSLog(@"%@",EncodedReceipt);
 
     [self AskForUserEmailAndPassword];
      
@@ -156,7 +178,7 @@
     int lenghtofString = [theProductID length];
     NSString *Result = [theProductID substringWithRange:NSMakeRange(lenghtofString - 5, 5)];
     
-    NSLog(@"%@",Result);
+    //NSLog(@"%@",Result);
     
     if ([[Result lowercaseString] isEqualToString:@"month"] ){
         return @"30";
@@ -323,6 +345,7 @@
         {
          return false;
         [textView resignFirstResponder];
+        return true;
         }
         
     }
@@ -335,7 +358,7 @@
           }
           else
           {
-              return false;
+              return true;
           }
         }
     else
@@ -365,7 +388,7 @@
     NSURL *url = [NSURL URLWithString:queryString];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
-        NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@",ProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password];
+        NSString *FullString = [NSString stringWithFormat:@"productIdentifier=%@&DeviceID=%@&days=%@&transactionIdentifier=%@&B64receipt=%@&email=%@&password=%@",FinalProductID,MyDeviceId,SubscriptionInDays,TransactionID,EncodedReceipt,EmailAddress,Password];
         
         /*NSString * encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
                                                                                        NULL,
@@ -375,7 +398,7 @@
                                                                                        kCFStringEncodingUTF8 ); */
          
        // NSLog(@"%@",encodedString);
-        
+        NSLog(@"%@",FullString);
         
         NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -416,7 +439,7 @@
     -1 anything else - see see server log file */
     
     NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",returnedString);
+    NSLog(@"%@",returnedString);
     
     [self ParseReturnVal:returnedString];
     
@@ -563,6 +586,14 @@
     return pictemp;
 
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    
+    
+    return YES;
+    
+}
+
 	
 - (void) dealloc
 
