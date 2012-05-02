@@ -326,8 +326,15 @@
     }
     else if(actionSheet.tag == 4444){
         
-        // End of trasaction by poping the buy screeen nav
+        // Reload Subsciptions from server.
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
+        [appDelegate.TempSubscibedProducts removeAllObjects];
+        [appDelegate SubscriptionStatus: DeviceID];
+        
+        // End of trasaction by poping the buy screeen nav
+        //AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate.buyScreen.navigationController popViewControllerAnimated:YES]; 
         
     }
@@ -398,7 +405,7 @@
                                                                                        kCFStringEncodingUTF8 ); */
          
        // NSLog(@"%@",encodedString);
-        NSLog(@"%@",FullString);
+       // NSLog(@"%@",FullString);
         
         NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -439,7 +446,7 @@
     -1 anything else - see see server log file */
     
     NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnedString);
+    //NSLog(@"%@",returnedString);
     
     [self ParseReturnVal:returnedString];
     
@@ -499,6 +506,7 @@
     int Returnid = [string intValue];
     
     if (Returnid == 0) {
+        
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Transaction was successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         alertView.tag = 4444;

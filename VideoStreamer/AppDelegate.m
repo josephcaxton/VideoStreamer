@@ -18,7 +18,7 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,SubscibedProducts,PassageFlag,UserEmail,EmailFlag,AccessAll;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,TempSubscibedProducts,PassageFlag,UserEmail,EmailFlag,AccessAll;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -76,6 +76,11 @@
 
 -(void)SubscriptionStatus:(NSString *)DeviceID{
     
+     if(SubscriptionStatusData){
+         [SubscriptionStatusData setLength:0];
+     }
+    
+    
     NSString *Filter =[NSString stringWithString:@"1"];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -84,11 +89,12 @@
     
     NSString *queryString = [NSString stringWithFormat:@"%@/Services/iOS/VideoSubscription.asmx/ViewSubscriptionStatus",domain];
     NSURL *url = [NSURL URLWithString:queryString];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
     
     NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&filter=%@&",DeviceID,Filter];
     NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
     
+    //NSLog(@"%@",FullString);
     NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
     [req addValue:contentType forHTTPHeaderField:@"Content-Length"];
     unsigned long long postLength = data.length;
@@ -100,12 +106,18 @@
     
     NSURLConnection *conn;
     conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    [conn start];
     if (!conn) {
         NSLog(@"error while starting the connection");
     } 
     
     
     
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    
+    return nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)someData {
@@ -123,7 +135,7 @@
     
     
     [SubscriptionStatusData appendData:someData];
-    //NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
+   //NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
     //NSLog(@"%@",returnedString);
     
     
@@ -131,6 +143,8 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    
+    
     
     NSString *returnedString = [[NSString alloc] initWithData:SubscriptionStatusData encoding:NSASCIIStringEncoding];
     //NSLog(@"%@",returnedString);
@@ -143,8 +157,10 @@
     [parser setDelegate:self];
     [parser parse];
     
-    [self WorkOutSubsriptionName:TempSubscibedProducts];
-   // NSLog(@"Subscibed products= %i", [SubscibedProducts count]);
+    //[self WorkOutSubsriptionName:TempSubscibedProducts];
+    //SubscibedProducts = TempSubscibedProducts;
+    
+    //NSLog(@"Subscibed products= %i", [TempSubscibedProducts count]);
     
     // Post notification to refresh table
    
@@ -203,7 +219,7 @@
 
 
 
--(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray{
+/*-(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray{
     // Only 7 days and 30days subscription supported
     
     for (int i = 0; i < SubscibedProductsInArray.count; i++) {
@@ -226,7 +242,7 @@
             FinalVal = [Product substringWithRange:NSMakeRange(0, lenghtofString - 6)];
            
         }
-        else
+        else 
         {
             // string minus 7days
             FinalVal = [Product substringWithRange:NSMakeRange(0, lenghtofString - 5)];
@@ -247,7 +263,7 @@
     
         
     
-}
+}*/
 
 
 

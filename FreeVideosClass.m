@@ -24,11 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	// Listen to notification
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc addObserver:self selector:@selector(RefreshTable:) name:@"ToFreeVideoClass" object:nil];
+	
     
 	self.navigationItem.title = @"Free and Subscription Videos";
+    
+    // Listen to notification
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self selector:@selector(RefreshTable:) name:@"ToFreeVideoClass" object:nil];
 	 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
       //NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
@@ -38,11 +40,11 @@
     self.navigationItem.rightBarButtonItem = SendSupportMail;
     
     // Get Subscibed products from delegate
-    if([appDelegate.SubscibedProducts count] > 0){
+    /*if([appDelegate.SubscibedProducts count] > 0){
         
         ProductsSubscibedTo = [[NSMutableArray alloc] initWithArray:appDelegate.SubscibedProducts]; 
         
-    }
+    }*/
     
     // If User is fully subscibed by logging in
     FullSubscription = appDelegate.AccessAll;
@@ -94,7 +96,7 @@
     
     ArrayofConfigObjects = [[NSMutableArray alloc] init];
     
-    [self MyParser:Dir];
+   // [self MyParser:Dir];
         
    // }
     //else
@@ -109,9 +111,48 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
 
-   
+   AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
+    [self AdjustProductSubscribedTo];
+    
+    // Get Subscibed products from delegate
+    
+ /*   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
+    [appDelegate SubscriptionStatus: DeviceID];*/
+    
+        
+    NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"VideoConfig.xml"]; 
+   [self MyParser:Dir];
+    
+    
+}
 
+-(void)AdjustProductSubscribedTo{
+
+   AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if([appDelegate.TempSubscibedProducts count] > 0){
+        
+        if([ProductsSubscibedTo count] > 0){
+            
+            [ProductsSubscibedTo removeAllObjects];
+            for(int i = 0; i < [appDelegate.TempSubscibedProducts count]; i++){
+                
+                [ProductsSubscibedTo addObject:[appDelegate.TempSubscibedProducts objectAtIndex:i]]; 
+            }
+        }
+        else{
+            
+            
+            ProductsSubscibedTo = [[NSMutableArray alloc] initWithArray:appDelegate.TempSubscibedProducts]; 
+            
+        }
+        
+        
+    }
+
+    
 }
 
 
@@ -129,8 +170,13 @@
     [(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //NSLog(@"%@", appDelegate.TempSubscibedProducts);
    
     NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"VideoConfig.xml"];
+    [self AdjustProductSubscribedTo];
+     //NSLog(@"%@", appDelegate.TempSubscibedProducts);
+     //NSLog(@"%@",  ProductsSubscibedTo);
+    [ArrayofConfigObjects removeAllObjects];
     [self MyParser:Dir];
     [self.tableView reloadData];
     
@@ -453,6 +499,12 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+-(void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
+
 
 #pragma mark - View lifecycle
 

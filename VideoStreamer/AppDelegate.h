@@ -18,7 +18,7 @@
     NSString *DomainName;
     NSMutableData *SubscriptionStatusData;
     NSMutableArray *TempSubscibedProducts;
-    NSMutableArray *SubscibedProducts;
+    //NSMutableArray *SubscibedProducts;
     BOOL PassageFlag;
     NSString *UserEmail;
     BOOL EmailFlag;
@@ -34,7 +34,7 @@
 @property (nonatomic, retain) NSString *DomainName;
 @property (nonatomic, retain)  NSMutableData *SubscriptionStatusData;
 @property (nonatomic, retain) NSMutableArray *TempSubscibedProducts;
-@property (nonatomic, retain) NSMutableArray *SubscibedProducts;
+//@property (nonatomic, retain) NSMutableArray *SubscibedProducts;
 @property (nonatomic, assign) BOOL PassageFlag;
 @property (nonatomic, retain) NSString *UserEmail;
 @property (nonatomic, assign) BOOL EmailFlag;
@@ -44,6 +44,6 @@
 - (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation;
 - (NSString *)GetUUID;
 -(void)SubscriptionStatus:(NSString *)DeviceID;
--(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray;
+//-(void)WorkOutSubsriptionName:(NSMutableArray*)SubscibedProductsInArray;
 
 @end
