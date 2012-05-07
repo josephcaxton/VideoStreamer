@@ -7,7 +7,7 @@
 //
 
 #import "Help.h"
-
+#import "TermsAndConditions.h"
 @implementation Help
 
 @synthesize listofItems;
@@ -79,9 +79,9 @@
 			
 		case 1:
 			;
-//			Attribution *Attr = [[Attribution alloc] initWithNibName:nil bundle:nil];
-//			[self.navigationController pushViewController:Attr animated:YES];
-//			[Attr release];
+			TermsAndConditions *Terms = [[TermsAndConditions alloc] initWithNibName:nil bundle:nil];
+			[self.navigationController pushViewController:Terms animated:YES];
+			
 			
 			break; 
 	}
