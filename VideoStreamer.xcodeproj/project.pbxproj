@@ -99,6 +99,7 @@
 		7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */; };
 		7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */; };
 		7C45B8091557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */; };
+		7C45B8111557BF6400DE19B1 /* TermsAndConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */; };
 		7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0015137A890065D044 /* BlackBackGround.png */; };
 		7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0315137AEB0065D044 /* VideoPlayer.m */; };
 		7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4D8E05151381A50065D044 /* MediaPlayer.framework */; };
@@ -415,6 +416,8 @@
 		7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomStoreObserver.m; sourceTree = "<group>"; };
 		7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
+		7C45B80F1557BF6400DE19B1 /* TermsAndConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditions.h; sourceTree = "<group>"; };
+		7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditions.m; sourceTree = "<group>"; };
 		7C4D8E0015137A890065D044 /* BlackBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackGround.png; sourceTree = "<group>"; };
 		7C4D8E0215137AEB0065D044 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
 		7C4D8E0315137AEB0065D044 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
@@ -785,6 +788,8 @@
 				7C232D53150FB9F1003349AE /* Report.m */,
 				7C232D58150FBA67003349AE /* Help.h */,
 				7C232D59150FBA68003349AE /* Help.m */,
+				7C45B80F1557BF6400DE19B1 /* TermsAndConditions.h */,
+				7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1410,6 +1415,7 @@
 				7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */,
 				7C3A41E31514C977000A6ED4 /* Buy.m in Sources */,
 				7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */,
+				7C45B8111557BF6400DE19B1 /* TermsAndConditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Help : UIViewController
+@interface Help : UITableViewController{
+    
+    NSMutableArray *listofItems;
+}
+@property (nonatomic, retain) NSMutableArray *listofItems;
 
 @end

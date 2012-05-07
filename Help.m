@@ -10,14 +10,85 @@
 
 @implementation Help
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+@synthesize listofItems;
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"Help";
+	listofItems = [[NSMutableArray alloc] init];
+	
+	// Add items to the array this is hardcoded for now .. may need to be migrated to the database
+	[listofItems addObject:@"How to use this app"];
+    [listofItems addObject:@"Terms and Conditions"];
+	
 }
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return [listofItems count];
+    
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    
+    // Configure the cell...
+    
+    NSString *cellValue = [[NSString alloc] initWithFormat:@"%@",[listofItems objectAtIndex:indexPath.row]];
+	cell.textLabel.text = cellValue;
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+	
+	return cell;
+	
+}
+
+#pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    int index = indexPath.row;
+	
+	switch (index) {
+			
+		case 0:
+			;
+//			HelpVideo *Hlpv = [[HelpVideo alloc] initWithNibName:nil bundle:nil];
+//			[self.navigationController pushViewController:Hlpv animated:YES];
+//			[Hlpv release];
+			break;
+			
+            
+			
+		case 1:
+			;
+//			Attribution *Attr = [[Attribution alloc] initWithNibName:nil bundle:nil];
+//			[self.navigationController pushViewController:Attr animated:YES];
+//			[Attr release];
+			
+			break; 
+	}
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
