@@ -150,9 +150,17 @@
     EncodedReceipt =[TempReceipt stringByReplacingOccurrencesOfString:@"=" withString:@""];
     //EncodedReceipt = [TempReceipt substringWithRange:NSMakeRange(0, [TempReceipt length]-1)];
     //NSLog(@"%@",EncodedReceipt);
+    
+    if(appDelegate.UserEmail == nil){
 
     [self AskForUserEmailAndPassword];
-     
+    
+    }
+    else {
+        
+        [self SendToLearnersCloud];
+    
+    }
         
     //NSString* json = [NSString stringWithFormat:@"{\"receipt-data\" : \"%@\" }", EncodedReceipt];
     
@@ -262,10 +270,10 @@
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     // the user clicked one of the OK/Cancel buttons
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+   
     
     if (actionSheet.tag == 1212){
-        if (buttonIndex == 1 && appDelegate.UserEmail == nil)  // Needs testing 
+        if (buttonIndex == 1) 
         {
             [self GetUsernameAndPassword];
             

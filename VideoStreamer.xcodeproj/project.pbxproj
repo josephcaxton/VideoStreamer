@@ -98,6 +98,7 @@
 		7C3A41E51514C9A8000A6ED4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */; };
 		7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */; };
 		7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */; };
+		7C45B8091557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */; };
 		7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0015137A890065D044 /* BlackBackGround.png */; };
 		7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0315137AEB0065D044 /* VideoPlayer.m */; };
 		7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4D8E05151381A50065D044 /* MediaPlayer.framework */; };
@@ -413,6 +414,7 @@
 		7C3A41E61514C9F1000A6ED4 /* CustomStoreObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomStoreObserver.h; sourceTree = "<group>"; };
 		7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomStoreObserver.m; sourceTree = "<group>"; };
 		7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
 		7C4D8E0015137A890065D044 /* BlackBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackGround.png; sourceTree = "<group>"; };
 		7C4D8E0215137AEB0065D044 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
 		7C4D8E0315137AEB0065D044 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
@@ -1040,6 +1042,7 @@
 				7C62F599154EA2D2008A1CCE /* img248.png */,
 				7C62F59A154EA2D2008A1CCE /* img249.png */,
 				7C62F59B154EA2D2008A1CCE /* img250.png */,
+				7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */,
 			);
 			name = VideoImages;
 			sourceTree = "<group>";
@@ -1382,6 +1385,7 @@
 				7C62F5CB154EA2D2008A1CCE /* img248.png in Resources */,
 				7C62F5CC154EA2D2008A1CCE /* img249.png in Resources */,
 				7C62F5CD154EA2D2008A1CCE /* img250.png in Resources */,
+				7C45B8091557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,7 +1481,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "Maths Videos";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1489,7 +1493,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "Maths Videos";
 				WRAPPER_EXTENSION = app;
 			};

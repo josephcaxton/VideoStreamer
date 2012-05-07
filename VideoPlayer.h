@@ -11,12 +11,13 @@
 
 @interface VideoPlayer : UIViewController {
 
-	MPMoviePlayerController *moviePlayerController;
+	MPMoviePlayerViewController *moviePlayerViewController;
 	NSString *VideoFileName;
     NSString *ServerLocation;
     NSURLCredential *credential;
     NSURLProtectionSpace *protectionSpace;
     NSString *domain;
+    UIImageView *ImageViewer1;
     
 	
 }
@@ -25,5 +26,7 @@
 @property (nonatomic, retain) NSURLCredential *credential;
 @property (nonatomic, retain) NSURLProtectionSpace *protectionSpace;
 @property (nonatomic, retain) NSString *domain;
+@property (nonatomic, retain) UIImageView *ImageViewer1;
+@property (nonatomic, retain) MPMoviePlayerViewController *moviePlayerViewController;
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation Start
 
-@synthesize FirstView,FreeVideos,BtnTransfermysubscription,RentaVideo,Image,ImageView,UsernameText,PasswordText,TextField,ReponseFromServer,PassageFlag,LoginViaLearnersCloud,WhichButton;
+@synthesize FirstView,FreeVideos,BtnTransfermysubscription,RentaVideo,Image,ImageView,UsernameText,PasswordText,TextField,ReponseFromServer,PassageFlag,LoginViaLearnersCloud,WhichButton,LoginTitle;
 
 #define SCREEN_WIDTH  768    
 #define SCREEN_HEIGHT 950
@@ -28,7 +28,7 @@
     CGRect FirstViewframe = CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	self.FirstView = [[UIView alloc] initWithFrame:FirstViewframe];
     
-    
+    LoginTitle = [[NSString alloc] initWithString:@""];
     Image = [UIImage imageNamed:@"MathsBackground.png"];
     ImageView = [[UIImageView alloc] initWithImage:Image];
    // ImageView.frame = CGRectMake(0 ,0, 540, 950);
@@ -67,11 +67,11 @@
     [FirstView addSubview:BtnTransfermysubscription];
     
     LoginViaLearnersCloud = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [LoginViaLearnersCloud setTitle:@"Login" forState:UIControlStateNormal];
+    [LoginViaLearnersCloud setTitle:LoginTitle forState:UIControlStateNormal];
     [LoginViaLearnersCloud setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
     LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 44);
     LoginViaLearnersCloud.tag = 101010;
-    [LoginViaLearnersCloud addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [FirstView addSubview:LoginViaLearnersCloud];
 
@@ -79,15 +79,32 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if(appDelegate.UserEmail == nil){
+        
+        LoginTitle =@"Login";
+        [LoginViaLearnersCloud addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else {
+        
+        LoginTitle =@"Logout";
+        [LoginViaLearnersCloud addTarget:self action:@selector(LogoutUser:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+   
+
+    [LoginViaLearnersCloud setTitle:LoginTitle forState:UIControlStateNormal];
     
 }
 
 -(IBAction)ViewFreeVideos:(id)sender{
     
+   
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.SecondThread = [[NSThread alloc]initWithTarget:self selector:@selector(AddProgress) object:nil];
     [appDelegate.SecondThread start];
-
+        
+   
    
     FreeVideosClass *Free_View = [[FreeVideosClass alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:Free_View animated:YES];
@@ -95,7 +112,38 @@
     
 }
 
+-(IBAction)LogoutUser:(id)sender{
+    if ([LoginTitle isEqualToString:@"Login"]) {
+        
+        
+    }
+    else {
+        
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.AccessAll = FALSE;
+        if (appDelegate.UserEmail) {
+             appDelegate.UserEmail = nil;
+        }
+   
+   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Logout" message:@"Logout successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil,nil];
+        alertView.tag = 1111;
+   
+        
+    [alertView show];
+    
+    }
+   
+}
+
+
 -(IBAction)TransferSubscription:(id)sender{
+    if ([LoginTitle isEqualToString:@"Logout"]) {
+         
+        
+    }
+    else {
+        
+    
     
     WhichButton = (UIButton *)sender;
    // NSLog(@"%i",WhichButton.tag);
@@ -127,6 +175,7 @@
     alertView.tag = 1313;
     [alertView show];
     
+    }
 }
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -170,12 +219,17 @@
         
     }
     
-    else {
+    else if(actionSheet.tag == 1111) {
         
-        //[UsernameText resignFirstResponder];
- 
+        LoginTitle = @"Login";
+        [LoginViaLearnersCloud addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
+        [LoginViaLearnersCloud setTitle:LoginTitle forState:UIControlStateNormal];
 
         }
+    else {
+        
+        
+    }
     
 }
 
@@ -225,7 +279,10 @@
 -(void)SubscriptionTransferServer:(NSString *)DeviceID{
     
     int ButtonNumber = WhichButton.tag;
-    
+    if(ReponseFromServer){
+        [ReponseFromServer setLength:0];
+    }
+
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *domain = appDelegate.DomainName;
@@ -364,6 +421,7 @@
     
             if (Returnid == 0) {
         
+            
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 alertView.tag = 4444;
                 [alertView show];
@@ -384,6 +442,10 @@
               // User is allowed access to all videos
               AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
               appDelegate.AccessAll = TRUE;
+              appDelegate.UserEmail = @"JustAGeneralEmail@thisapp.com";
+              LoginTitle = @"Logout";
+              [LoginViaLearnersCloud addTarget:self action:@selector(LogoutUser:) forControlEvents:UIControlEventTouchUpInside];
+              [LoginViaLearnersCloud setTitle:LoginTitle forState:UIControlStateNormal];
               [self ViewFreeVideos:self];
           }
          else if (Returnid == -1)
@@ -411,6 +473,8 @@
 
 - (void)AddProgress{
 	
+    @autoreleasepool {
+
 	
 	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	[activityIndicator stopAnimating];
@@ -420,6 +484,7 @@
 	
 	[(UIActivityIndicatorView *)[self navigationItem].rightBarButtonItem.customView startAnimating];
 	
+    }
 	
 }
 
@@ -496,10 +561,14 @@
     [super viewDidLoad];
 }
 */
+- (void)dealloc {
+// NSLog(@"I am gone dear");
 
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+   
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

@@ -24,6 +24,7 @@
     UITextField* TextField;
     NSMutableData *ReponseFromServer;
     BOOL PassageFlag;
+    NSString *LoginTitle;
 }
 
 @property (nonatomic, retain) UIView *FirstView;
@@ -39,6 +40,7 @@
 @property (nonatomic, retain)  NSMutableData *ReponseFromServer;
 @property (nonatomic, assign) BOOL PassageFlag;
 @property (nonatomic, retain)  UIButton *WhichButton;
+@property (nonatomic, retain)  NSString *LoginTitle;
 
 -(IBAction)ViewFreeVideos:(id)sender;
 -(IBAction)TransferSubscription:(id)sender;

@@ -11,26 +11,27 @@
 
 @implementation VideoPlayer
 
-@synthesize VideoFileName,ServerLocation,credential,protectionSpace,domain;
+@synthesize VideoFileName,ServerLocation,credential,protectionSpace,domain,ImageViewer1,moviePlayerViewController;
 
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 950
 
 
-- (void)moviePlaybackComplete:(NSNotification *)notification  {  
+- (void)movieFinishedCallback:(NSNotification*) notification  {  
 	
-	moviePlayerController = [notification object];  
+	MPMoviePlayerController *player = [notification object];  
 	[[NSNotificationCenter defaultCenter] removeObserver:self  
 													name:MPMoviePlayerPlaybackDidFinishNotification  
-												  object:moviePlayerController];  
-	
-	[moviePlayerController.view removeFromSuperview];  
+												  object:player];  
+	[player stop];
+	[moviePlayerViewController.view removeFromSuperview];  
 	
 	
 	[self.navigationController popViewControllerAnimated:YES];
 	
 	
-}  
+}
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -47,11 +48,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 	
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BlackBackGround.png"]];
-    [self.view addSubview:backgroundImage];
-    [self.view sendSubviewToBack:backgroundImage];
-    
-	
+
     //Authentication Details here
     
    NSURLCredential *credential1 = [[NSURLCredential alloc] 
@@ -81,72 +78,28 @@
     // We can implement diffeerent Bandwidth size here..... TODO
     
     NSString *Finalpath = [ServerpathAndVideoFileName stringByAppendingString:@"/all.m3u8"];
-    
     //NSLog(@"this is my final path ... %@", Finalpath);
 	
 	NSURL    *fileURL    =   [NSURL URLWithString:Finalpath]; 
-   // NSURL *fileURL = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"];
+   
 
-	
-	moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:fileURL];
-	
-	
+	moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:fileURL];
+	 
 	[[NSNotificationCenter defaultCenter] addObserver:self  
-											 selector:@selector(moviePlaybackComplete:)  
+											 selector:@selector(movieFinishedCallback:)  
 												 name:MPMoviePlayerPlaybackDidFinishNotification  
-											   object:moviePlayerController]; 
-	
-	//moviePlayerController.controlStyle = MPMovieControlModeDefault;
-	[self.view addSubview:moviePlayerController.view];
-	
-	[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:1];
-	//moviePlayerController.fullscreen = YES;
-	//moviePlayerController.scalingMode = MPMovieScalingModeAspectFill;
-	//[self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:1];
-	[moviePlayerController play];  
-	
-	
+											   object:[moviePlayerViewController moviePlayer]];
+    
+    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+    
+
 }
 
-//- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
-//    
-//    if ([challenge previousFailureCount] == 0) {
-//        
-//        NSURLCredential *credential = [[NSURLCredential alloc] 
-//                                       initWithUser:@"theta"
-//                                       password:@"letmein2"
-//                                       persistence: NSURLCredentialPersistenceForSession];
-//        
-//        [[challenge sender] useCredential:credential
-//         
-//               forAuthenticationChallenge:challenge];
-//        
-//    } else {
-//        
-//        [[challenge sender] cancelAuthenticationChallenge:challenge];
-//        
-//        // inform the user that the user name and password
-//        
-//        // in the preferences are incorrect
-//        
-//        
-//        
-//    }
-//    
-//}
-
-//- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace{
-//    
-//    NSString *method = protectionSpace.authenticationMethod;
-//    NSLog(@"%@",method );
-//    
-//    return true;
-//}
 
 
 - (void)viewWillDisappear:(BOOL)animated {
 	
-	//[moviePlayerController stop];
+	[moviePlayerViewController.moviePlayer stop];
 	
 	
 }
@@ -164,13 +117,13 @@
 	
 	if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
 		
-		[[moviePlayerController view] setFrame:CGRectMake(30 ,150, 700, 600)];
+		[[moviePlayerViewController view] setFrame:CGRectMake(30 ,150, 700, 600)];
 		
 	}
 	
 	else {
 		
-		[[moviePlayerController view] setFrame:CGRectMake(180 ,20, 700, 600)];
+		[[moviePlayerViewController view] setFrame:CGRectMake(180 ,20, 700, 600)];
 		
 		
 	}
