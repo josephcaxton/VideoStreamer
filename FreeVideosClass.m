@@ -96,7 +96,7 @@
     
     ArrayofConfigObjects = [[NSMutableArray alloc] init];
     
-   // [self MyParser:Dir];
+   
         
     }
     else
