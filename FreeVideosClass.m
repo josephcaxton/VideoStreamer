@@ -71,7 +71,7 @@
     
          
    
-   // if(appDelegate.isDeviceConnectedToInternet){
+    if(appDelegate.isDeviceConnectedToInternet){
     
    BOOL DownloadIt =  [self ShouldIDownloadOrNot:queryFeed :Dir];
    
@@ -98,13 +98,13 @@
     
    // [self MyParser:Dir];
         
-   // }
-    //else
-   // {
+    }
+    else
+    {
     
-   //     [self Alertfailedconnection];
+        [self Alertfailedconnection];
     
-   // }
+    }
 	
     [appDelegate.SecondThread cancel];
         
