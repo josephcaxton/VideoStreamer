@@ -65,6 +65,7 @@
 		7C13086B1539911900796142 /* img56.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1308311539911900796142 /* img56.png */; };
 		7C13086C1539911900796142 /* img57.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1308321539911900796142 /* img57.png */; };
 		7C13086D1539911900796142 /* img58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1308331539911900796142 /* img58.png */; };
+		7C1499C115593BD9001A3123 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C1499C015593BD9001A3123 /* LearnersCloudTermsonapps.pdf */; };
 		7C232CDB150F8A36003349AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C232CDA150F8A36003349AE /* UIKit.framework */; };
 		7C232CDD150F8A36003349AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C232CDC150F8A36003349AE /* Foundation.framework */; };
 		7C232CDF150F8A36003349AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C232CDE150F8A36003349AE /* CoreGraphics.framework */; };
@@ -98,7 +99,6 @@
 		7C3A41E51514C9A8000A6ED4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */; };
 		7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */; };
 		7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */; };
-		7C45B8091557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */; };
 		7C45B8111557BF6400DE19B1 /* TermsAndConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */; };
 		7C45B8131557C84500DE19B1 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */; };
 		7C45B8161557C8B200DE19B1 /* HowtoUse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8151557C8B200DE19B1 /* HowtoUse.m */; };
@@ -374,6 +374,7 @@
 		7C1308311539911900796142 /* img56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img56.png; sourceTree = "<group>"; };
 		7C1308321539911900796142 /* img57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img57.png; sourceTree = "<group>"; };
 		7C1308331539911900796142 /* img58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img58.png; sourceTree = "<group>"; };
+		7C1499C015593BD9001A3123 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
 		7C232CD6150F8A36003349AE /* Maths Videos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maths Videos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C232CDA150F8A36003349AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C232CDC150F8A36003349AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -420,7 +421,6 @@
 		7C3A41E61514C9F1000A6ED4 /* CustomStoreObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomStoreObserver.h; sourceTree = "<group>"; };
 		7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomStoreObserver.m; sourceTree = "<group>"; };
 		7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
 		7C45B80F1557BF6400DE19B1 /* TermsAndConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditions.h; sourceTree = "<group>"; };
 		7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditions.m; sourceTree = "<group>"; };
 		7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
@@ -1076,7 +1076,7 @@
 				7C62F599154EA2D2008A1CCE /* img248.png */,
 				7C62F59A154EA2D2008A1CCE /* img249.png */,
 				7C62F59B154EA2D2008A1CCE /* img250.png */,
-				7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */,
+				7C1499C015593BD9001A3123 /* LearnersCloudTermsonapps.pdf */,
 				7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */,
 			);
 			name = VideoImages;
@@ -1420,8 +1420,8 @@
 				7C62F5CB154EA2D2008A1CCE /* img248.png in Resources */,
 				7C62F5CC154EA2D2008A1CCE /* img249.png in Resources */,
 				7C62F5CD154EA2D2008A1CCE /* img250.png in Resources */,
-				7C45B8091557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf in Resources */,
 				7C45B8131557C84500DE19B1 /* HowtouseVideoStreamer.pdf in Resources */,
+				7C1499C115593BD9001A3123 /* LearnersCloudTermsonapps.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
