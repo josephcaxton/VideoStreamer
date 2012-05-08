@@ -101,6 +101,10 @@
 		7C45B8091557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8081557BAC500DE19B1 /* LearnersCloudTermsonapps.pdf */; };
 		7C45B8111557BF6400DE19B1 /* TermsAndConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */; };
 		7C45B8131557C84500DE19B1 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */; };
+		7C45B8161557C8B200DE19B1 /* HowtoUse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8151557C8B200DE19B1 /* HowtoUse.m */; };
+		7C45B81A1557CF5F00DE19B1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C45B8191557CF5F00DE19B1 /* libGoogleAnalytics.a */; };
+		7C45B81C1557CF8E00DE19B1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C45B81B1557CF8E00DE19B1 /* CFNetwork.framework */; };
+		7C45B81E1557CFDF00DE19B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C45B81D1557CFDF00DE19B1 /* libsqlite3.dylib */; };
 		7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0015137A890065D044 /* BlackBackGround.png */; };
 		7C4D8E0415137AEB0065D044 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4D8E0315137AEB0065D044 /* VideoPlayer.m */; };
 		7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4D8E05151381A50065D044 /* MediaPlayer.framework */; };
@@ -420,6 +424,12 @@
 		7C45B80F1557BF6400DE19B1 /* TermsAndConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditions.h; sourceTree = "<group>"; };
 		7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditions.m; sourceTree = "<group>"; };
 		7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
+		7C45B8141557C8B200DE19B1 /* HowtoUse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowtoUse.h; sourceTree = "<group>"; };
+		7C45B8151557C8B200DE19B1 /* HowtoUse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowtoUse.m; sourceTree = "<group>"; };
+		7C45B8181557CF5600DE19B1 /* GANTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
+		7C45B8191557CF5F00DE19B1 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		7C45B81B1557CF8E00DE19B1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		7C45B81D1557CFDF00DE19B1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7C4D8E0015137A890065D044 /* BlackBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBackGround.png; sourceTree = "<group>"; };
 		7C4D8E0215137AEB0065D044 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
 		7C4D8E0315137AEB0065D044 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
@@ -638,6 +648,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C45B81E1557CFDF00DE19B1 /* libsqlite3.dylib in Frameworks */,
+				7C45B81C1557CF8E00DE19B1 /* CFNetwork.framework in Frameworks */,
 				7C69740115419E6B004965DF /* MessageUI.framework in Frameworks */,
 				7C3A41E51514C9A8000A6ED4 /* StoreKit.framework in Frameworks */,
 				7C4D8E06151381A50065D044 /* MediaPlayer.framework in Frameworks */,
@@ -645,6 +657,7 @@
 				7C232CDB150F8A36003349AE /* UIKit.framework in Frameworks */,
 				7C232CDD150F8A36003349AE /* Foundation.framework in Frameworks */,
 				7C232CDF150F8A36003349AE /* CoreGraphics.framework in Frameworks */,
+				7C45B81A1557CF5F00DE19B1 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +667,7 @@
 		7C232CCB150F8A36003349AE = {
 			isa = PBXGroup;
 			children = (
+				7C45B8171557CF4100DE19B1 /* Analytics */,
 				7C4D8DF8151369E60065D044 /* VideoImages */,
 				7CA25C441511020300137875 /* Data Models */,
 				7C232D38150FB43B003349AE /* Classes */,
@@ -678,6 +692,8 @@
 		7C232CD9150F8A36003349AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C45B81D1557CFDF00DE19B1 /* libsqlite3.dylib */,
+				7C45B81B1557CF8E00DE19B1 /* CFNetwork.framework */,
 				7C69740015419E6B004965DF /* MessageUI.framework */,
 				7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */,
 				7C4D8E05151381A50065D044 /* MediaPlayer.framework */,
@@ -792,8 +808,19 @@
 				7C232D59150FBA68003349AE /* Help.m */,
 				7C45B80F1557BF6400DE19B1 /* TermsAndConditions.h */,
 				7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */,
+				7C45B8141557C8B200DE19B1 /* HowtoUse.h */,
+				7C45B8151557C8B200DE19B1 /* HowtoUse.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		7C45B8171557CF4100DE19B1 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				7C45B8181557CF5600DE19B1 /* GANTracker.h */,
+				7C45B8191557CF5F00DE19B1 /* libGoogleAnalytics.a */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 		7C4D8DF8151369E60065D044 /* VideoImages */ = {
@@ -1420,6 +1447,7 @@
 				7C3A41E31514C977000A6ED4 /* Buy.m in Sources */,
 				7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */,
 				7C45B8111557BF6400DE19B1 /* TermsAndConditions.m in Sources */,
+				7C45B8161557C8B200DE19B1 /* HowtoUse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1492,6 +1520,10 @@
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "Maths Videos";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1504,6 +1536,10 @@
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "Maths Videos";
 				WRAPPER_EXTENSION = app;
 			};

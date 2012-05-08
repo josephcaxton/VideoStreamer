@@ -8,6 +8,7 @@
 
 #import "Help.h"
 #import "TermsAndConditions.h"
+#import "HowtoUse.h"
 @implementation Help
 
 @synthesize listofItems;
@@ -69,21 +70,23 @@
 	switch (index) {
 			
 		case 0:
+        {
 			;
-//			HelpVideo *Hlpv = [[HelpVideo alloc] initWithNibName:nil bundle:nil];
-//			[self.navigationController pushViewController:Hlpv animated:YES];
-//			[Hlpv release];
-			break;
+			HowtoUse *Howto = [[HowtoUse alloc] initWithNibName:nil bundle:nil];
+			[self.navigationController pushViewController:Howto animated:YES];
 			
-            
+            break;
+		}	
 			
 		case 1:
+        {
 			;
 			TermsAndConditions *Terms = [[TermsAndConditions alloc] initWithNibName:nil bundle:nil];
 			[self.navigationController pushViewController:Terms animated:YES];
 			
 			
 			break; 
+        }
 	}
 }
 

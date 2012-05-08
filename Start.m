@@ -9,6 +9,7 @@
 #import "Start.h"
 #import "FreeVideosClass.h"
 #import "AppDelegate.h"
+#import "GANTracker.h"
 
 @implementation Start
 
@@ -421,7 +422,16 @@
     
             if (Returnid == 0) {
         
-            
+                NSError *error;
+                // Report to  analytics
+                if (![[GANTracker sharedTracker] trackEvent:@"User transfer subscription to another device"
+                                                     action:@"Transfer successful"
+                                                      label:@"Transfer successful"
+                                                      value:89
+                                                  withError:&error]) {
+                    NSLog(@"error in trackEvent");
+                }
+
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 alertView.tag = 4444;
                 [alertView show];
@@ -440,6 +450,16 @@
         
           if (Returnid == 0) {
               // User is allowed access to all videos
+               NSError *error;
+              // Report to  analytics
+              if (![[GANTracker sharedTracker] trackEvent:@"Successful Login via credentials"
+                                                   action:@"Login to maths successful"
+                                                    label:@"Login to maths successful"
+                                                    value:79
+                                                withError:&error]) {
+                  NSLog(@"error in trackEvent");
+              }
+
               AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
               appDelegate.AccessAll = TRUE;
               appDelegate.UserEmail = @"JustAGeneralEmail@thisapp.com";
@@ -451,12 +471,33 @@
          else if (Returnid == -1)
              
          {
+             NSError *error;
+             // Report to  analytics
+             if (![[GANTracker sharedTracker] trackEvent:@"User rejected login due to no subscription"
+                                                  action:@"No subscription"
+                                                   label:@"No subscription"
+                                                   value:79
+                                               withError:&error]) {
+                 NSLog(@"error in trackEvent");
+             }
+
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"You don't have any running subscription" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
              alertView.tag = 4444;
              [alertView show];
          
          }
          else {
+             
+             NSError *error;
+             // Report to  analytics
+             if (![[GANTracker sharedTracker] trackEvent:@"User login failed"
+                                                  action:@"Login to maths failed"
+                                                   label:@"Login to maths failed"
+                                                   value:79
+                                               withError:&error]) {
+                 NSLog(@"error in trackEvent");
+             }
+
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Not successful" message:@"Login failed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
              alertView.tag = 4444;
              [alertView show];

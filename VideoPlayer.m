@@ -8,6 +8,7 @@
 
 #import "VideoPlayer.h"
 #import "AppDelegate.h"
+#import "GANTracker.h"
 
 @implementation VideoPlayer
 
@@ -19,7 +20,18 @@
 
 - (void)movieFinishedCallback:(NSNotification*) notification  {  
 	
-	MPMoviePlayerController *player = [notification object];  
+    NSError *error;
+    // Report to  analytics
+    if (![[GANTracker sharedTracker] trackEvent:@"Finished playing video"
+                                         action:@"Playing Finished"
+                                          label:@"Playing Finished"
+                                          value:69
+                                      withError:&error]) {
+        NSLog(@"error in trackEvent");
+    }
+
+    
+    MPMoviePlayerController *player = [notification object];  
 	[[NSNotificationCenter defaultCenter] removeObserver:self  
 													name:MPMoviePlayerPlaybackDidFinishNotification  
 												  object:player];  
@@ -48,6 +60,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 	
+
+    NSError *error;
+    // Report to  analytics
+    if (![[GANTracker sharedTracker] trackEvent:@"Playing Video"
+                                         action:@"Playing"
+                                          label:@"Playing"
+                                          value:69
+                                      withError:&error]) {
+        NSLog(@"error in trackEvent");
+    }
+    
 
     //Authentication Details here
     
