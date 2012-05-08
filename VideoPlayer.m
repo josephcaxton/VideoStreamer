@@ -54,6 +54,12 @@
     domain = appDelegate.DomainName;
     ServerLocation = [NSString stringWithFormat:@"%@/iosStream/",domain];
 	
+    NSError *error;
+    // Report to  analytics
+    if (![[GANTracker sharedTracker] trackPageview:@"/VideoPlayerPage"
+                                         withError:&error]) {
+        NSLog(@"error in trackPageview");
+    }
 
 	
 }

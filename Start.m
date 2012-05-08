@@ -75,6 +75,13 @@
     
     
     [FirstView addSubview:LoginViaLearnersCloud];
+    
+    NSError *error;
+    // Report to  analytics
+    if (![[GANTracker sharedTracker] trackPageview:@"/StartPage"
+                                         withError:&error]) {
+        NSLog(@"error in trackPageview");
+    }
 
 }
 - (void)viewWillAppear:(BOOL)animated {
