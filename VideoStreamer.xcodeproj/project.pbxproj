@@ -375,6 +375,8 @@
 		7C1308321539911900796142 /* img57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img57.png; sourceTree = "<group>"; };
 		7C1308331539911900796142 /* img58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img58.png; sourceTree = "<group>"; };
 		7C1499C015593BD9001A3123 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
+		7C1499C815595A4F001A3123 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		7C1499C915595A4F001A3123 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		7C232CD6150F8A36003349AE /* Maths Videos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Maths Videos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C232CDA150F8A36003349AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C232CDC150F8A36003349AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -664,9 +666,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C1499C715595A3A001A3123 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				7C1499C815595A4F001A3123 /* Reachability.h */,
+				7C1499C915595A4F001A3123 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		7C232CCB150F8A36003349AE = {
 			isa = PBXGroup;
 			children = (
+				7C1499C715595A3A001A3123 /* Reachability */,
 				7C45B8171557CF4100DE19B1 /* Analytics */,
 				7C4D8DF8151369E60065D044 /* VideoImages */,
 				7CA25C441511020300137875 /* Data Models */,

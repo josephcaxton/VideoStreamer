@@ -10,6 +10,9 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netinet/in.h>
 #import "GANTracker.h"
+#import "Reachability.h"
+
+
 //#import "FirstViewController.h"
 
 //#import "SecondViewController.h"
@@ -315,7 +318,7 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
 
 -(BOOL)isDeviceConnectedToInternet{
     
-    static BOOL checkNetwork = YES;
+    /*static BOOL checkNetwork = YES;
 	BOOL _isDataSourceAvailable;
     if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
          checkNetwork = NO; //don't cache
@@ -329,7 +332,15 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
         _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
         CFRelease(reachability);
     }
-    return _isDataSourceAvailable;
+     
+     return _isDataSourceAvailable;
+     */
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];  
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus]; 
+    return !(networkStatus == NotReachable);
+
+    
 }
 
 //Return True is file does not exist in device -- so download from server;
