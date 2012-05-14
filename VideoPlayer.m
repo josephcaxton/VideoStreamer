@@ -52,7 +52,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     domain = appDelegate.DomainName;
-    ServerLocation = [NSString stringWithFormat:@"%@/iosStream/",domain];
+    ServerLocation = [NSString stringWithFormat:@"%@/iosStream/maths/",domain];
 	
     NSError *error;
     // Report to  analytics
@@ -87,7 +87,7 @@
     self.credential = credential1;
     
     NSString *DomainLocation = [domain stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-    
+    //NSString *DomainLocationPlus = [DomainLocation stringByAppendingString:@"/maths"];
    NSURLProtectionSpace *protectionSpace1 = [[NSURLProtectionSpace alloc]
                                              initWithHost: DomainLocation 
                                              port:80
