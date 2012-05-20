@@ -294,6 +294,9 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *domain = appDelegate.DomainName;
+    
+    appDelegate.SecondThread = [[NSThread alloc]initWithTarget:self selector:@selector(AddProgress) object:nil];
+    [appDelegate.SecondThread start];
 
     if (ButtonNumber == 999) {
         
@@ -302,6 +305,7 @@
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
     NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&email=%@&password=%@&",DeviceID,UsernameText.text,PasswordText.text];
+    //NSLog(@"%@",DeviceID);
     NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
     
     NSString *contentType = @"application/x-www-form-urlencoded; charset=utf-8";
@@ -388,6 +392,11 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.SecondThread = [[NSThread alloc]initWithTarget:self selector:@selector(AddProgress) object:nil];
+    [appDelegate.SecondThread cancel];
+    [self navigationItem].rightBarButtonItem = nil;
+    
     NSString *returnedString = [[NSString alloc] initWithData:ReponseFromServer encoding:NSASCIIStringEncoding];
     //NSLog(@"%@",returnedString);
     NSString *Clean1 = [returnedString stringByReplacingOccurrencesOfString:@"&lt;" withString:@"<"];
@@ -438,6 +447,8 @@
                                                   withError:&error]) {
                     NSLog(@"error in trackEvent");
                 }
+                
+                
 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 alertView.tag = 4444;

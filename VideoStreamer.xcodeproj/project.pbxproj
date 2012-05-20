@@ -96,12 +96,12 @@
 		7C232D54150FB9F1003349AE /* Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D53150FB9F1003349AE /* Report.m */; };
 		7C232D5A150FBA68003349AE /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C232D59150FBA68003349AE /* Help.m */; };
 		7C256D9715483DB8002207D5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C256D9615483DB8002207D5 /* Icon.png */; };
+		7C29F24E1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C29F24D1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf */; };
 		7C3A41E31514C977000A6ED4 /* Buy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E21514C977000A6ED4 /* Buy.m */; };
 		7C3A41E51514C9A8000A6ED4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */; };
 		7C3A41E81514C9F1000A6ED4 /* CustomStoreObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A41E71514C9F1000A6ED4 /* CustomStoreObserver.m */; };
 		7C3CC6C41511F085007EF613 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */; };
 		7C45B8111557BF6400DE19B1 /* TermsAndConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */; };
-		7C45B8131557C84500DE19B1 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */; };
 		7C45B8161557C8B200DE19B1 /* HowtoUse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C45B8151557C8B200DE19B1 /* HowtoUse.m */; };
 		7C45B81A1557CF5F00DE19B1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C45B8191557CF5F00DE19B1 /* libGoogleAnalytics.a */; };
 		7C45B81C1557CF8E00DE19B1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C45B81B1557CF8E00DE19B1 /* CFNetwork.framework */; };
@@ -416,6 +416,7 @@
 		7C232D58150FBA67003349AE /* Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Help.h; sourceTree = "<group>"; };
 		7C232D59150FBA68003349AE /* Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Help.m; sourceTree = "<group>"; };
 		7C256D9615483DB8002207D5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7C29F24D1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7C3A41E11514C977000A6ED4 /* Buy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buy.h; sourceTree = "<group>"; };
 		7C3A41E21514C977000A6ED4 /* Buy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Buy.m; sourceTree = "<group>"; };
 		7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -424,7 +425,6 @@
 		7C3CC6C31511F085007EF613 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7C45B80F1557BF6400DE19B1 /* TermsAndConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditions.h; sourceTree = "<group>"; };
 		7C45B8101557BF6400DE19B1 /* TermsAndConditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditions.m; sourceTree = "<group>"; };
-		7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7C45B8141557C8B200DE19B1 /* HowtoUse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowtoUse.h; sourceTree = "<group>"; };
 		7C45B8151557C8B200DE19B1 /* HowtoUse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowtoUse.m; sourceTree = "<group>"; };
 		7C45B8181557CF5600DE19B1 /* GANTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
@@ -1075,8 +1075,8 @@
 				7C62F599154EA2D2008A1CCE /* img248.png */,
 				7C62F59A154EA2D2008A1CCE /* img249.png */,
 				7C62F59B154EA2D2008A1CCE /* img250.png */,
+				7C29F24D1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf */,
 				7C1499CE1559660F001A3123 /* LearnersCloudTermsonapps.pdf */,
-				7C45B8121557C84500DE19B1 /* HowtouseVideoStreamer.pdf */,
 			);
 			name = VideoImages;
 			sourceTree = "<group>";
@@ -1412,13 +1412,13 @@
 				7C62F5CB154EA2D2008A1CCE /* img248.png in Resources */,
 				7C62F5CC154EA2D2008A1CCE /* img249.png in Resources */,
 				7C62F5CD154EA2D2008A1CCE /* img250.png in Resources */,
-				7C45B8131557C84500DE19B1 /* HowtouseVideoStreamer.pdf in Resources */,
 				7C1499CF1559660F001A3123 /* LearnersCloudTermsonapps.pdf in Resources */,
 				7C1CEBBB1561410F0065CA47 /* img1.png in Resources */,
 				7C1CEBBD156141220065CA47 /* img4.png in Resources */,
 				7C1CEBBF156141320065CA47 /* img10.png in Resources */,
 				7C1CEBC1156141440065CA47 /* img18.png in Resources */,
 				7C1CEBC3156141740065CA47 /* img23.png in Resources */,
+				7C29F24E1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
