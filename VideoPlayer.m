@@ -81,12 +81,12 @@
     //Authentication Details here
     
    NSURLCredential *credential1 = [[NSURLCredential alloc] 
-                                   initWithUser:@"theta"
-                                   password:@"letmein2"
+                                   initWithUser:@"Theta"
+                                   password:@"Ffk7acay@#"
                                    persistence: NSURLCredentialPersistenceForSession];
     self.credential = credential1;
     
-    NSString *DomainLocation = [domain stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+    NSString *DomainLocation = @"learnerscloud.com"; //[domain stringByReplacingOccurrencesOfString:@"http://" withString:@""];
     //NSString *DomainLocationPlus = [DomainLocation stringByAppendingString:@"/maths"];
    NSURLProtectionSpace *protectionSpace1 = [[NSURLProtectionSpace alloc]
                                              initWithHost: DomainLocation 
@@ -113,6 +113,7 @@
    
 
 	moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:fileURL];
+    moviePlayerViewController.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
 	 
 	[[NSNotificationCenter defaultCenter] addObserver:self  
 											 selector:@selector(movieFinishedCallback:)  

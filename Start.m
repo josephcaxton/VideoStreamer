@@ -93,10 +93,17 @@
         LoginTitle =@"Login";
         [LoginViaLearnersCloud addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else {
+    
+    else if([appDelegate.UserEmail isEqualToString:@"JustAGeneralEmail@thisapp.com"]){
         
         LoginTitle =@"Logout";
         [LoginViaLearnersCloud addTarget:self action:@selector(LogoutUser:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    else {
+        
+        LoginTitle =@"Login";
+        [LoginViaLearnersCloud addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
     }
     
    
@@ -117,6 +124,20 @@
     FreeVideosClass *Free_View = [[FreeVideosClass alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:Free_View animated:YES];
     
+    
+}
+
+-(IBAction)RefreshSubsciptionStatus:(id)sender{
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.SecondThread = [[NSThread alloc]initWithTarget:self selector:@selector(AddProgress) object:nil];
+    [appDelegate.SecondThread start];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
+    
+    [appDelegate SubscriptionStatus:DeviceID];
+
     
 }
 
@@ -452,6 +473,7 @@
 
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Update successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 alertView.tag = 4444;
+                [self RefreshSubsciptionStatus:self];
                 [alertView show];
              }
     
