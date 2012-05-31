@@ -339,7 +339,7 @@
          NSString* descriptiontxt = [obj VideoDescription];
          NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
         cell.detailTextLabel.text =FullDesciption;
-         cell.detailTextLabel.textColor = [UIColor grayColor];
+         cell.detailTextLabel.textColor = [UIColor brownColor];
         
     }
     // Is user Subscribed?
@@ -450,12 +450,15 @@
 	
 	if ([MFMailComposeViewController canSendMail]) {
         
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
+        
         NSArray *SendTo = [NSArray arrayWithObjects:@"support@LearnersCloud.com",nil];
         
         MFMailComposeViewController *SendMailcontroller = [[MFMailComposeViewController alloc]init];
         SendMailcontroller.mailComposeDelegate = self;
         [SendMailcontroller setToRecipients:SendTo];
-        [SendMailcontroller setSubject:[NSString stringWithFormat:@"Maths video streaming customer help"]];
+        [SendMailcontroller setSubject:[NSString stringWithFormat:@"%@ Maths video streaming iPad",DeviceID]];
         
         [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Additional Messages can be added to this email "] isHTML:NO];
         [self presentModalViewController:SendMailcontroller animated:YES];

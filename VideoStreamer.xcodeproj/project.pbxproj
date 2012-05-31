@@ -61,7 +61,6 @@
 		7C13086C1539911900796142 /* img57.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1308321539911900796142 /* img57.png */; };
 		7C13086D1539911900796142 /* img58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1308331539911900796142 /* img58.png */; };
 		7C1499CD15595F98001A3123 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1499C915595A4F001A3123 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7C1499CF1559660F001A3123 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C1499CE1559660F001A3123 /* LearnersCloudTermsonapps.pdf */; };
 		7C1CEBBB1561410F0065CA47 /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1CEBBA1561410F0065CA47 /* img1.png */; };
 		7C1CEBBD156141220065CA47 /* img4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1CEBBC156141220065CA47 /* img4.png */; };
 		7C1CEBBF156141320065CA47 /* img10.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1CEBBE156141320065CA47 /* img10.png */; };
@@ -308,6 +307,7 @@
 		7CBE7412153C45B600B6338C /* img68.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE7406153C45B600B6338C /* img68.png */; };
 		7CBE7413153C45B600B6338C /* img69.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE7407153C45B600B6338C /* img69.png */; };
 		7CBE7414153C45B600B6338C /* img70.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE7408153C45B600B6338C /* img70.png */; };
+		7CC0311E1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CC0311D1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf */; };
 		7CD5E3FE15480A450044C41F /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E3FD15480A450044C41F /* Icon-Small-50.png */; };
 		7CD5E40015480A5C0044C41F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E3FF15480A5C0044C41F /* Icon-72.png */; };
 		7CD5E40215480A700044C41F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E40115480A700044C41F /* Icon@2x.png */; };
@@ -370,7 +370,6 @@
 		7C1308331539911900796142 /* img58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img58.png; sourceTree = "<group>"; };
 		7C1499C815595A4F001A3123 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7C1499C915595A4F001A3123 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		7C1499CE1559660F001A3123 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
 		7C1CEBBA1561410F0065CA47 /* img1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img1.png; sourceTree = "<group>"; };
 		7C1CEBBC156141220065CA47 /* img4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img4.png; sourceTree = "<group>"; };
 		7C1CEBBE156141320065CA47 /* img10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img10.png; sourceTree = "<group>"; };
@@ -636,6 +635,7 @@
 		7CBE7406153C45B600B6338C /* img68.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img68.png; sourceTree = "<group>"; };
 		7CBE7407153C45B600B6338C /* img69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img69.png; sourceTree = "<group>"; };
 		7CBE7408153C45B600B6338C /* img70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img70.png; sourceTree = "<group>"; };
+		7CC0311D1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
 		7CD5E3FD15480A450044C41F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		7CD5E3FF15480A5C0044C41F /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		7CD5E40115480A700044C41F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -1076,7 +1076,7 @@
 				7C62F59A154EA2D2008A1CCE /* img249.png */,
 				7C62F59B154EA2D2008A1CCE /* img250.png */,
 				7C29F24D1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf */,
-				7C1499CE1559660F001A3123 /* LearnersCloudTermsonapps.pdf */,
+				7CC0311D1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf */,
 			);
 			name = VideoImages;
 			sourceTree = "<group>";
@@ -1412,13 +1412,13 @@
 				7C62F5CB154EA2D2008A1CCE /* img248.png in Resources */,
 				7C62F5CC154EA2D2008A1CCE /* img249.png in Resources */,
 				7C62F5CD154EA2D2008A1CCE /* img250.png in Resources */,
-				7C1499CF1559660F001A3123 /* LearnersCloudTermsonapps.pdf in Resources */,
 				7C1CEBBB1561410F0065CA47 /* img1.png in Resources */,
 				7C1CEBBD156141220065CA47 /* img4.png in Resources */,
 				7C1CEBBF156141320065CA47 /* img10.png in Resources */,
 				7C1CEBC1156141440065CA47 /* img18.png in Resources */,
 				7C1CEBC3156141740065CA47 /* img23.png in Resources */,
 				7C29F24E1567C3DD00ECECDE /* HowtouseVideoStreamer.pdf in Resources */,
+				7CC0311E1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
