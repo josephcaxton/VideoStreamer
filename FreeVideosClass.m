@@ -339,7 +339,7 @@
          NSString* descriptiontxt = [obj VideoDescription];
          NSString* FullDesciption = [descriptiontxt stringByAppendingString:@" - Free view"];
         cell.detailTextLabel.text =FullDesciption;
-         cell.detailTextLabel.textColor = [UIColor brownColor];
+         cell.detailTextLabel.textColor = [UIColor blueColor];
         
     }
     // Is user Subscribed?
