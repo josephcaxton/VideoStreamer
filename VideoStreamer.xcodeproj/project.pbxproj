@@ -288,7 +288,6 @@
 		7C699D75153DD8D50051F1E9 /* img116.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C699D70153DD8D50051F1E9 /* img116.png */; };
 		7C699D76153DD8D50051F1E9 /* img117.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C699D71153DD8D50051F1E9 /* img117.png */; };
 		7C699D77153DD8D50051F1E9 /* img118.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C699D72153DD8D50051F1E9 /* img118.png */; };
-		7C7E3C2A1518F9AC002F0313 /* MathsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E3C291518F9AC002F0313 /* MathsBackground.png */; };
 		7C7F21D4157E0960005BB027 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C7F21D3157E0960005BB027 /* HowtouseVideoStreamer.pdf */; };
 		7CA25C381510C70700137875 /* YellowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C371510C70700137875 /* YellowBackground.png */; };
 		7CA25C3B1510C95100137875 /* RentVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA25C391510C95100137875 /* RentVideo.png */; };
@@ -312,6 +311,7 @@
 		7CD5E40015480A5C0044C41F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E3FF15480A5C0044C41F /* Icon-72.png */; };
 		7CD5E40215480A700044C41F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E40115480A700044C41F /* Icon@2x.png */; };
 		7CD5E40415480A940044C41F /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E40315480A940044C41F /* iTunesArtwork.png */; };
+		7CDA00211585F2870035619C /* MathsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDA00201585F2870035619C /* MathsBackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -614,7 +614,6 @@
 		7C699D70153DD8D50051F1E9 /* img116.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img116.png; sourceTree = "<group>"; };
 		7C699D71153DD8D50051F1E9 /* img117.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img117.png; sourceTree = "<group>"; };
 		7C699D72153DD8D50051F1E9 /* img118.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img118.png; sourceTree = "<group>"; };
-		7C7E3C291518F9AC002F0313 /* MathsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MathsBackground.png; sourceTree = "<group>"; };
 		7C7F21D3157E0960005BB027 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7CA25C371510C70700137875 /* YellowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowBackground.png; sourceTree = "<group>"; };
 		7CA25C391510C95100137875 /* RentVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RentVideo.png; sourceTree = "<group>"; };
@@ -640,6 +639,7 @@
 		7CD5E3FF15480A5C0044C41F /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		7CD5E40115480A700044C41F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		7CD5E40315480A940044C41F /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		7CDA00201585F2870035619C /* MathsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MathsBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -763,8 +763,8 @@
 				7C232D28150FA2A0003349AE /* Default-LandscapeRight.png */,
 				7C232D29150FA2A0003349AE /* Default-Portrait.png */,
 				7C232D2A150FA2A0003349AE /* Default-PortraitUpsideDown.png */,
-				7C7E3C291518F9AC002F0313 /* MathsBackground.png */,
 				7CA25C371510C70700137875 /* YellowBackground.png */,
+				7CDA00201585F2870035619C /* MathsBackground.png */,
 				7CA25C391510C95100137875 /* RentVideo.png */,
 				7CA25C3F1510CEFA00137875 /* blueBackground.png */,
 				7C4D8E0015137A890065D044 /* BlackBackGround.png */,
@@ -1161,7 +1161,6 @@
 				7CA25C3B1510C95100137875 /* RentVideo.png in Resources */,
 				7CA25C401510CEFA00137875 /* blueBackground.png in Resources */,
 				7C4D8E0115137A890065D044 /* BlackBackGround.png in Resources */,
-				7C7E3C2A1518F9AC002F0313 /* MathsBackground.png in Resources */,
 				7C1308351539911900796142 /* img2.png in Resources */,
 				7C1308361539911900796142 /* img3.png in Resources */,
 				7C1308381539911900796142 /* img5.png in Resources */,
@@ -1419,6 +1418,7 @@
 				7C1CEBC3156141740065CA47 /* img23.png in Resources */,
 				7CC0311E1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf in Resources */,
 				7C7F21D4157E0960005BB027 /* HowtouseVideoStreamer.pdf in Resources */,
+				7CDA00211585F2870035619C /* MathsBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
