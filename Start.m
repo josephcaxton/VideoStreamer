@@ -25,7 +25,7 @@
     
 
     
-    self.navigationItem.title = @"www.LearnersCloud.com";
+    self.navigationItem.title = @"Maths from LearnersCloud";
     CGRect FirstViewframe = CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	self.FirstView = [[UIView alloc] initWithFrame:FirstViewframe];
     
