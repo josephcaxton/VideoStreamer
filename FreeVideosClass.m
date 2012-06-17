@@ -16,7 +16,7 @@
 @implementation FreeVideosClass
 
 
-@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo,FullSubscription;
+@synthesize ArrayofConfigObjects,ProductIDs,ImageObjects,ProductsSubscibedTo,FullSubscription,popover;
 
 
 
@@ -35,10 +35,47 @@
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
       //NSLog(@"Subscibed products= %@", appDelegate.SubscibedProducts);
     
+    // create a toolbar where we can place some buttons
+    UIToolbar* toolbar = [[UIToolbar alloc]
+                          initWithFrame:CGRectMake(0, 0, 210, 45)];
+    [toolbar setBarStyle: UIBarStyleBlack];
     
+    
+    // create an array for the buttons
+    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    //create Report Problem Button
     UIBarButtonItem *SendSupportMail = [[UIBarButtonItem alloc] initWithTitle:@"Report Problem" style: UIBarButtonItemStyleBordered target:self action:@selector(ReportProblem:)];
-    self.navigationItem.rightBarButtonItem = SendSupportMail;
+    //self.navigationItem.rightBarButtonItem = SendSupportMail;
     
+    [buttons addObject:SendSupportMail];
+    
+    // create a spacer between the buttons
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc]
+                               initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                               target:nil
+                               action:nil];
+    [buttons addObject:spacer];
+    
+    // Create Share image button
+    UIImage *ShareImage = [UIImage imageNamed:@"shareIcon.png"];
+    UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
+    face.bounds = CGRectMake( 0, 0, ShareImage.size.width, ShareImage.size.height );
+    [face setImage:ShareImage forState:UIControlStateNormal];
+    [face addTarget:self action:@selector(share:)forControlEvents:UIControlEventTouchUpInside];
+
+    UIBarButtonItem *ShareButton = [[UIBarButtonItem alloc] initWithCustomView:face];
+    
+    //UIBarButtonItem *ShareButton = [[UIBarButtonItem alloc] initWithTitle:@"Share" style: UIBarButtonItemStyleBordered target:self //action:@selector(share:)];
+    
+    [buttons addObject:ShareButton];
+    
+    // put the buttons in the toolbar
+    [toolbar setItems:buttons animated:NO];
+    
+    // place the toolbar into the navigation bar
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithCustomView:toolbar];
     // Get Subscibed products from delegate
     /*if([appDelegate.SubscibedProducts count] > 0){
         
@@ -460,7 +497,7 @@
         [SendMailcontroller setToRecipients:SendTo];
         [SendMailcontroller setSubject:[NSString stringWithFormat:@"%@ Maths video streaming iPad",DeviceID]];
         
-        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Additional Messages can be added to this email "] isHTML:NO];
+        [SendMailcontroller setMessageBody:[NSString stringWithFormat:@"Add Message here "] isHTML:NO];
         [self presentModalViewController:SendMailcontroller animated:YES];
         
 		
@@ -492,6 +529,33 @@
 	
 	
 }
+
+- (IBAction)share:(id)sender{
+    UIButton *button = (UIButton*)sender;
+    
+    PopUpTableviewViewController *tableViewController = [[PopUpTableviewViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    
+   popover = [[UIPopoverController alloc] initWithContentViewController:tableViewController];
+   tableViewController.m_popover = popover;
+  [popover setPopoverContentSize:CGSizeMake(320, 320) animated:YES];
+
+   [popover presentPopoverFromRect:CGRectMake(button.frame.size.width / 2, button.frame.size.height / 1, 1, 1) inView:button permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    
+   
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration{
+    
+    if(popover){
+        
+        [popover dismissPopoverAnimated:YES];
+        [popover.delegate popoverControllerDidDismissPopover:self.popover];
+        
+    }
+    
+}
+
 
 
 

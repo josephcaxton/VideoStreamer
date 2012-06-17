@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "PopUpTableviewViewController.h"
 @interface FreeVideosClass :  UITableViewController  <UITableViewDataSource, UITableViewDelegate,MFMailComposeViewControllerDelegate>{
     
     NSMutableArray *ArrayofConfigObjects;
@@ -15,6 +16,7 @@
     NSMutableArray *ImageObjects;
     NSMutableArray *ProductsSubscibedTo;
     BOOL FullSubscription;
+    UIPopoverController *popover;
     
 }
 
@@ -23,6 +25,7 @@
 @property (nonatomic, retain)  NSMutableArray *ImageObjects;
 @property (nonatomic, retain)  NSMutableArray *ProductsSubscibedTo;
 @property (nonatomic, assign) BOOL FullSubscription;
+@property (nonatomic, retain)  UIPopoverController *popover;
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;

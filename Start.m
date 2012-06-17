@@ -26,10 +26,26 @@
 
     
     self.navigationItem.title = @"Maths from LearnersCloud";
+    
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil];
+
+    
+    UINavigationController *nav =self.navigationController;
+    nav.navigationBar.tintColor = [UIColor blackColor];
+    
+    //[self.view setBackgroundColor:[UIColor grayColor]];
+
+    
     CGRect FirstViewframe = CGRectMake(0 ,0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	self.FirstView = [[UIView alloc] initWithFrame:FirstViewframe];
     
     LoginTitle = [[NSString alloc] initWithString:@""];
+     
+    
     Image = [UIImage imageNamed:@"MathsBackground.png"];
     ImageView = [[UIImageView alloc] initWithImage:Image];
    // ImageView.frame = CGRectMake(0 ,0, 540, 950);
@@ -43,11 +59,11 @@
     [self.view addSubview:FirstView];
     
    
-    FreeVideos = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [FreeVideos setTitle:@"Start here to view free and subscription videos!" forState:UIControlStateNormal];
+    FreeVideos = [UIButton buttonWithType: UIButtonTypeCustom];
+    //[FreeVideos setTitle:@"Start here to view free and subscription videos!" forState:UIControlStateNormal];
     FreeVideos.frame = CGRectMake(85 ,100, 600, 44);
-   // UIImage *FreeVideosbuttonImage = [UIImage imageNamed:@"YellowBackground.png"];
-   // [FreeVideos setBackgroundImage:FreeVideosbuttonImage forState:UIControlStateNormal];
+   UIImage *FreeVideosbuttonImage = [UIImage imageNamed:@"starthere.png"];
+   [FreeVideos setBackgroundImage:FreeVideosbuttonImage forState:UIControlStateNormal];
     
 
     [FreeVideos addTarget:self action:@selector(ViewFreeVideos:) forControlEvents:UIControlEventTouchUpInside];
@@ -56,20 +72,23 @@
     
     
     
-    BtnTransfermysubscription = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [BtnTransfermysubscription setTitle:@"Transfer my subscription to this device" forState:UIControlStateNormal];
-    [BtnTransfermysubscription setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
+    BtnTransfermysubscription = [UIButton buttonWithType: UIButtonTypeCustom];
+    //[BtnTransfermysubscription setTitle:@"Transfer my subscription to this device" forState:UIControlStateNormal];
+    //[BtnTransfermysubscription setTitleColor:[UIColor whiteColor] forState: UIControlStateNormal];
     BtnTransfermysubscription.frame = CGRectMake(400,700, 300, 44);
-   // UIImage *BtnTransfermysubscriptionbuttonImage = [UIImage imageNamed:@"blueBackground.png"];
-    //[BtnTransfermysubscription setBackgroundImage:BtnTransfermysubscriptionbuttonImage forState:UIControlStateNormal];
+    UIImage *BtnTransfermysubscriptionbuttonImage = [UIImage imageNamed:@"transfer.png"];
+    [BtnTransfermysubscription setBackgroundImage:BtnTransfermysubscriptionbuttonImage forState:UIControlStateNormal];
     BtnTransfermysubscription.tag = 999;
     [BtnTransfermysubscription addTarget:self action:@selector(TransferSubscription:) forControlEvents:UIControlEventTouchUpInside];
     
     [FirstView addSubview:BtnTransfermysubscription];
     
     LoginViaLearnersCloud = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //UIImage *BtnLoginbuttonImage = [UIImage imageNamed:@"login.png"];
     [LoginViaLearnersCloud setTitle:LoginTitle forState:UIControlStateNormal];
-    [LoginViaLearnersCloud setTitleColor:[UIColor redColor] forState: UIControlStateNormal];
+    [LoginViaLearnersCloud setBackgroundColor:[UIColor redColor]];
+    [LoginViaLearnersCloud  setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    //[LoginViaLearnersCloud setBackgroundImage:BtnLoginbuttonImage forState: UIControlStateNormal];
     LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 44);
     LoginViaLearnersCloud.tag = 101010;
     
@@ -557,7 +576,7 @@
     @autoreleasepool {
 
 	
-	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 	[activityIndicator stopAnimating];
     [activityIndicator hidesWhenStopped];
 	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
