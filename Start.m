@@ -61,7 +61,7 @@
    
     FreeVideos = [UIButton buttonWithType: UIButtonTypeCustom];
     //[FreeVideos setTitle:@"Start here to view free and subscription videos!" forState:UIControlStateNormal];
-    FreeVideos.frame = CGRectMake(85 ,100, 600, 44);
+    FreeVideos.frame = CGRectMake(85 ,100, 600, 64);
    UIImage *FreeVideosbuttonImage = [UIImage imageNamed:@"starthere.png"];
    [FreeVideos setBackgroundImage:FreeVideosbuttonImage forState:UIControlStateNormal];
     
@@ -75,7 +75,7 @@
     BtnTransfermysubscription = [UIButton buttonWithType: UIButtonTypeCustom];
     //[BtnTransfermysubscription setTitle:@"Transfer my subscription to this device" forState:UIControlStateNormal];
     //[BtnTransfermysubscription setTitleColor:[UIColor whiteColor] forState: UIControlStateNormal];
-    BtnTransfermysubscription.frame = CGRectMake(400,700, 300, 44);
+    BtnTransfermysubscription.frame = CGRectMake(400,695, 300, 64);
     UIImage *BtnTransfermysubscriptionbuttonImage = [UIImage imageNamed:@"transfer.png"];
     [BtnTransfermysubscription setBackgroundImage:BtnTransfermysubscriptionbuttonImage forState:UIControlStateNormal];
     BtnTransfermysubscription.tag = 999;
@@ -86,10 +86,10 @@
     LoginViaLearnersCloud = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     //UIImage *BtnLoginbuttonImage = [UIImage imageNamed:@"login.png"];
     [LoginViaLearnersCloud setTitle:LoginTitle forState:UIControlStateNormal];
-    [LoginViaLearnersCloud setBackgroundColor:[UIColor redColor]];
-    [LoginViaLearnersCloud  setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [LoginViaLearnersCloud setBackgroundColor:[UIColor blueColor]];
+    [LoginViaLearnersCloud  setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     //[LoginViaLearnersCloud setBackgroundImage:BtnLoginbuttonImage forState: UIControlStateNormal];
-    LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 44);
+    LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 54);
     LoginViaLearnersCloud.tag = 101010;
     
     
@@ -603,20 +603,20 @@
     
     if (interfaceOrientation == UIInterfaceOrientationPortrait  || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         
-        FreeVideos.frame = CGRectMake(85,100, 600, 44);
-        BtnTransfermysubscription.frame = CGRectMake(400,700, 300, 44);
+        FreeVideos.frame = CGRectMake(85,100, 600, 64);
+        BtnTransfermysubscription.frame = CGRectMake(400,695, 300, 64);
         ImageView.frame = CGRectMake(60,200, 640, 480);
         FirstView.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
-        LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 44);
+        LoginViaLearnersCloud.frame = CGRectMake(60 ,700, 300, 54);
         
     }
     else
     {
-        FreeVideos.frame = CGRectMake(220,15, 600, 44);
-        BtnTransfermysubscription.frame = CGRectMake(540 ,600, 300, 44);
+        FreeVideos.frame = CGRectMake(220,15, 600, 64);
+        BtnTransfermysubscription.frame = CGRectMake(540 ,590, 300, 64);
         ImageView.frame = CGRectMake(200,90, 640, 480);
         FirstView.frame = CGRectMake(0, 0, SCREEN_HEIGHT + 80 , SCREEN_WIDTH);
-        LoginViaLearnersCloud.frame = CGRectMake(200 ,600, 300, 44);
+        LoginViaLearnersCloud.frame = CGRectMake(200 ,595, 300, 54);
         
     }
     

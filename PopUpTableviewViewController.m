@@ -137,18 +137,22 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
         UIImage* mailImage = [UIImage imageNamed:@"facebook.png"];
         cell.imageView.image = mailImage;
         cell.textLabel.text = @"Facebook";
-        // Show logout facebook
         
-      /*  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        // Show logout facebook
+       
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        
+        UIImage* logoutImage = [UIImage imageNamed:@"logoutfacebook.png"];
         logoutFacebook = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        logoutFacebook.frame = CGRectMake(40, 40, 200, 40);
-        [logoutFacebook setTitle:@"Log Out" forState:UIControlStateNormal];
-        [logoutFacebook addTarget:self action:@selector(logoutButtonClicked)forControlEvents:UIControlEventTouchUpInside];
+        logoutFacebook.frame = CGRectMake(320, 10, 72, 22);
+        [logoutFacebook setBackgroundImage:logoutImage forState:UIControlStateNormal];
+        //[logoutFacebook setTitle:@"Log Out" forState:UIControlStateNormal];
+            [logoutFacebook addTarget:self action:@selector(logoutButtonClicked:)forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:logoutFacebook];  
             
             
-        }*/
+        }
 	
     }
 	
@@ -261,6 +265,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
     [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    
     [defaults synchronize];
     
 }
@@ -273,18 +278,34 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
 
 
 - (void) logoutButtonClicked:(id)sender {
+    
+    facebook = [[Facebook alloc] initWithAppId:@"319408714808003" andDelegate:self];
+    //Save a pointer to this object for return from facebook
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.m_facebook = facebook;
+    
     [facebook logout];
+    
+    // Remove saved authorization information if it exists
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults objectForKey:@"FBAccessTokenKey"]) {
+            [defaults removeObjectForKey:@"FBAccessTokenKey"];
+            [defaults removeObjectForKey:@"FBExpirationDateKey"];
+            [defaults synchronize];
+        }
+        
+    // Dismiss the popover 
+    [m_popover dismissPopoverAnimated:YES];
+    [m_popover.delegate popoverControllerDidDismissPopover:self.m_popover];
+
+
 }
 
 - (void) fbDidLogout {
-    // Remove saved authorization information if it exists
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"]) {
-        [defaults removeObjectForKey:@"FBAccessTokenKey"];
-        [defaults removeObjectForKey:@"FBExpirationDateKey"];
-        [defaults synchronize];
-    }
+    
+
 }
+
 
 - (void)fbDidExtendToken:(NSString*)accessToken
                expiresAt:(NSDate*)expiresAt{
