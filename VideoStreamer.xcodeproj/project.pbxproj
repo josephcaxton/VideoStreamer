@@ -304,6 +304,8 @@
 		7CA25C471511033500137875 /* ConfigObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA25C461511033500137875 /* ConfigObject.m */; };
 		7CB128EC158F1BA10004B613 /* transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB128EB158F1BA10004B613 /* transfer.png */; };
 		7CB128EE158F2D520004B613 /* logoutfacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB128ED158F2D520004B613 /* logoutfacebook.png */; };
+		7CB128F0158F4F980004B613 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB128EF158F4F980004B613 /* Twitter.framework */; };
+		7CB128F2158F514D0004B613 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB128F1158F514D0004B613 /* twitter.png */; };
 		7CBE7409153C45B600B6338C /* img59.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE73FD153C45B600B6338C /* img59.png */; };
 		7CBE740A153C45B600B6338C /* img60.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE73FE153C45B600B6338C /* img60.png */; };
 		7CBE740B153C45B600B6338C /* img61.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE73FF153C45B600B6338C /* img61.png */; };
@@ -657,6 +659,8 @@
 		7CA25C461511033500137875 /* ConfigObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigObject.m; sourceTree = "<group>"; };
 		7CB128EB158F1BA10004B613 /* transfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transfer.png; sourceTree = "<group>"; };
 		7CB128ED158F2D520004B613 /* logoutfacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutfacebook.png; sourceTree = "<group>"; };
+		7CB128EF158F4F980004B613 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		7CB128F1158F514D0004B613 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		7CBE73FD153C45B600B6338C /* img59.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img59.png; sourceTree = "<group>"; };
 		7CBE73FE153C45B600B6338C /* img60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img60.png; sourceTree = "<group>"; };
 		7CBE73FF153C45B600B6338C /* img61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img61.png; sourceTree = "<group>"; };
@@ -683,6 +687,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB128F0158F4F980004B613 /* Twitter.framework in Frameworks */,
 				7C45B81E1557CFDF00DE19B1 /* libsqlite3.dylib in Frameworks */,
 				7C45B81C1557CF8E00DE19B1 /* CFNetwork.framework in Frameworks */,
 				7C69740115419E6B004965DF /* MessageUI.framework in Frameworks */,
@@ -754,6 +759,7 @@
 				7C1499C815595A4F001A3123 /* Reachability.h */,
 				7C1499C915595A4F001A3123 /* Reachability.m */,
 				7C45B81D1557CFDF00DE19B1 /* libsqlite3.dylib */,
+				7CB128EF158F4F980004B613 /* Twitter.framework */,
 				7C45B81B1557CF8E00DE19B1 /* CFNetwork.framework */,
 				7C69740015419E6B004965DF /* MessageUI.framework */,
 				7C3A41E41514C9A8000A6ED4 /* StoreKit.framework */,
@@ -841,6 +847,7 @@
 				7CA0FA02158CEB0300A970EC /* facebook.png */,
 				7CB128EB158F1BA10004B613 /* transfer.png */,
 				7CB128ED158F2D520004B613 /* logoutfacebook.png */,
+				7CB128F1158F514D0004B613 /* twitter.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1498,6 +1505,7 @@
 				7C17EF46158DE24B00C7439E /* FBDialog.bundle in Resources */,
 				7CB128EC158F1BA10004B613 /* transfer.png in Resources */,
 				7CB128EE158F2D520004B613 /* logoutfacebook.png in Resources */,
+				7CB128F2158F514D0004B613 /* twitter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1563,7 +1571,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1582,7 +1590,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "46F2E9AB-2F91-4E2A-9DC8-EC879F9CCE00";
 				SDKROOT = iphoneos;
@@ -1597,7 +1605,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1614,7 +1622,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoStreamer/VideoStreamer-Prefix.pch";
 				INFOPLIST_FILE = "VideoStreamer/VideoStreamer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

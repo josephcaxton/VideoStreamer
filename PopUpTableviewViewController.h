@@ -10,6 +10,7 @@
 #import <MessageUI/MessageUI.h>
 #import "FBConnect.h"
 #import "AppDelegate.h"
+#import <Twitter/Twitter.h>
 
 @interface PopUpTableviewViewController : UITableViewController<MFMailComposeViewControllerDelegate,FBSessionDelegate,FBDialogDelegate>{
 

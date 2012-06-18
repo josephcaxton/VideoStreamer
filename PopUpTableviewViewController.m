@@ -75,7 +75,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
     {
         
 
-    return 2;
+    return 3;
     
     }
 
@@ -110,7 +110,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
        // UIImage* mailImage = [UIImage imageNamed:@"mail.png"];
        //cell.imageView.image = mailImage;
       
-      cell.textLabel.text = @"Like what you see here? Share this app with a friend!";
+      cell.textLabel.text = @"Like what you see here? Share this app with a friend and we give you one more video free!";
         cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
@@ -132,7 +132,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
         
         
     }
-    else
+    else if (indexPath.section == 1 && indexPath.row == 1)
     {
         UIImage* mailImage = [UIImage imageNamed:@"facebook.png"];
         cell.imageView.image = mailImage;
@@ -154,6 +154,14 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
             
         }
 	
+    }
+    
+    else if (indexPath.section == 1 && indexPath.row == 2) {
+        
+        UIImage* TwitterImage = [UIImage imageNamed:@"twitter.png"];
+        cell.imageView.image = TwitterImage;
+        cell.textLabel.text = @"Twitter";
+    
     }
 	
 	return cell;
@@ -179,6 +187,11 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
         
         [self ConnectToFaceBook];
         
+    }
+    
+    else if (indexPath.section == 1 && indexPath.row == 2){
+        
+        [self Twit];
     }
      
 }
@@ -219,7 +232,20 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
 
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
+    
+   
+    if(MFMailComposeResultSent){
 	
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+         // Give user one free video.
+            if(![prefs objectForKey:@"AddOneFree"]){
+        
+                [prefs setObject:@"1" forKey:@"AddOneFree"];
+                [prefs synchronize];
+    
+                }
+        
+    }
 	
 	[self becomeFirstResponder];
 	[self dismissModalViewControllerAnimated:YES];
@@ -318,7 +344,17 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
 }
 
 - (void)dialogDidComplete:(FBDialog *)dialog {
-    
+   
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    // Give user one free video.
+    if(![prefs objectForKey:@"AddOneFree"]){
+        
+        
+        [prefs setObject:@"1" forKey:@"AddOneFree"];
+        [prefs synchronize];
+        
+    }
+
     
 }
 
@@ -331,5 +367,63 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
     
     
 }
+
+-(void)Twit {
+    
+    if ([TWTweetComposeViewController canSendTweet])
+    {
+        NSString *UrlString = @"http://itunes.apple.com/us/app/maths-videos/id522347113?ls=1&mt=8";
+        
+        TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+        [tweetSheet setInitialText:@"Checkout LearnersCloud video app. Quality maths revision videos. :)"];
+        [tweetSheet addURL:[NSURL URLWithString:UrlString]];
+        [tweetSheet addImage:[UIImage imageNamed:@"Icon"]];
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        
+        tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result) { 
+            switch (result) {
+                case TWTweetComposeViewControllerResultCancelled:                    
+                    break;
+                    
+                case TWTweetComposeViewControllerResultDone:
+                    
+                    
+                    // Give user one free video.
+                    if(![prefs objectForKey:@"AddOneFree"]){
+                        
+                        [prefs setObject:@"1" forKey:@"AddOneFree"];
+                        [prefs synchronize];
+                        
+                    }
+
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
+            [self dismissModalViewControllerAnimated:YES];
+        };
+
+        
+        
+        
+	    [self presentModalViewController:tweetSheet animated:YES];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] 
+                                  initWithTitle:@"Sorry"                                                             
+                                  message:@"You can't send a tweet right now, make sure  your device has an internet connection and you have at least one Twitter account setup"                                                          
+                                  delegate:self                                              
+                                  cancelButtonTitle:@"OK"                                                   
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    
+}
+
+
 
 @end
