@@ -110,7 +110,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
        // UIImage* mailImage = [UIImage imageNamed:@"mail.png"];
        //cell.imageView.image = mailImage;
       
-      cell.textLabel.text = @"Like what you see here? Share this app with a friend and we give you one more video free!";
+      cell.textLabel.text = @"Like what you see here? Share this app with a friend and we give you two more videos free!";
         cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
