@@ -11,6 +11,7 @@
 #import "FBConnect.h"
 #import "AppDelegate.h"
 #import <Twitter/Twitter.h>
+#import "GANTracker.h"
 
 @interface PopUpTableviewViewController : UITableViewController<MFMailComposeViewControllerDelegate,FBSessionDelegate,FBDialogDelegate>{
 
@@ -19,11 +20,16 @@
     UIPopoverController *m_popover;
     Facebook *facebook;
     UIButton *logoutFacebook;
+    
+    UIActivityIndicatorView * activityIndicator;
 
 }
 //@property (nonatomic, retain) NSMutableArray *listofItems;
 @property (nonatomic, retain) UIPopoverController *m_popover;
 @property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic, retain) UIButton *logoutFacebook;
+@property (nonatomic, retain)  UIActivityIndicatorView * activityIndicator;
+
+- (void)AddProgress;
 
 @end

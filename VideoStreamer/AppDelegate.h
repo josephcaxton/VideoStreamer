@@ -44,7 +44,7 @@
 @property (nonatomic, retain) NSString *UserEmail;
 @property (nonatomic, assign) BOOL EmailFlag;
 @property (nonatomic, assign) BOOL AccessAll;
-@property (nonatomic, retain)  Facebook *m_facebook;;
+@property (nonatomic, retain)  Facebook *m_facebook;
 
 - (NSString *)applicationDocumentsDirectory;
 -(BOOL)isDeviceConnectedToInternet;
