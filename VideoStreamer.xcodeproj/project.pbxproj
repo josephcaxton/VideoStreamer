@@ -325,6 +325,7 @@
 		7CD5E40015480A5C0044C41F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E3FF15480A5C0044C41F /* Icon-72.png */; };
 		7CD5E40215480A700044C41F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E40115480A700044C41F /* Icon@2x.png */; };
 		7CD5E40415480A940044C41F /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E40315480A940044C41F /* iTunesArtwork.png */; };
+		7CD6762415A1D9BF0045B3C8 /* LikeUsOnFaceBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6762315A1D9BF0045B3C8 /* LikeUsOnFaceBook.png */; };
 		7CDA00211585F2870035619C /* MathsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CDA00201585F2870035619C /* MathsBackground.png */; };
 /* End PBXBuildFile section */
 
@@ -681,6 +682,7 @@
 		7CD5E3FF15480A5C0044C41F /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		7CD5E40115480A700044C41F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		7CD5E40315480A940044C41F /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		7CD6762315A1D9BF0045B3C8 /* LikeUsOnFaceBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeUsOnFaceBook.png; sourceTree = "<group>"; };
 		7CDA00201585F2870035619C /* MathsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MathsBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -851,6 +853,7 @@
 				7CB128ED158F2D520004B613 /* logoutfacebook.png */,
 				7CB128F1158F514D0004B613 /* twitter.png */,
 				7CD3E69C15A1B380009F527C /* FollowUsOnTwitter.png */,
+				7CD6762315A1D9BF0045B3C8 /* LikeUsOnFaceBook.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1510,6 +1513,7 @@
 				7CB128EE158F2D520004B613 /* logoutfacebook.png in Resources */,
 				7CB128F2158F514D0004B613 /* twitter.png in Resources */,
 				7CD3E69D15A1B380009F527C /* FollowUsOnTwitter.png in Resources */,
+				7CD6762415A1D9BF0045B3C8 /* LikeUsOnFaceBook.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

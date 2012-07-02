@@ -588,7 +588,7 @@
     
    popover = [[UIPopoverController alloc] initWithContentViewController:tableViewController];
    tableViewController.m_popover = popover;
-  [popover setPopoverContentSize:CGSizeMake(420, 320) animated:YES];
+  [popover setPopoverContentSize:CGSizeMake(420, 380) animated:YES];
 
    [popover presentPopoverFromRect:CGRectMake(button.frame.size.width / 2, button.frame.size.height / 1, 1, 1) inView:button permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     
