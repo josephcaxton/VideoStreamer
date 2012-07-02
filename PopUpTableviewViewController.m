@@ -64,7 +64,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -74,12 +74,20 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
         
         return 1;
     }
-    else
+    else if (section == 1)
     {
         
 
     return 3;
     
+    }
+    else if (section == 2){
+        
+        return 2;
+    }
+    
+    else {
+        return 0;
     }
 
 
@@ -88,7 +96,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath {
 
-    if(indexPath.row == 0 && indexPath.section == 0){
+    if((indexPath.row == 0 && indexPath.section == 0) || (indexPath.row == 0 && indexPath.section == 2)){
         
         return 60;
     }
@@ -166,6 +174,32 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
         cell.textLabel.text = @"Twitter";
     
     }
+    
+    else if (indexPath.section == 2 && indexPath.row == 0){
+        
+        cell.textLabel.text = @"*** Very important you follow us on Twitter. We operate an alerts service through Twitter to keep you informed of any service interruptions.";
+        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+        
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        CGFloat nRed=236.0/255.0; 
+        CGFloat nBlue=207/255.0;
+        CGFloat nGreen=141.0/255.0;
+        UIColor *mycolor=[[UIColor alloc]initWithRed:nRed green:nBlue blue:nGreen alpha:1];
+        cell.contentView.backgroundColor = mycolor;
+        cell.textLabel.backgroundColor =  mycolor;
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+
+    }
+    else if (indexPath.section == 2 && indexPath.row == 1){
+        
+         UIImage* FollowUsOnTwitterImage = [UIImage imageNamed:@"FollowUsOnTwitter.png"];
+          cell.imageView.image = FollowUsOnTwitterImage;
+        cell.textLabel.text = @"Follow us on Twitter";
+    }
 	
 	return cell;
 
@@ -195,6 +229,11 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
     else if (indexPath.section == 1 && indexPath.row == 2){
         
         [self Twit];
+    }
+    
+    else if (indexPath.section == 2){
+        
+        [self FollowUsOnTwitter];
     }
      
 }
@@ -479,6 +518,24 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
         
     }
 	
+}
+
+-(void)FollowUsOnTwitter{
+    
+    // Report to  analytics
+    NSError *error;
+    if (![[GANTracker sharedTracker] trackEvent:@"User sent to our twitter page to follow us"
+                                         action:@"User sent to our twitter page to follow us"
+                                          label:@"User sent to our twitter page to follow us"
+                                          value:1
+                                      withError:&error]) {
+        NSLog(@"error in trackEvent");
+    }
+    
+    
+    NSString *str = @"http://twitter.com/#!/learnerscloud"; 
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
 }
 
 

@@ -454,6 +454,7 @@
         if([[prefs objectForKey:@"AddOneFree"] isEqualToString:@"1"]){
             
             VideoPlayer *VP1 = [[VideoPlayer alloc] initWithNibName:nil bundle:nil];
+            VP1.FreeView = self;
             VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
             [self.navigationController pushViewController:VP1 animated:YES];
             
@@ -627,9 +628,9 @@
     
     // Report to  analytics
     NSError *error;
-    if (![[GANTracker sharedTracker] trackEvent:@"User Sent to Review at app store"
-                                         action:@"User Sent to Review at app store"
-                                          label:@"User Sent to Review at app store"
+    if (![[GANTracker sharedTracker] trackEvent:@"User Sent to Review Math Videos iPad at app store"
+                                         action:@"User Sent to Review Math Videos iPad at app store"
+                                          label:@"User Sent to Review Math Videos iPad at app store"
                                           value:1
                                       withError:&error]) {
         NSLog(@"error in trackEvent");
