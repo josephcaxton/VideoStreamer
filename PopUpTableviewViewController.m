@@ -177,7 +177,7 @@ self.contentSizeForViewInPopover = CGSizeMake(108,400);
     
     else if (indexPath.section == 2 && indexPath.row == 0){
         
-        cell.textLabel.text = @"*** Very important you follow us on Twitter. We operate an alerts service through Twitter to keep you informed of any service interruptions.";
+        cell.textLabel.text = @"*** Very important – We operate an alerts service through Twitter, follow us to get the latest service notifications ***";
         cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
