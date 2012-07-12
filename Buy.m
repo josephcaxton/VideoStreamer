@@ -197,7 +197,7 @@ int dontShowPriceList = 0;
 	UIButton *BuyNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];  
 	
 	//[BuyNow setTitle:@""  forState:UIControlStateNormal];
-	BuyNow.frame = CGRectMake(638, 0, 75, 44);
+	BuyNow.frame = CGRectMake(600, 0, 75, 44);
 	BuyNow.tag = indexPath.row;
 	[BuyNow addTarget:self action:@selector(BuyVideo:) forControlEvents:UIControlEventTouchUpInside];
 	

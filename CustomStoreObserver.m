@@ -122,21 +122,9 @@
    SubscriptionInDays = [[NSString alloc] initWithString:[self WorkOutSubsriptionInDays:ProductID]];
     //Prodcut ID -- Note we have to return the Product ID as it is in the database... without 1month or 7days string
     
-    NSString *TempProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
     
-    if ([SubscriptionInDays isEqualToString:@"30"]) {
+    FinalProductID = ProductID ;
         
-        int lenghtofString = [TempProductID length];
-        NSString *Result = [TempProductID substringWithRange:NSMakeRange(0, lenghtofString - 6)];
-        FinalProductID = Result;
-    }
-    else {
-        
-        int lenghtofString = [TempProductID length];
-        NSString *Result = [TempProductID substringWithRange:NSMakeRange(0, lenghtofString - 5)];
-        FinalProductID = Result; 
-    } 
-    
     //NSLog(@"%@",FinalProductID);    
     //ProductID = [[NSString alloc] initWithString: appDelegate.SelectProductID];
     
@@ -182,19 +170,39 @@
 }
 
 -(NSString *)WorkOutSubsriptionInDays:(NSString*)theProductID{
-    // Only 7 days and 30days subscription supported
-    int lenghtofString = [theProductID length];
-    NSString *Result = [theProductID substringWithRange:NSMakeRange(lenghtofString - 5, 5)];
+    // Only 1 month to 1 Year subscription supported
+
     
-    //NSLog(@"%@",Result);
-    
-    if ([[Result lowercaseString] isEqualToString:@"month"] ){
-        return @"30";
+    if ([[theProductID lowercaseString] isEqualToString:@"maths1month"] ){
+        
+        return @"31";
         
     }
-    else
-    {
-        return @"7";
+    
+    else if ([[theProductID lowercaseString] isEqualToString:@"maths3months"] ){
+        
+        return @"93";
+        
+    }
+    else if ([[theProductID lowercaseString] isEqualToString:@"maths6months"] ){
+        
+        return @"186";
+        
+    }
+    
+    else if ([[theProductID lowercaseString] isEqualToString:@"maths9months"] ){
+        
+        return @"279";
+        
+    }
+    else if ([[theProductID lowercaseString] isEqualToString:@"maths12months"] ){
+        
+        return @"372";
+        
+    }
+    
+    else {
+        return @"Error";
     }
         
         
@@ -338,7 +346,6 @@
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         NSString *DeviceID = [prefs stringForKey:@"LCUIID"];
-        [appDelegate.TempSubscibedProducts removeAllObjects];
         [appDelegate SubscriptionStatus: DeviceID];
         
         // End of trasaction by poping the buy screeen nav
@@ -519,6 +526,7 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Successful" message:@"Transaction was successful" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         alertView.tag = 4444;
         [alertView show];
+        
     }
     else if (Returnid > 0){
         

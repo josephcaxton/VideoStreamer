@@ -81,7 +81,7 @@
     //Authentication Details here
     
    NSURLCredential *credential1 = [[NSURLCredential alloc] 
-                                   initWithUser:@"Theta"
+                                   initWithUser:@"theta"
                                    password:@"Ffk7acay@#"
                                    persistence: NSURLCredentialPersistenceForSession];
     self.credential = credential1;

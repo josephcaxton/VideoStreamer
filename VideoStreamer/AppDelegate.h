@@ -18,11 +18,9 @@
     UITableViewController *buyScreen;
     NSString *DomainName;
     NSMutableData *SubscriptionStatusData;
-    NSMutableArray *TempSubscibedProducts;
     //NSMutableArray *SubscibedProducts;
     BOOL PassageFlag;
     NSString *UserEmail;
-    BOOL EmailFlag;
     BOOL AccessAll;
     
     // this is to handle return from facebook
@@ -38,11 +36,9 @@
 @property (nonatomic, retain) UITableViewController *buyScreen;
 @property (nonatomic, retain) NSString *DomainName;
 @property (nonatomic, retain)  NSMutableData *SubscriptionStatusData;
-@property (nonatomic, retain) NSMutableArray *TempSubscibedProducts;
 //@property (nonatomic, retain) NSMutableArray *SubscibedProducts;
 @property (nonatomic, assign) BOOL PassageFlag;
 @property (nonatomic, retain) NSString *UserEmail;
-@property (nonatomic, assign) BOOL EmailFlag;
 @property (nonatomic, assign) BOOL AccessAll;
 @property (nonatomic, retain)  Facebook *m_facebook;
 
