@@ -292,6 +292,7 @@
 		7C699D77153DD8D50051F1E9 /* img118.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C699D72153DD8D50051F1E9 /* img118.png */; };
 		7C9251EB158B900E00C0E28F /* PopUpTableviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9251EA158B900E00C0E28F /* PopUpTableviewViewController.m */; };
 		7C9251EF158B950A00C0E28F /* shareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C9251EE158B950A00C0E28F /* shareIcon.png */; };
+		7C94B57615AF158500BED4C7 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7C94B57515AF158500BED4C7 /* HowtouseVideoStreamer.pdf */; };
 		7CA0F9FB158CAAC100A970EC /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0F9F8158CAAC100A970EC /* login.png */; };
 		7CA0F9FD158CAAC100A970EC /* starthere.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0F9FA158CAAC100A970EC /* starthere.png */; };
 		7CA0F9FF158CAE3900A970EC /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA0F9FE158CAE3900A970EC /* logout.png */; };
@@ -319,7 +320,6 @@
 		7CBE7413153C45B600B6338C /* img69.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE7407153C45B600B6338C /* img69.png */; };
 		7CBE7414153C45B600B6338C /* img70.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE7408153C45B600B6338C /* img70.png */; };
 		7CC0311E1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CC0311D1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf */; };
-		7CD26BB9158876D100A80AA8 /* HowtouseVideoStreamer.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD26BB8158876D100A80AA8 /* HowtouseVideoStreamer.pdf */; };
 		7CD3E69D15A1B380009F527C /* FollowUsOnTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD3E69C15A1B380009F527C /* FollowUsOnTwitter.png */; };
 		7CD5E3FE15480A450044C41F /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E3FD15480A450044C41F /* Icon-Small-50.png */; };
 		7CD5E40015480A5C0044C41F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD5E3FF15480A5C0044C41F /* Icon-72.png */; };
@@ -647,6 +647,7 @@
 		7C9251E9158B900E00C0E28F /* PopUpTableviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpTableviewViewController.h; sourceTree = "<group>"; };
 		7C9251EA158B900E00C0E28F /* PopUpTableviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpTableviewViewController.m; sourceTree = "<group>"; };
 		7C9251EE158B950A00C0E28F /* shareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareIcon.png; sourceTree = "<group>"; };
+		7C94B57515AF158500BED4C7 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7CA0F9F8158CAAC100A970EC /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		7CA0F9FA158CAAC100A970EC /* starthere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starthere.png; sourceTree = "<group>"; };
 		7CA0F9FE158CAE3900A970EC /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -676,7 +677,6 @@
 		7CBE7407153C45B600B6338C /* img69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img69.png; sourceTree = "<group>"; };
 		7CBE7408153C45B600B6338C /* img70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img70.png; sourceTree = "<group>"; };
 		7CC0311D1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LearnersCloudTermsonapps.pdf; sourceTree = "<group>"; };
-		7CD26BB8158876D100A80AA8 /* HowtouseVideoStreamer.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = HowtouseVideoStreamer.pdf; sourceTree = "<group>"; };
 		7CD3E69C15A1B380009F527C /* FollowUsOnTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowUsOnTwitter.png; sourceTree = "<group>"; };
 		7CD5E3FD15480A450044C41F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		7CD5E3FF15480A5C0044C41F /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -1159,7 +1159,7 @@
 				7C62F59A154EA2D2008A1CCE /* img249.png */,
 				7C62F59B154EA2D2008A1CCE /* img250.png */,
 				7CC0311D1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf */,
-				7CD26BB8158876D100A80AA8 /* HowtouseVideoStreamer.pdf */,
+				7C94B57515AF158500BED4C7 /* HowtouseVideoStreamer.pdf */,
 			);
 			name = VideoImages;
 			sourceTree = "<group>";
@@ -1501,7 +1501,6 @@
 				7C1CEBC3156141740065CA47 /* img23.png in Resources */,
 				7CC0311E1577CA7B0025C598 /* LearnersCloudTermsonapps.pdf in Resources */,
 				7CDA00211585F2870035619C /* MathsBackground.png in Resources */,
-				7CD26BB9158876D100A80AA8 /* HowtouseVideoStreamer.pdf in Resources */,
 				7C9251EF158B950A00C0E28F /* shareIcon.png in Resources */,
 				7CA0F9FB158CAAC100A970EC /* login.png in Resources */,
 				7CA0F9FD158CAAC100A970EC /* starthere.png in Resources */,
@@ -1514,6 +1513,7 @@
 				7CB128F2158F514D0004B613 /* twitter.png in Resources */,
 				7CD3E69D15A1B380009F527C /* FollowUsOnTwitter.png in Resources */,
 				7CD6762415A1D9BF0045B3C8 /* LikeUsOnFaceBook.png in Resources */,
+				7C94B57615AF158500BED4C7 /* HowtouseVideoStreamer.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
