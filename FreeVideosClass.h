@@ -17,6 +17,8 @@
     NSMutableArray *ProductsSubscibedTo;
     BOOL FullSubscription;
     UIPopoverController *popover;
+   
+    
     
 }
 
@@ -26,6 +28,7 @@
 @property (nonatomic, retain)  NSMutableArray *ProductsSubscibedTo;
 @property (nonatomic, assign) BOOL FullSubscription;
 @property (nonatomic, retain)  UIPopoverController *popover;
+
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*)urllPath:(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
@@ -37,4 +40,6 @@
 //-(void)AdjustProductSubscribedTo;
 
 - (void)reviewPressed;
+-(IBAction)ViewFree:(UIButton*)sender;
+-(IBAction)GoSubScribe:(UIButton*)sender;
 @end
