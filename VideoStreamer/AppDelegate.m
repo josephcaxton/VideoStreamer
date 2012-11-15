@@ -115,7 +115,7 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
         NSLog(@"error in setCustomVariableAtIndex");
     } */
     
-    if (![[GANTracker sharedTracker] trackEvent:@"Maths Video Streamer Started"
+    if (![[GANTracker sharedTracker] trackEvent:@" IGCSE Maths Video Streamer Started"
                                          action:@"Launch iOS"
                                           label:@"Launch iOS"
                                           value:99
