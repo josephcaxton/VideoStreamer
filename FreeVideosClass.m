@@ -113,10 +113,10 @@
 	// Copy or Update the VideoConfig File;
    
     NSString *domain = appDelegate.DomainName;
-    NSString *queryFeed = [NSString stringWithFormat:@"%@/iosStream/maths/MathsConfig.xml",domain]; 
+    NSString *queryFeed = [NSString stringWithFormat:@"%@/iosStreamv2/maths/MathsConfig.xml",domain];
     NSString *Dir = [appDelegate.applicationDocumentsDirectory stringByAppendingPathComponent:@"MathsConfig.xml"];
     
-         
+    
    
     if(appDelegate.isDeviceConnectedToInternet){
     
@@ -261,7 +261,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString *domain = appDelegate.DomainName;
-    NSString *queryFeed = [NSString stringWithFormat:@"%@/iosStream/maths/MathsConfig.xml", domain];
+    NSString *queryFeed = [NSString stringWithFormat:@"%@/iosStreamv2/maths/MathsConfig.xml", domain];
 	NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:queryFeed]];
     NSURLResponse *resp = nil; 
     NSError *err = nil;

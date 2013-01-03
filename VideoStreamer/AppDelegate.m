@@ -39,7 +39,7 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
     [tabBarController setViewControllers:viewControllers];
     
     SecondThread = nil;
-    DomainName = @"http://learnerscloud.com";
+    DomainName = @"http://www.learnerscloud.com";
     
     
     //[window addSubview: tabBarController.view];
