@@ -333,6 +333,15 @@
 		7CC6991F15B31E1700A6A4DB /* img258.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC6991515B31E1700A6A4DB /* img258.png */; };
 		7CC6992015B31E1700A6A4DB /* img259.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC6991615B31E1700A6A4DB /* img259.png */; };
 		7CC6992115B31E1700A6A4DB /* img260.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC6991715B31E1700A6A4DB /* img260.png */; };
+		7CD6D90F16973716004BCB15 /* Maths-WJEC-Examination-Coverage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D90916973716004BCB15 /* Maths-WJEC-Examination-Coverage.pdf */; };
+		7CD6D91016973716004BCB15 /* Maths-OCR-Examination-Coverage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D90A16973716004BCB15 /* Maths-OCR-Examination-Coverage.pdf */; };
+		7CD6D91116973716004BCB15 /* Maths-Edexcel-Examination-Coverage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D90B16973716004BCB15 /* Maths-Edexcel-Examination-Coverage.pdf */; };
+		7CD6D91216973716004BCB15 /* Maths-(Higher)-CCEA-Examination-Coverage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D90C16973716004BCB15 /* Maths-(Higher)-CCEA-Examination-Coverage.pdf */; };
+		7CD6D91316973716004BCB15 /* Maths-CCEA-Examination-Coverage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D90D16973716004BCB15 /* Maths-CCEA-Examination-Coverage.pdf */; };
+		7CD6D91416973716004BCB15 /* Maths-AQA-Examination-Coverage.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D90E16973716004BCB15 /* Maths-AQA-Examination-Coverage.pdf */; };
+		7CD6D9161697372F004BCB15 /* nav_btn_coverage_deselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6D9151697372F004BCB15 /* nav_btn_coverage_deselected.png */; };
+		7CD6D91B16973950004BCB15 /* Coverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6D9181697377B004BCB15 /* Coverage.m */; };
+		7CD6D91C16973950004BCB15 /* CoverageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6D91A1697377B004BCB15 /* CoverageViewer.m */; };
 		7CD9381F162C45C9004EC5D8 /* share_intro.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD9381E162C45C9004EC5D8 /* share_intro.png */; };
 		7CD93821162C49B7004EC5D8 /* share_intro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD93820162C49B7004EC5D8 /* share_intro@2x.png */; };
 		7CD93824162C5871004EC5D8 /* website_promo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD93822162C5870004EC5D8 /* website_promo.png */; };
@@ -705,6 +714,17 @@
 		7CC6991515B31E1700A6A4DB /* img258.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img258.png; sourceTree = "<group>"; };
 		7CC6991615B31E1700A6A4DB /* img259.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img259.png; sourceTree = "<group>"; };
 		7CC6991715B31E1700A6A4DB /* img260.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img260.png; sourceTree = "<group>"; };
+		7CD6D90916973716004BCB15 /* Maths-WJEC-Examination-Coverage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Maths-WJEC-Examination-Coverage.pdf"; sourceTree = "<group>"; };
+		7CD6D90A16973716004BCB15 /* Maths-OCR-Examination-Coverage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Maths-OCR-Examination-Coverage.pdf"; sourceTree = "<group>"; };
+		7CD6D90B16973716004BCB15 /* Maths-Edexcel-Examination-Coverage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Maths-Edexcel-Examination-Coverage.pdf"; sourceTree = "<group>"; };
+		7CD6D90C16973716004BCB15 /* Maths-(Higher)-CCEA-Examination-Coverage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Maths-(Higher)-CCEA-Examination-Coverage.pdf"; sourceTree = "<group>"; };
+		7CD6D90D16973716004BCB15 /* Maths-CCEA-Examination-Coverage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Maths-CCEA-Examination-Coverage.pdf"; sourceTree = "<group>"; };
+		7CD6D90E16973716004BCB15 /* Maths-AQA-Examination-Coverage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Maths-AQA-Examination-Coverage.pdf"; sourceTree = "<group>"; };
+		7CD6D9151697372F004BCB15 /* nav_btn_coverage_deselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_btn_coverage_deselected.png; sourceTree = "<group>"; };
+		7CD6D9171697377B004BCB15 /* Coverage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coverage.h; sourceTree = "<group>"; };
+		7CD6D9181697377B004BCB15 /* Coverage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coverage.m; sourceTree = "<group>"; };
+		7CD6D9191697377B004BCB15 /* CoverageViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoverageViewer.h; sourceTree = "<group>"; };
+		7CD6D91A1697377B004BCB15 /* CoverageViewer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoverageViewer.m; sourceTree = "<group>"; };
 		7CD9381E162C45C9004EC5D8 /* share_intro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_intro.png; sourceTree = "<group>"; };
 		7CD93820162C49B7004EC5D8 /* share_intro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_intro@2x.png"; sourceTree = "<group>"; };
 		7CD93822162C5870004EC5D8 /* website_promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = website_promo.png; sourceTree = "<group>"; };
@@ -763,6 +783,7 @@
 		7C232CCB150F8A36003349AE = {
 			isa = PBXGroup;
 			children = (
+				7CD6D907169736FF004BCB15 /* Files */,
 				7C17EF36158DE24B00C7439E /* facebook-ios-sdk */,
 				7C45B8171557CF4100DE19B1 /* Analytics */,
 				7C4D8DF8151369E60065D044 /* VideoImages */,
@@ -846,6 +867,7 @@
 		7C232D0C150F9CC0003349AE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				7CD6D9151697372F004BCB15 /* nav_btn_coverage_deselected.png */,
 				7C9937E4162ABCCD00ECF902 /* btn_videos_deselected.png */,
 				7C232D13150F9D26003349AE /* 60-signpost.png */,
 			);
@@ -926,6 +948,10 @@
 				7C45B8151557C8B200DE19B1 /* HowtoUse.m */,
 				7C9251E9158B900E00C0E28F /* PopUpTableviewViewController.h */,
 				7C9251EA158B900E00C0E28F /* PopUpTableviewViewController.m */,
+				7CD6D9171697377B004BCB15 /* Coverage.h */,
+				7CD6D9181697377B004BCB15 /* Coverage.m */,
+				7CD6D9191697377B004BCB15 /* CoverageViewer.h */,
+				7CD6D91A1697377B004BCB15 /* CoverageViewer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1215,6 +1241,19 @@
 				7CA25C461511033500137875 /* ConfigObject.m */,
 			);
 			name = "Data Models";
+			sourceTree = "<group>";
+		};
+		7CD6D907169736FF004BCB15 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6D90916973716004BCB15 /* Maths-WJEC-Examination-Coverage.pdf */,
+				7CD6D90A16973716004BCB15 /* Maths-OCR-Examination-Coverage.pdf */,
+				7CD6D90B16973716004BCB15 /* Maths-Edexcel-Examination-Coverage.pdf */,
+				7CD6D90C16973716004BCB15 /* Maths-(Higher)-CCEA-Examination-Coverage.pdf */,
+				7CD6D90D16973716004BCB15 /* Maths-CCEA-Examination-Coverage.pdf */,
+				7CD6D90E16973716004BCB15 /* Maths-AQA-Examination-Coverage.pdf */,
+			);
+			name = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1568,6 +1607,13 @@
 				7C8C1978165E5CE20026CBB5 /* Icon-72@2x.png in Resources */,
 				7C8C197B165E5CFB0026CBB5 /* Icon-Small-50.png in Resources */,
 				7C8C197C165E5CFB0026CBB5 /* Icon-Small-50@2x.png in Resources */,
+				7CD6D90F16973716004BCB15 /* Maths-WJEC-Examination-Coverage.pdf in Resources */,
+				7CD6D91016973716004BCB15 /* Maths-OCR-Examination-Coverage.pdf in Resources */,
+				7CD6D91116973716004BCB15 /* Maths-Edexcel-Examination-Coverage.pdf in Resources */,
+				7CD6D91216973716004BCB15 /* Maths-(Higher)-CCEA-Examination-Coverage.pdf in Resources */,
+				7CD6D91316973716004BCB15 /* Maths-CCEA-Examination-Coverage.pdf in Resources */,
+				7CD6D91416973716004BCB15 /* Maths-AQA-Examination-Coverage.pdf in Resources */,
+				7CD6D9161697372F004BCB15 /* nav_btn_coverage_deselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1578,6 +1624,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD6D91B16973950004BCB15 /* Coverage.m in Sources */,
+				7CD6D91C16973950004BCB15 /* CoverageViewer.m in Sources */,
 				7C18BF5B16286A6600CB0AC8 /* UnderlinedButton.m in Sources */,
 				7C1499CD15595F98001A3123 /* Reachability.m in Sources */,
 				7C232CE7150F8A36003349AE /* main.m in Sources */,
