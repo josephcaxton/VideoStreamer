@@ -33,9 +33,8 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
     //Remove useless tabbarItems ..
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:tabBarController.viewControllers];
     //[viewControllers removeObjectAtIndex:1];
-    [viewControllers removeObjectAtIndex:3];
-    [viewControllers removeObjectAtIndex:3];
-    [viewControllers removeObjectAtIndex:3];
+    [viewControllers removeObjectAtIndex:4];
+    [viewControllers removeObjectAtIndex:4];
     [tabBarController setViewControllers:viewControllers];
     
     SecondThread = nil;
@@ -433,11 +432,11 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
 //Return True is file does not exist in device -- so download from server;
 // Return True if the file exist but version is defferent--- So we need to download the file;
 // Return false if the file is same version --- so don't download;
-- (BOOL)downloadFileIfUpdated:(NSString*)urlString:(NSString*)LocalFileLocation {  
+-(BOOL)downloadfileifUpdated:(NSString*)urLString location:(NSString*)LocalFileLocation {  
     
     //DLog(@"Downloading HTTP header from: %@", urlString);
     
-    NSURL *url = [NSURL URLWithString:urlString];  
+    NSURL *url = [NSURL URLWithString:urLString];
     
     NSString *cachedPath = LocalFileLocation;
     NSFileManager *fileManager = [NSFileManager defaultManager];  
@@ -559,10 +558,10 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[GANTracker sharedTracker] stopTracker];
     
-    AccessAll = FALSE;
+   /* AccessAll = FALSE;
     if (UserEmail) {
         UserEmail = nil;
-    }
+    }*/
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

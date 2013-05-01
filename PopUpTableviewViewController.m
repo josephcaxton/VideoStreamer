@@ -28,6 +28,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Share";
+    
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,185,55)];
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = self.navigationItem.title;
+    label.font = [UIFont fontWithName:@"Helvetica-Bold" size:24.0];
+    self.navigationItem.titleView = label;
+    [label sizeToFit];
+
     
     NSString *HeaderLocation = [[NSBundle mainBundle] pathForResource:@"header_bar" ofType:@"png"];
     UIImage *HeaderBackImage = [[UIImage alloc] initWithContentsOfFile:HeaderLocation];
