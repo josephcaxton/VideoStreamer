@@ -10,7 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "Trailers.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "LearnersCloudSamplesVideos.h"
 
 
 @interface TrailerPlayer : UIViewController {
@@ -21,7 +21,7 @@
     NSURLProtectionSpace *protectionSpace;
     NSString *domain;
     UIImageView *ImageViewer1;
-    Trailers *FreeView;
+    LearnersCloudSamplesVideos *FreeView;
     
 	
 }
@@ -32,7 +32,7 @@
 @property (nonatomic, retain) NSString *domain;
 @property (nonatomic, retain) UIImageView *ImageViewer1;
 @property (nonatomic, retain) MPMoviePlayerViewController *moviePlayerViewController;
-@property (nonatomic, retain) Trailers *FreeView;
+@property (nonatomic, retain) LearnersCloudSamplesVideos *FreeView;
 
 
 @end

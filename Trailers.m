@@ -376,7 +376,7 @@
     
         
         TrailerPlayer *VP1 = [[TrailerPlayer alloc] initWithNibName:nil bundle:nil];
-        VP1.FreeView = self;
+        //VP1.FreeView = self;
         VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
         
         [self.navigationController pushViewController:VP1 animated:YES];
@@ -391,7 +391,7 @@
     ConfigObject *obj = [filteredArrayofConfigObjects1 objectAtIndex:tag];
     
     TrailerPlayer *VP1 = [[TrailerPlayer alloc] initWithNibName:nil bundle:nil];
-    VP1.FreeView = self;
+   // VP1.FreeView = self;
     VP1.VideoFileName =[NSString stringWithString:[obj M3u8]];
     
     [self.navigationController pushViewController:VP1 animated:YES];

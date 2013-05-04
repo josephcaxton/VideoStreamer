@@ -53,7 +53,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     domain = appDelegate.DomainName;
-    ServerLocation = [NSString stringWithFormat:@"%@/iosStreamv2/Trailers/",domain];
+    //ServerLocation = [NSString stringWithFormat:@"%@/iosStreamv2/Trailers/",domain];
 	
     NSError *error;
     // Report to  analytics
