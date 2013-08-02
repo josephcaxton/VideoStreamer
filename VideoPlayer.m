@@ -164,8 +164,9 @@
         
     if ([ReviewID isEqualToString:@"11"] && [IhaveReviewed isEqualToString:@"0"] ) {
         
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Review this app" message:@"Do you like this app enough to leave us a review?" delegate:FreeView cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    [alertView show];
+    UIAlertView *ReviewalertView = [[UIAlertView alloc] initWithTitle:@"Review this app" message:@"Do you like this app enough to leave us a review?" delegate:FreeView cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        ReviewalertView.tag = 999;
+    [ReviewalertView show];
     
 	}
     else {
@@ -228,24 +229,24 @@
    // NSString *deviceID = [prefs stringForKey:@"LCUIID"];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+    [dateFormatter setDateFormat: @"yyyy-MM-dd'T'HH:mm:ss"]; //yyyy-MM-dd HH:mm:ss
     
     
     NSDate *Timenow = [[NSDate alloc] init];
     
     NSString *now = [dateFormatter stringFromDate:Timenow];
     // We have to encode the Date change : to %3A
-    NSMutableString *Mutabletime = [NSMutableString stringWithString:now];
+    //NSMutableString *Mutabletime = [NSMutableString stringWithString:now];
     
-    [Mutabletime replaceOccurrencesOfString:@":" withString:@"%3A" options:NSCaseInsensitiveSearch range:NSMakeRange(0, Mutabletime.length)];
+    //[Mutabletime replaceOccurrencesOfString:@":" withString:@"%3A" options:NSCaseInsensitiveSearch range:NSMakeRange(0, Mutabletime.length)];
     
-    //NSLog(@"%@",[Mutabletime stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+    //NSLog(@"%@",[now stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
     
     NSString *AppId = @"62";   // 62 means this is maths
     NSString *Starting = isStarting ? @"True" : @"False";
     NSString *ClipURN = self.VideoFileName;
     
-     NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&AppID=%@&clipURN=%@&isStart=%@&eventTime=%@",appDelegate.UserEmail,AppId,ClipURN,Starting,Mutabletime];
+     NSString *FullString = [NSString stringWithFormat:@"DeviceID=%@&AppID=%@&clipURN=%@&isStart=%@&eventTime=%@",appDelegate.UserEmail,AppId,ClipURN,Starting,now];
     
     NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -282,7 +283,7 @@
      -5 Theoretically cant happen - just to keep compiler happy */
     
    // NSString *returnedString = [[NSString alloc] initWithData:someData encoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",returnedString);
+   // NSLog(@"%@",returnedString);
     
     
     

@@ -26,7 +26,7 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,PassageFlag,EmailFlag,UserEmail,DoesUserHaveEmail,AccessAll,m_facebook;
+@synthesize SecondThread,SelectProductID,buyScreen,DomainName,SubscriptionStatusData,PassageFlag,EmailFlag,UserEmail,DoesUserHaveEmail,AccessAll,m_facebook,FlagToLoginOrLogout;
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -40,8 +40,10 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
     [tabBarController setViewControllers:viewControllers];
     
     SecondThread = nil;
-    DomainName = @"http://learnerscloud.com";
+    DomainName = @"https://learnerscloud.com";
     
+    // This flag 0 = do nothing  1= login  2 = logout
+    FlagToLoginOrLogout = [NSNumber numberWithInteger:0];
     
     //[window addSubview: tabBarController.view];
     [window setRootViewController:tabBarController];
@@ -116,7 +118,7 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
         NSLog(@"error in setCustomVariableAtIndex");
     } */
     
-    if (![[GANTracker sharedTracker] trackEvent:@" IGCSE Maths Video Streamer Started"
+    if (![[GANTracker sharedTracker] trackEvent:@" GCSE Maths Video Streamer Started"
                                          action:@"Launch iOS"
                                           label:@"Launch iOS"
                                           value:99
@@ -509,15 +511,21 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
     
    // NSString *DeviceUDID = [NSString stringWithFormat:@"%@",[UIDevice currentDevice].uniqueIdentifier];
     // We don't support notifiation on < ios any more
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")){
-    NSString *DeviceUDID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    //if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")){
+    
+        //NSString *str = [NSString stringWithFormat:@"Device Token=%@",deviceToken];
+        //NSLog(@"Device Token:%@",str);
+        
+    NSString *DeviceUDID = @"Deprecated"; //[[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *DeviceTokenRemoveCh1 = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     
     NSString *DeviceToken = [DeviceTokenRemoveCh1 stringByReplacingOccurrencesOfString: @" " withString: @""];
+        
     
+       // NSLog(@"UDID is: %@ and DeviceToken is: %@",DeviceUDID,DeviceToken);
     
     NSURLConnection *conn;
-    NSString *queryString = [NSString stringWithFormat:@"http://www.learnerscloud.com/services/ios/deviceToken.asmx/Update?UDID=%@&deviceToken=%@" , DeviceUDID, DeviceToken ];
+    NSString *queryString = [NSString stringWithFormat:@"http://www.learnerscloud.com/services/ios/videosubscription.asmx/UpdateDeviceToken?UDID=%@&deviceToken=%@" , DeviceUDID, DeviceToken ];
     NSURL *url = [NSURL URLWithString:queryString];
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
@@ -530,7 +538,7 @@ static NSString* const kAnalyticsAccountId = @"UA-31484592-1";
         
     }
     }
-}
+//}
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     

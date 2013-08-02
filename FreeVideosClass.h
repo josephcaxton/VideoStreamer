@@ -23,7 +23,14 @@
     UIBarButtonItem *SubscribeButton;
     UIBarButtonItem *ShareButton;
     
+    UIImage *LoginImage;
+    UIImage *LogoutImage;
+    UIButton *LoginLogoutbtn;
+    UIBarButtonItem *LoginViaLearnersCloud;
+    NSMutableArray *FreeSamples;
+    NSMutableArray *FreeSamples_Copy;
     
+   
 }
 
 @property (nonatomic, retain) NSMutableArray *ArrayofConfigObjects;
@@ -39,6 +46,15 @@
 @property (nonatomic, retain) UIBarButtonItem *SubscribeButton;
 @property (nonatomic, retain) UIBarButtonItem *ShareButton;
 
+@property (nonatomic, retain)  UIImage *LoginImage;
+@property (nonatomic, retain)  UIImage *LogoutImage;
+@property (nonatomic, retain)  UIButton *LoginLogoutbtn;
+@property (nonatomic, retain) UIBarButtonItem *LoginViaLearnersCloud;
+@property (nonatomic, retain)  NSMutableArray *FreeSamples;
+@property (nonatomic, retain)  NSMutableArray *FreeSamples_Copy;
+
+
+
 
 -(BOOL)ShouldIDownloadOrNot:(NSString*) urllPath :(NSString*)LocalFileLocation;
 -(void)GetConfigFileFromServeWriteToPath:(NSString*)Path;
@@ -52,4 +68,8 @@
 - (void)reviewPressed;
 -(IBAction)ViewFree:(UIButton*)sender;
 -(IBAction)GoSubScribe:(UIButton*)sender;
+-(IBAction)LogoutUser:(id)sender;
+-(IBAction)LoginUser:(id)sender;
+-(IBAction)ViewFreeSectionOne:(UIButton*)sender;
+
 @end
