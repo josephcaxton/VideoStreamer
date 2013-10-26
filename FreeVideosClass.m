@@ -463,14 +463,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSInteger numberOfRows;
+    NSInteger numberOfRows = 0;
     
     if(section == 0){
        
         numberOfRows = [FreeSamples count];
        
     }
-    else if (section == 1)
+    else if(section == 1)
     {
    
     numberOfRows =[filteredArrayofConfigObjects count];

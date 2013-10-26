@@ -37,7 +37,7 @@
 													name:MPMoviePlayerPlaybackDidFinishNotification
 												  object:player];
 	[player stop];
-	[moviePlayerViewController.view removeFromSuperview];
+	//[moviePlayerViewController.view removeFromSuperview];
 	
 	
 	[self.navigationController popViewControllerAnimated:YES];
@@ -118,6 +118,7 @@
         
         moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:fileURL];
         moviePlayerViewController.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+        //moviePlayerViewController.moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(movieFinishedCallback:)

@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.navigationItem.title = @"Coverage";
     
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,185,55)];
@@ -72,10 +73,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    self.FirstTable.center = self.view.center;
+    [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:1];
     
-    UIEdgeInsets inset = UIEdgeInsetsMake(150, 0, 0, 0);
-    self.FirstTable.contentInset = inset;
+    //UIEdgeInsets inset = UIEdgeInsetsMake(150, 0, 0, 0);
+    //self.FirstTable.contentInset = inset;
     
     
     
@@ -179,9 +180,17 @@
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration{
     
-    self.FirstTable.center = self.view.center;
+    if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown ) {
+        
+        self.FirstTable.frame = CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+        
+    }
+    else {
+        self.FirstTable.frame = CGRectMake(0,0,SCREEN_HEIGHT + 80 ,SCREEN_WIDTH);
     
-    // [FirstTable reloadData];
+    }
+    
+    
     
     
 }

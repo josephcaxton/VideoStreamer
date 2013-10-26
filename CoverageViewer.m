@@ -37,7 +37,10 @@
 	[self loadDocument:DocumentName inView:self.WebBox];
 	[self.view addSubview:WebBox];
     
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor,nil] forState:UIControlStateNormal];
+    
      EmailDoc = [[UIBarButtonItem alloc] initWithTitle:@"Email Document" style: UIBarButtonItemStyleBordered target:self action:@selector(SendDocViaMail:)];
+    
     self.navigationItem.rightBarButtonItem = EmailDoc;
 }
 
